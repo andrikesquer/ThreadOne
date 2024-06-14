@@ -1,0 +1,68 @@
+.body{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.thehead{
+    padding: 25px;
+    display: flex;
+    justify-self: end;
+    align-items:flex-start;
+    justify-content: end;
+    background-color: #EDEDED;
+}
+
+.thehead .logo{
+    display: flex;
+    align-items: normal;
+    color:rgb(247, 0, 164);
+}
+.thehead .boton{
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: black;
+    padding: 10px;
+}.contenedor2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EDEDED;
+}
+.contenedor2 .boton1{
+    color: aliceblue;
+    background-color: black;
+    width: 450px;
+    height: 30px;
+    border: 2px solid rgb(225, 225, 225, .2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.input-box input{
+    width: 450px;
+    height: 20px;
+    border: 2px solid rgb(225, 225, 225, .2);
+    border-radius: 8px;
+}
+.contenedor2 .imglogin{
+    width: 508px;
+    height: 657px;
+}
+.imglogin{
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.imagencont{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.boton1:hover {
+    background-color: #0056b3;
+}
