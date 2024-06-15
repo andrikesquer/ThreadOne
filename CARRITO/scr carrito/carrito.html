@@ -6,11 +6,68 @@
     <title>Carrito compras ThreadOne</title>
     <meta name="author" content="Oliver">
     <link rel="stylesheet" href="../styles_carrito/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <!--                    BODY                -->
    <body>
+    <div class="rectangulo_fav">
+        <p>Favoritos</p>
+    </div>
+    <!-- <div class="corazon"></div> -->
     <div class="imagen_superior"></div>
-    <div class=""></div>
+    <div class="circulo_corazon"></div>
+    <div class="saludo">Hey, Markus</div>
+    <div class="imagen_usuario"></div>
+<br>
+    <h2>Carrito</h2>
+    <h3>¡¡Tu nuevo yo te espera!!</h3>
+
+    <div class="cart">
+        <div class="cart-item">
+            <img src="../Galeria_Imagenes/camisa.png" alt="Producto 1">
+            <div class="item-details">
+                <p class="product-name">Camisa Personalizada</p>
+                <p class="product-price">$270</p>
+                <p class="product-availability disponible">Disponible</p>
+
+                <div class="item-options">
+                    <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+                    
+                    <select>
+                        <option>Negro</option>
+                        <option>Blanco</option>
+                        <option>Gris</option>
+                    </select>
+
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                </div>
+            </div>
+            <button class="remove-btn">✖</button>
+        </div>
+
+        <div class="cart-item">
+            <img src="../Galeria_Imagenes/iguana;.png" alt="Producto 2">
+            <div class="item-details">
+                <p class="product-name">Stiker Iguana;</p>
+                <p class="product-price">$40</p>
+                <p class="product-availability inactivo">Inaccesible</p>
+                <div class="item-options">
+                    <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+                </div>
+            </div>
+            <button class="remove-btn">✖</button>
+        </div>
+    </div>
+
    </body>
    
