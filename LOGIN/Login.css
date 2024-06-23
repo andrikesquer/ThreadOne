@@ -50,6 +50,12 @@
     border: 2px solid rgb(225, 225, 225, .2);
     border-radius: 8px;
 }
+.input-box input{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
 .contenedor2 .imglogin{
     width: 508px;
     height: 657px;
@@ -65,4 +71,14 @@
 }
 .boton1:hover {
     background-color: #0056b3;
+}
+.Contenedor1{
+    display: flex;
+    flex-direction: column;
+}
+.imagencont img {
+    border-radius: 30%px;
+    height: 500px;
+    object-fit: cover;
+    margin: 3em ;
 }
