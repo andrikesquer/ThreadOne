@@ -3,35 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Registro</title>
+    <link rel="stylesheet" href="registro.css">
 
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <img src="C:\Users\regin\OneDrive\Documents\GitHub\Integradora-Formulario-TID31M\Login\assetslogin\granadainicio.png" alt="">
+                <img src="assets\WhatsApp_Image_2024-06-11_at_00.31.58_be4b3994-removebg-preview.png" alt="">
                 <a href=""></a>
             </div>
-            <button class="register-btn">Registrarse</button>
+            <button class="login-btn">Iniciar sesión</button>
         </header>
         <main>
             <section class="registration-form">
-                <h1>Iniciar sesión</h1>
-                <p>Bienvenido de nuevo. Sigamos creando juntos</p>
+                <h1>Regístrate</h1>
+                <p>¿Listo para crear un nuevo tú?</p>
                 <form>
+                    <div class="name-container">
+                        <div class="input-group">
+                            <label for="first-name">Nombre</label>
+                            <input type="text" id="first-name" name="first-name" placeholder="Ana" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="last-name">Apellido</label>
+                            <input type="text" id="last-name" name="last-name" placeholder="Madrid" required>
+                        </div>
+                    </div>
+
                     <label for="username">Usuario</label>
                     <input type="text" id="username" name="username" placeholder="AnaMad" required>
 
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required>
 
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="anamad@gmail.com" required>
+
                     <button type="submit">Subir</button>
                 </form>
             </section>
             <section class="image-section">
-                <img src="Login\assetslogin\granadainicio.png" alt="Pomegranate">
+                <img src="assets/GranadaRegistro.png" alt="Pomegranate">
             </section>
         </main>
         <footer>
