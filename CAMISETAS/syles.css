@@ -1,52 +1,162 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f8f8f8;
+ /*            Cosas del HEADER                     */
+  
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3ececda;
 }
+
+header {
+  background-image: url(../CAMISETAS/Imagenes/FondoHeader.png);
+  background-size: cover;
+  background-position: center;
+  padding: 20px 20px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+}
+
+.logo {
+  width: 45px;
+}
+
+
+.favorites-button {
+  color: #000000;
+  padding: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.account-button{
+  background-color: transparent;
+}
+
+.cart-button, 
+.favorites-button {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.account-button span,
+.cart-button span,
+.favorites-button span {
+  margin-right: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.account-button:hover,
+.cart-button:hover,
+.favorites-button:hover,
+.logo-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main {
+  padding: 20px;
+}
+  /*                Fin Cosas del HEADER */
+
+  /*                  Cosas del BODY*/
+  
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
-.shirt-option {
-    flex: 0 0 30%;
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
     text-align: center;
-    margin: 15px;
-    position: relative;
+    width: 220px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.shirt-option img {
-    width: 100%;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
 }
 
-.color-options {
-    display: none;
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    transform: translateX(-50%);
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    padding: 10px;
+.details {
+    text-align: left;
 }
 
-.color-options img {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    cursor: pointer;
+.color {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 5px;
 }
+
+.name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.colors {
+    display: flex;
+    gap: 5px;
+}
+
+.color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.black {
+    background-color: #000;
+}
+
+.white {
+    background-color: #eaeaea;
+    border-color: #000;
+}
+
+.gray {
+    background-color: #717171;
+}
+
+
+.red{
+  background-color: #d00000;
+}
+/*      Fin cosas BODY*/

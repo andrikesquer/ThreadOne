@@ -3,41 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú de Camisas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tienda de Camisetas</title>
+    <link rel="stylesheet" href="../CAMISETAS/syles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Repetir esta estructura para las 9 camisas -->
-        <div class="shirt-option" onclick="toggleColors(this)">
-            <img src="" alt="Camisa Iguana">
-            <div class="color-options">
-                <img src="../CAMISETAS/iguana/Iguana rojo.png" alt="Camisa Roja">
-                <img src="white-shirt.jpg" alt="Camisa Blanca">
-                <img src="grey-shirt.jpg" alt="Camisa Gris">
-                <img src="black-shirt.jpg" alt="Camisa Negra">
+        <!-- INICIO HEADER -->
+    <header>
+        <div class="header-left">
+            <a href="home.html" class="logo-button">
+                <img src="../CAMISETAS/Imagenes/LogoThreadOne.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="favoritos.html" class="favorites-button">
+                <span>Favoritos</span>
+                <img src="../CAMISETAS/Imagenes/IconoFavoritos.png" alt="Icono Favoritos" class="icon">
+            </a>
+            <a href="carrito.html" class="cart-button">
+                <span>Carrito</span>
+                <img src="../CAMISETAS/Imagenes/IconoCarrito.png" alt="Icono Carrito" class="icon">
+            </a>
+            <a href="cuenta.html" class="account-button">
+                <span>Hey, Marcus</span>
+                <img src="../CAMISETAS/Imagenes/ImagenPerfil.jpg" alt="Icono Cuenta" class="icon">
+            </a>
+        </div>
+    </header>
+    <main>
+    <!-- FIN HEADER -->
+
+    <!--INICIO BODY-->
+    <body>
+        <div class="container">
+            <h1>CAMISAS</h1>
+
+            <div class="products">
+                <div class="product" data-product="br">
+                    <img src="../CAMISETAS/Br/br negra.png" alt="br" id="br-img">
+                    <div class="details">
+                        <p class="color">Negro</p>
+                        <p class="name"> Br </p>
+                        <p class="price">$200</p>
+                        <div class="colors">
+                            <span class="color-dot black" onclick="changeImage('br', 'black')"></span>
+                            <span class="color-dot white" onclick="changeImage('br', 'white')"></span>
+                            <span class="color-dot gray" onclick="changeImage('br', 'gray')"></span>
+                            <span class="color-dot red" onclick="changeImage('br', 'red')"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product" data-product="cerebro">
+                    <img src="../CAMISETAS/cerebro/Cerebro negro.png" alt="cerebro" id="cerebro-img">
+                    <div class="details">
+                        <p class="color">Negro</p>
+                        <p class="name">Prenda el cerebro, Inge</p>
+                        <p class="price">$140</p>
+                        <div class="colors">
+                            <span class="color-dot black" onclick="changeImage('cerebro', 'black')"></span>
+                            <span class="color-dot white" onclick="changeImage('cerebro', 'white')"></span>
+                            <span class="color-dot gray" onclick="changeImage('cerebro', 'gray')"></span>
+                            <span class="color-dot red" onclick="changeImage('cerebro', 'red')"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product" data-product="contexto">
+                    <img src="../CAMISETAS/contexto/contexto negra.png" alt="contexto" id="contexto-img">
+                    <div class="details">
+                        <p class="color">Negro</p>
+                        <p class="name">Contexto</p>
+                        <p class="price">$200</p>
+                        <div class="colors">
+                            <span class="color-dot black" onclick="changeImage('context', 'black')"></span>
+                            <span class="color-dot white" onclick="changeImage('context', 'white')"></span>
+                            <span class="color-dot gray" onclick="changeImage('context', 'gray')"></span>
+                            <span class="color-dot red" onclick="changeImage('context', 'red')"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product" data-product="Css">
+                    <img src="../CAMISETAS/CSS/CSS gris.png" alt="Leatherbound Daily" id="Css-img">
+                    <div class="details">
+                        <p class="color">Gris</p>
+                        <p class="name">CSS</p>
+                        <p class="price">$200</p>
+                        <div class="colors">
+                            <span class="color-dot black" onclick="changeImage('css', 'black')"></span>
+                            <span class="color-dot white" onclick="changeImage('css', 'white')"></span>
+                            <span class="color-dot gray" onclick="changeImage('css', 'gray')"></span>
+                            <span class="color-dot red" onclick="changeImage('css', 'red')"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product" data-product="HW">
+                    <img src="../CAMISETAS/Hw/Hw gris.png" alt="HW" id="HW-img">
+                    <div class="details">
+                        <p class="color">Gris</p>
+                        <p class="name">Hello, World</p>
+                        <p class="price">$5,000</p>
+                        <div class="colors">
+                            <span class="color-dot black" onclick="changeImage('HW', 'black')"></span>
+                            <span class="color-dot white" onclick="changeImage('HW', 'white')"></span>
+                            <span class="color-dot gray" onclick="changeImage('HW', 'gray')"></span>
+                            <span class="color-dot red" onclick="changeImage('HW', 'red')"></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="shirt-option" onclick="toggleColors(this)">
-            <img src="shirt2.jpg" alt="Camisa 2">
-            <div class="color-options">
-                <img src="red-shirt.jpg" alt="Camisa Roja">
-                <img src="white-shirt.jpg" alt="Camisa Blanca">
-                <img src="grey-shirt.jpg" alt="Camisa Gris">
-                <img src="black-shirt.jpg" alt="Camisa Negra">
-            </div>
-        </div>
-        <div class="shirt-option" onclick="toggleColors(this)">
-            <img src="shirt3.jpg" alt="Camisa 3">
-            <div class="color-options">
-                <img src="red-shirt.jpg" alt="Camisa Roja">
-                <img src="white-shirt.jpg" alt="Camisa Blanca">
-                <img src="grey-shirt.jpg" alt="Camisa Gris">
-                <img src="black-shirt.jpg" alt="Camisa Negra">
-            </div>
-        </div>
-        <!-- Repite hasta tener 9 camisas -->
-    </div>
-    <script src="script.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+        <!--FIN BODY-->
+
+      
+    </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
