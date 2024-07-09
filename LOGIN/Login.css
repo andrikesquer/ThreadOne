@@ -36,7 +36,7 @@ header {
     font-weight: bold;
 }
 
-.login-btn {
+.register-btn {
     background-color: #000;
     color: #fff;
     border: none;
@@ -46,7 +46,7 @@ header {
 
 }
 
-.login-btn{
+.register-btn{
     border-radius: 5%; 
 }
 
