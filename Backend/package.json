@@ -1,0 +1,17 @@
+{
+  "name": "integradora-formulario-tid31m",
+  "version": "1.0.0",
+  "description": "Diseñar e implementar v0.1 de un formulario para proyecto integradora",
+  "main": "santiServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2",
+    "node-modules": "^1.0.1"
+  }
+}
