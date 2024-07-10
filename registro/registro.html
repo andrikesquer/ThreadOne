@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
     <title>Registro</title>
     <link rel="stylesheet" href="registro.css">
 
@@ -34,6 +35,25 @@
                             <input type="text" id="last-name" name="last-name" placeholder="" required>
                         </div>
                     </div>
+
+                    <div class="name-container">
+                        <div class="input-group">
+                            <label for="bith-date">Fecha de nacimiento</label>
+                            <input type="date" id="birth-date" name="birth-date" placeholder="" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="number">Teléfono</label>
+                            <input type="text" id="number" name="number" placeholder="" required>
+                        </div>
+                    </div>
+
+                    <label for="genero">Género</label>
+                    <select id="gender" name="gender">
+                        <option value="femenino">Femenino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="no_binario">No binario</option>
+                        <option value="otro">Otro</option>
+                    </select>
 
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required>
