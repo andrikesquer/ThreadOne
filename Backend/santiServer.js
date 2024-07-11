@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const server = express();
 
@@ -12,7 +13,7 @@ server.use(cors());
 const conn = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "HCHHPRa4",
+    password: "Santirod205",
     port: 3306,
     database: "ThreadOne"
 });
@@ -55,21 +56,35 @@ server.get("/usuarios", (req, res) => {
     });
 });
 
-server.post("/usuarios", (req, res) => {
-    const { nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario } = req.body;
+server.post("/login", (req, res) => {
+    const { email_usuario, contrasena_usuario } = req.body;
     conn.query(
-        "INSERT INTO usuarios (nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario],
-        (error, result) => {
+        "SELECT * FROM usuarios WHERE email_usuario = ? AND contrasena_usuario = ?",
+        [email_usuario, contrasena_usuario],
+        (error, results) => {
             if (error) {
-                console.log("Error inserting data", error);
-                res.status(500).send("Error inserting data");
+                console.log("Error al consultar la base de datos", error);
+                res.status(500).send("Error al consultar la base de datos");
             } else {
-                res.send(result);
-                console.log("Data posted to the database");
+                if (results.length > 0) {
+                    // Si se encuentra un usuario con las credenciales proporcionadas
+                    res.status(200).json({ message: "Inicio de sesión exitoso" });
+                } else {
+                    // Si no se encuentra ningún usuario con las credenciales proporcionadas
+                    res.status(401).json({ message: "Credenciales incorrectas" });
+                }
             }
         }
     );
+});
+
+
+// Servir archivos estáticos desde la carpeta Home
+server.use(express.static(path.join(__dirname, 'Home')));
+
+// Ruta para servir el archivo dos.html desde la carpeta Home
+server.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Home', 'dos.html'));
 });
 
 server.listen(3000, () => {
