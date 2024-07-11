@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
     <title>Registro</title>
-    <link rel="stylesheet" href="registro.css">
-
+    <link rel="stylesheet" href="./registro.css">
 </head>
 <body>
+    <script type="text/javascript" src="brendaMetodos.js" ></script>
     <div class="container">
         <header>
             <div class="logo">
@@ -60,8 +59,7 @@
 
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="" required>
-
-                    <button type="submit">Subir</button>
+                    <button  onclick="event.preventDefault(); handleSubmit();">Subir</button>
                 </form>
             </section>
             <section class="image-section">
@@ -85,5 +83,6 @@
             </div>
         </footer>
     </div>
+
 </body>
 </html>
