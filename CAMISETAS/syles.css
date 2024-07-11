@@ -142,21 +142,21 @@ h1 {
     display: inline-block;
 }
 
-.black {
+.negra {
     background-color: #000;
 }
 
-.white {
+.blanca {
     background-color: #eaeaea;
     border-color: #000;
 }
 
-.gray {
+.gris {
     background-color: #717171;
 }
 
 
-.red{
+.roja{
   background-color: #d00000;
 }
 /*      Fin cosas BODY*/
