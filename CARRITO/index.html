@@ -7,24 +7,42 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100">
-    <header class="bg-white shadow-md p-4 flex justify-between items-center">
-        <div class="text-2xl font-bold">LOGO</div>
-        <div class="flex items-center space-x-4">
-            <button class="text-gray-700">Favoritos <span class="text-red-500">❤</span></button>
-            <div class="flex items-center space-x-2">
-                <span class="text-gray-700">Hey, Markus</span>
-                <img src="path_to_image" alt="Profile Picture" class="w-8 h-8 rounded-full">
-            </div>
+
+<body>
+    <!-- INICIO HEADER -->
+    <header>
+        <div class="header-left">
+            <a href="home.html" class="logo-button">
+                <img src="/Imagenes/Imagenes Barra superior/LogoThreadOne.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="favoritos.html" class="favorites-button">
+                <span>Favoritos</span>
+                <img src="/Imagenes/Imagenes Barra superior/IconoFavoritos.png" alt="Icono Favoritos" class="icon">
+            </a>
+            <a href="carrito.html" class="cart-button">
+                <span>Carrito</span>
+                <img src="/Imagenes/Imagenes Barra superior/IconoCarrito.png" alt="Icono Carrito" class="icon">
+            </a>
+            <a href="cuenta.html" class="account-button">
+                <span>Hey, Marcus</span>
+                <img src="/Imagenes/Imagenes Barra superior/ImagenPerfil.jpg" alt="Icono Cuenta" class="icon">
+            </a>
         </div>
     </header>
+    <main>
+    <!-- FIN HEADER -->
+    
     <main class="max-w-4xl mx-auto mt-8">
         <h1 class="text-3xl font-bold mb-4">Carrito</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
             <!-- Carrito de productos -->
             <div class="col-span-2 space-y-4" id="cart">
                 <!-- Los productos se añadirán aquí dinámicamente -->
             </div>
+
             <!-- Resumen de compra -->
             <div class="bg-white shadow-md rounded-lg p-4">
                 <h2 class="text-xl font-bold mb-4">Código de promoción</h2>
