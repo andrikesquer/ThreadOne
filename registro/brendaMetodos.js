@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 function handleSubmit() {
     let nombre_usuario = document.getElementById("first-name").value.toString();
     let apellido_usuario = document.getElementById("last-name").value.toString();
@@ -32,7 +34,7 @@ function handleSubmit() {
     };
 
     // Send POST request to the server
-    fetch('http://localhost:3000/usuarios', {
+    fetch('http://localhost:3000/registro', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -42,8 +44,21 @@ function handleSubmit() {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        window.location.href = "http://localhost:5500/LOGIN/Login.html";
     })
     .catch((error) => {
         console.error('Error:', error);
+        const errorMessageElement = document.getElementById("error-message");
+        errorMessageElement.textContent = "Datos Invalidos";
+        errorMessageElement.style.display = "block"; // Mostrar el mensaje de error en la página
+
+        setTimeout(() => {
+            errorMessageElement.style.opacity = "0";
+            setTimeout(() => {
+                errorMessageElement.style.display = "none";
+                errorMessageElement.style.opacity = "1"; 
+            }, 0);
+        }, 2000); 
     });
+    
 };

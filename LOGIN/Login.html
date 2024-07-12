@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="login.css">
-
+    <script type="text/javascript" src="brendametodos_v2.js" defer></script>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <img src="assetslogin/WhatsApp_Image_2024-06-11_at_00.31.58_be4b3994-removebg-preview.png" alt="">
-                <a href=""></a>
+                <img src="assetslogin/WhatsApp_Image_2024-06-11_at_00.31.58_be4b3994-removebg-preview.png" alt="Logo">
+                <a href="#"></a>
             </div>
             <a href="http://127.0.0.1:5500/registro/registro.html">
                 <button class="register-btn">Registrarse</button>
@@ -22,24 +22,24 @@
             <section class="registration-form">
                 <h1>Iniciar sesión</h1>
                 <p>Bienvenido de nuevo. Sigamos creando juntos</p>
-                <form>
-                    <label for="username">Correo</label>
-                    <input type="text" id="username" name="username" placeholder="" required>
-
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
-
-                    <button type="submit">Subir</button>
+                <form id="loginForm">
+                    <label for="email_usuario">Correo</label>
+                    <input type="text" id="email_usuario" name="email_usuario" placeholder="" required>
+        
+                    <label for="contrasena_usuario">Contraseña</label>
+                    <input type="password" id="contrasena_usuario" name="contrasena_usuario" required>
+        
+                    <button type="submit">Iniciar sesión</button>
                 </form>
+                <div id="error-message" class="error-message" style="display: none;"></div> <!-- Contenedor para mostrar el mensaje de error -->
             </section>
             <section class="image-section">
-                <img src="https://a.1stdibscdn.com/bettina-mauel-mixed-media-the-red-cloth-92-for-sale/a_426/a_43900621557507316094/BettinaMauel_TheRedCloth92_31x22_master.jpg" alt="Pomegranate">
+                <img src="https://a.1stdibscdn.com/bettina-mauel-mixed-media-the-red-cloth-92-for-sale/a_426/a_43900621557507316094/BettinaMauel_TheRedCloth92_31x22_master.jpg" alt="Granada">
             </section>
         </main>
         <footer>
             <div class="footerc">
-                <div><h2>DVLPD BY</h2>
-                </div>
+                <div><h2>DVLPD BY</h2></div>
                 <div class="creators">
                     <p>Regina Ramos</p>
                     <p>Jorge Chavira</p>
