@@ -119,5 +119,3 @@ Para los endpoints POST, se envían solicitudes con un cuerpo JSON que contiene 
                 body: JSON.stringify(userData)
             })
 
-
-
