@@ -13,7 +13,7 @@ server.use(cors());
 const conn = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Santirod205",
+    password: "HCHHPRa4",
     port: 3306,
     database: "ThreadOne"
 });
@@ -78,6 +78,21 @@ server.post("/login", (req, res) => {
     );
 });
 
+server.post("/registro", (req, res) => {
+    const { nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario } = req.body;
+    conn.query(
+        "INSERT INTO usuarios (nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario],
+        (error, result) => {
+            if (error) {
+                console.log("Error inserting data", error);
+                res.status(500).send("Error inserting data");
+            } else {
+                res.send(result);
+            }
+        }
+    );
+});
 
 // Servir archivos estáticos desde la carpeta Home
 server.use(express.static(path.join(__dirname, 'Home')));
