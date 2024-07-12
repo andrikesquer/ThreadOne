@@ -18,7 +18,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
         }
 
         // Si el inicio de sesión fue exitoso, redirigir al usuario al home
-        window.location.href = "http://localhost:5500/Home/dos.html";
+        window.location.href = "../Home/dos.html";
     } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // Mostrar el mensaje de error en la página
