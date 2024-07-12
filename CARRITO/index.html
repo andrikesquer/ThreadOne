@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- INICIO HEADER -->
+    <header>
+        <div class="header-left">
+            <a href="home.html" class="logo-button">
+                <img src="/Imagenes/Imagenes Barra superior/LogoThreadOne.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="favoritos.html" class="favorites-button">
+                <span>Favoritos</span>
+                <img src="/Imagenes/Imagenes Barra superior/IconoFavoritos.png" alt="Icono Favoritos" class="icon">
+            </a>
+            <a href="carrito.html" class="cart-button">
+                <span>Carrito</span>
+                <img src="/Imagenes/Imagenes Barra superior/IconoCarrito.png" alt="Icono Carrito" class="icon">
+            </a>
+            <a href="cuenta.html" class="account-button">
+                <span>Hey, Marcus</span>
+                <img src="/Imagenes/Imagenes Barra superior/ImagenPerfil.jpg" alt="Icono Cuenta" class="icon">
+            </a>
+        </div>
+    </header>
+    <main>
+    <!-- FIN HEADER -->
+    
+    <main class="max-w-4xl mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Carrito</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <!-- Carrito de productos -->
+            <div class="col-span-2 space-y-4" id="cart">
+                <!-- Los productos se añadirán aquí dinámicamente -->
+            </div>
+
+            <!-- Resumen de compra -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <h2 class="text-xl font-bold mb-4">Código de promoción</h2>
+                <input type="text" placeholder="XXXX-XXXX-XXX" class="w-full border rounded-md p-2 mb-4">
+                <div class="border-t pt-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span>IVA</span>
+                        <span id="iva">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span>Descuento</span>
+                        <span id="descuento">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center font-bold text-xl mt-2">
+                        <span>TOTAL</span>
+                        <span id="total">$0</span>
+                    </div>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-md mt-4">Comprar Ahora</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
