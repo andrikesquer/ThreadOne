@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo de Camisas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/CAMISETAS/syles.css">
+</head>
+
+<body>
+    <!-- INICIO HEADER -->
+    <header>
+        <div class="header-left">
+            <a href="home.html" class="logo-button">
+                <img src="../Imagenes/Imagenes Barra superior/LogoThreadOne.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="favoritos.html" class="favorites-button">
+                <span>Favoritos</span>
+                <img src="/Imagenes/Imagenes Barra superior/IconoFavoritos.png" alt="Icono Favoritos" class="icon">
+            </a>
+            <!--Carrito-->
+            <a href="carrito.html" class="cart-button"> 
+                
+                   <span>Carrito</span>
+                    <img src="/Imagenes/Imagenes Barra superior/IconoCarrito.png" alt="Icono Carrito" class="icon">
+                </a>
+             <!-- <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="Imagenes/IconoCarrito.png" id="img-carrito" alt="Icono Carrito">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-3" >Vaciar Carrito</a>
+
+                        </div>
+                    
+                    </li>
+                </ul>               
+            </div>
+            Carrito-->
+           
+            <a href="cuenta.html" class="account-button">
+                <span style="color: aliceblue;">Hey, Marcus</span>
+                <img src="/Imagenes/Imagenes Barra superior/ImagenPerfil.jpg" alt="Icono Cuenta" class="icon">
+            </a>
+        </div>
+    </header>
+     <!-- FIN HEADER -->
+
+      <!--BODY-->   
+  <div class="gato">
+    <h1>Camisas</h1>
+    <p>Descubre lo que tenemos para ti</p>
+  </div>
+
+     <!--CARRETE-->
+    <div class="swiper mySwiper">
+
+        <div class="swiper-wrapper">
+
+                <!--PRODUCTO 1-->
+                <div class="swiper-slide">
+                    <div class="icons">
+                        <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        <!--<i class="fa-regular fa-heart"></i> -->
+                    </div>
+                    
+                    <div class="product-content">
+                        <div class="product-txt">
+                            <span>$100</span>
+                            <h3>Camisa BR</h3>
+                            <p c>Disponible</p>
+                            
+                        </div>
+
+                        <div class="product-img">
+                            <img src="Br/br negra.png" alt="">
+
+                        </div> 
+                    </div>
+                    <a href="../Formulario_personalizacion_camiseta/index/">
+                        <button> Comprar </button>
+                    </a>
+                    
+                </div>
+                <!-- FIN PRODUCTO 1-->
+
+                     <!--PRODUCTO 2-->
+                     <div class="swiper-slide">
+                        <div class="icons">
+                            <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        <div class="product-content">
+                            <div class="product-txt">
+                                <span>$200</span>
+                                <h3>Prenda el cerebro, ing</h3>
+                                
+                            </div>
+    
+                            <div class="product-img">
+                                <img src="cerebro/Cerebro negro.png" alt="">
+    
+                            </div> 
+                        </div>
+                        <a href="../Formulario_personalizacion_camiseta/index/">
+                            <button> Comprar </button>
+                        </a>
+                    </div>
+                    <!-- FIN PRODUCTO 2-->
+
+                         <!--PRODUCTO 3-->
+                <div class="swiper-slide">
+                    <div class="icons">
+                        <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <div class="product-txt">
+                            <span>$150</span>
+                            <h3>Contexto</h3>
+                        </div>
+
+                        <div class="product-img">
+                            <img src="contexto/contexto negra.png" alt="">
+
+                        </div> 
+                    </div>
+                    <a href="../Formulario_personalizacion_camiseta/index/">
+                        <button> Comprar </button>
+                    </a>
+                </div>
+                <!-- FIN PRODUCTO 3-->
+
+                     <!--PRODUCTO 4-->
+                     <div class="swiper-slide">
+                        <div class="icons">
+                            <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        <div class="product-content">
+                            <div class="product-txt">
+                                <span>$130</span>
+                                <h3>CSS</h3>
+                            </div>
+    
+                            <div class="product-img">
+                                <img src="CSS/CSS negro.png" alt="">
+    
+                            </div> 
+                        </div>
+                        <a href="../Formulario_personalizacion_camiseta/index/">
+                            <button> Comprar </button>
+                        </a>
+                    </div>
+                    <!-- FIN PRODUCTO 4-->
+
+                         <!--PRODUCTO 5-->
+                <div class="swiper-slide">
+                    <div class="icons">
+                        <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <div class="product-txt">
+                            <span>$130</span>
+                            <h3>Hello World</h3>
+                        </div>
+
+                        <div class="product-img">
+                            <img src="Hw/Hw negra.png" alt="">
+
+                        </div> 
+                    </div>
+                    <a href="../Formulario_personalizacion_camiseta/index/">
+                        <button> Comprar </button>
+                    </a>
+                </div>
+                <!-- FIN PRODUCTO 5-->
+
+                     <!--PRODUCTO 6-->
+                     <div class="swiper-slide">
+                        <div class="icons">
+                            <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        <div class="product-content">
+                            <div class="product-txt">
+                                <span>$150</span>
+                                <h3>Iguana</h3>
+                            </div>
+    
+                            <div class="product-img">
+                                <img src="iguana/Iguana Negra.png" alt="">
+    
+                            </div> 
+                        </div>
+                        <a href="../Formulario_personalizacion_camiseta/index/">
+                            <button> Comprar </button>
+                        </a>
+                    </div>
+                    <!-- FIN PRODUCTO 6-->
+
+                         <!--PRODUCTO 7-->
+                <div class="swiper-slide">
+                    <div class="icons">
+                        <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <div class="product-txt">
+                            <span>$250</span>
+                            <h3>Linux</h3>
+                        </div>
+
+                        <div class="product-img">
+                            <img src="linux/Linux negra.png" alt="">
+
+                        </div> 
+                    </div>
+                    <a href="../Formulario_personalizacion_camiseta/index/">
+                        <button> Comprar </button>
+                    </a>
+                </div>
+                <!-- FIN PRODUCTO 7-->
+
+                     <!--PRODUCTO 8-->
+                     <div class="swiper-slide">
+                        <div class="icons">
+                            <i></i>
+                            <div class="heart-container" title="Like">
+                                <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                <div class="svg-container">
+                                    <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                        </path>
+                                    </svg>
+                                    <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                        </path>
+                                    </svg>
+                                    <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="10,10 20,20"></polygon>
+                                        <polygon points="10,50 20,50"></polygon>
+                                        <polygon points="20,80 30,70"></polygon>
+                                        <polygon points="90,10 80,20"></polygon>
+                                        <polygon points="90,50 80,50"></polygon>
+                                        <polygon points="80,80 70,70"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-content">
+                            <div class="product-txt">
+                                <span>$130</span>
+                                <h3>; Survivor</h3>
+                            </div>
+    
+                            <div class="product-img">
+                                <img src="Punto coma/; negra.png" alt="">
+    
+                            </div> 
+                        </div>
+                        <a href="../Formulario_personalizacion_camiseta/index/">
+                            <button> Comprar </button>
+                        </a>
+                    </div>
+                    <!-- FIN PRODUCTO 8-->
+                    
+                         <!--PRODUCTO 9-->
+                <div class="swiper-slide">
+                    <div class="icons">
+                        <i></i>
+                        <div class="heart-container" title="Like">
+                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                            <div class="svg-container">
+                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                    </path>
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                    </path>
+                                </svg>
+                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="10,10 20,20"></polygon>
+                                    <polygon points="10,50 20,50"></polygon>
+                                    <polygon points="20,80 30,70"></polygon>
+                                    <polygon points="90,10 80,20"></polygon>
+                                    <polygon points="90,50 80,50"></polygon>
+                                    <polygon points="80,80 70,70"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <div class="product-txt">
+                            <span>$180</span>
+                            <h3>Wr</h3>
+                        </div>
+
+                        <div class="product-img">
+                            <img src="Wr/Wr negra.png" alt="">
+
+                        </div> 
+                    </div>
+                    <a href="../Formulario_personalizacion_camiseta/index/">
+                        <button> Comprar </button>
+                    </a>
+                </div>
+                <!-- FIN PRODUCTO 9-->
+        </div>
+    </div>
+    <!--FIN CARRETE-->
+
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+     <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true, 
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            coverflowEffect: {
+                depth:500,
+                modifer:1,
+                slidesShadows:true,
+                rotate:0,
+                stretch:0
+            }
+        })
+     </script>
+</body>
+   <!--FIN BODY-->
+</html>
+    

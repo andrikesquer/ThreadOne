@@ -13,7 +13,7 @@ server.use(cors());
 const conn = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Santirod205",
+    password: "HCHHPRa4",
     port: 3306,
     database: "ThreadOne"
 });
@@ -78,6 +78,38 @@ server.post("/login", (req, res) => {
     );
 });
 
+server.post("/registro", (req, res) => {
+    const { nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario } = req.body;
+    conn.query(
+        "INSERT INTO usuarios (nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario],
+        (error, result) => {
+            if (error) {
+                console.log("Error inserting data", error);
+                res.status(500).send("Error inserting data");
+            } else {
+                res.send(result);
+            }
+        }
+    );
+});
+
+server.delete("/usuario/borrar", (req, res) => {
+    const { email_usuario,contrasena_usuario } = req.body;
+    conn.query(
+        "Delete from usuarios where email_usuario = ? and contrasena_usuario = ? ;",
+        [email_usuario, contrasena_usuario],
+        (error, result) => {
+            if (error) {
+                console.log("Error deleting data", error);
+                res.status(500).send("Error deleting data");
+            } else {
+                res.send(result);
+                console.log("User deleted succesfully");
+            }
+        }
+    );
+});
 
 // Servir archivos estáticos desde la carpeta Home
 server.use(express.static(path.join(__dirname, 'Home')));
@@ -90,3 +122,4 @@ server.get('/home', (req, res) => {
 server.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
 });
+
