@@ -5,64 +5,6 @@ body {
     background-color: #f3ececda;
 }
 
-header {
-    background-image: url(../utilis/FondoHeader.png);
-    background-size: cover;
-    background-position: center;
-    padding: 20px 20px;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-left,
-.header-right {
-    display: flex;
-}
-
-.logo {
-    width: 45px;
-}
-
-.account-button,
-.cart-button {
-    color: #000000;
-    padding: 8px;
-    font-size: 1em;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.account-button{
-    background-color: transparent;
-}
-
-.cart-button {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.account-button span,
-.cart-button span {
-    margin-right: 10px;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
-
-.account-button:hover,
-.cart-button:hover,
-.logo-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 h1 {
     text-align: center;
 }
@@ -163,17 +105,5 @@ main {
 
     .favorite-item {
         width: 90%;
-    }
-
-    .header-left,
-    .header-right {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .account-button,
-    .cart-button {
-        margin-left: 0;
-        margin-top: 10px;
     }
 }
