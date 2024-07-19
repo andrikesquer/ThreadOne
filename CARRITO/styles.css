@@ -1,74 +1,10 @@
-/*            Cosas del HEADER                     */
-  
- body {
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f3ececda;
 }
 
-header {
-  background-image: url(../CARRITO/FondoHeader.png);
-  background-size: cover;
-  background-position: center;
-  padding: 20px 20px;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-left,
-.header-right {
-  display: flex;
-}
-
-.logo {
-  width: 45px;
-}
-
-
-.favorites-button {
-  color: #000000;
-  padding: 8px;
-  font-size: 1em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.account-button{
-  background-color: transparent;
-}
-
-.cart-button, 
-.favorites-button {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.account-button span,
-.cart-button span,
-.favorites-button span {
-  margin-right: 10px;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.account-button:hover,
-.cart-button:hover,
-.favorites-button:hover,
-.logo-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 main {
   padding: 20px;
 }
-  /*                Fin Cosas del HEADER */
