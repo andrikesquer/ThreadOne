@@ -7,52 +7,57 @@
     <link rel="icon" href="/Imagenes/Imagenes Barra superior/LogoThreadOne.png">
     <link rel="stylesheet" href="login.css">
     <script type="text/javascript" src="brendametodos_v2.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
 </head>
-<body>
-    <div class="container">
+    <body>
+
+
         <header>
-            <div class="logo">
-                <img src="assetslogin/WhatsApp_Image_2024-06-11_at_00.31.58_be4b3994-removebg-preview.png" alt="Logo">
-                <a href="#"></a>
+
+            <div class="header-left">
+                <a href="/Home/dos.html" class="logo-button">
+                    <img src="assetslogin\1410870.png" alt="Logo" class="logo">
+                </a>
             </div>
-            <a href="http://127.0.0.1:5500/registro/registro.html">
-                <button class="register-btn">Registrarse</button>
-            </a>
+
+            <div>
+                <a href="/registro/registro.html" class="register-button">
+                    <span>Registrate</span>
+                </a>
+            </div>
+
         </header>
+
         <main>
+
             <section class="registration-form">
+
                 <h1>Iniciar sesión</h1>
+
                 <p>Bienvenido de nuevo. Sigamos creando juntos</p>
+
                 <form id="loginForm">
+
                     <label for="email_usuario">Correo</label>
                     <input type="text" id="email_usuario" name="email_usuario" placeholder="" required>
         
                     <label for="contrasena_usuario">Contraseña</label>
                     <input type="password" id="contrasena_usuario" name="contrasena_usuario" required>
         
-                    <button type="submit">Iniciar sesión</button>
+                    <button id="subir" type="submit">Iniciar sesión</button>
                 </form>
+                
                 <div id="error-message" class="error-message" style="display: none;"></div> <!-- Contenedor para mostrar el mensaje de error -->
             </section>
             <section class="image-section">
-                <img src="https://a.1stdibscdn.com/bettina-mauel-mixed-media-the-red-cloth-92-for-sale/a_426/a_43900621557507316094/BettinaMauel_TheRedCloth92_31x22_master.jpg" alt="Granada">
+                <img src="assetslogin\granadaaa.jpg" alt="Granada">
             </section>
+
         </main>
-        <footer>
-            <div class="footerc">
-                <div><h2>DVLPD BY</h2></div>
-                <div class="creators">
-                    <p>Regina Ramos</p>
-                    <p>Jorge Chavira</p>
-                    <p>Oliver Manríquez</p>
-                </div>
-                <div class="creators2">
-                    <p>Santiago Medellín</p>
-                    <p>Andrik Rivera</p>
-                    <p>Alonso Vázquez</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
+    </body>
 </html>
