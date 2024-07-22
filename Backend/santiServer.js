@@ -110,6 +110,23 @@ server.delete("/usuario/borrar", (req, res) => {
         }
     );
 });
+server.put("/usuario/actualizar", (req, res) => {
+    const { nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario } = req.body;
+    conn.query(
+        "Delete from usuarios where email_usuario = ? and contrasena_usuario = ? ;",
+        [email_usuario, contrasena_usuario],
+        (error, result) => {
+            if (error) {
+                console.log("Error deleting data", error);
+                res.status(500).send("Error deleting data");
+            } else {
+                res.send(result);
+                console.log("User deleted succesfully");
+            }
+        }
+    );
+});
+
 
 // Servir archivos estáticos desde la carpeta Home
 server.use(express.static(path.join(__dirname, 'Home')));
