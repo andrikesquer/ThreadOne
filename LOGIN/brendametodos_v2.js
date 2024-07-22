@@ -33,7 +33,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
                 errorMessageElement.style.display = "none";
                 errorMessageElement.style.opacity = "1"; // Restaurar la opacidad original
             }, 1000); // Tiempo de desvanecimiento: 1 segundo
-        }, 1000); // Tiempo de visualización: 3 segundos
+        }, 1000); // Tiempo de visualización: 1 segundos
     }
 });
 

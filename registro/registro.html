@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="icon" href="/Imagenes/Imagenes Barra superior/LogoThreadOne.png">
     <link rel="stylesheet" href="./registro.css">
-</head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+</html>
+
 <body>
+
     <script type="text/javascript" src="brendaMetodos.js" ></script>
-    <div class="container">
+
         <header>
-            <div class="logo">
-                <a href="http://127.0.0.1:5500/Home/dos.html">
-                    <img src="assets\WhatsApp_Image_2024-06-11_at_00.31.58_be4b3994-removebg-preview.png" alt="">
+
+            <div class="header-left">
+                <a href="/Home/dos.html" class="logo-button">
+                    <img src="assets\1410870.png" alt="Logo" class="logo">
                 </a>
             </div>
-            <a href="http://127.0.0.1:5500/Login/login.html">
-                <button class="login-btn">Iniciar sesión</button>
-            </a>
+
+            <div class="header-right">
+                <a href="/Login/login.html" class="register-button">
+                    <span>Iniciar sesión</span>
+                </a>
+            </div>
+
         </header>
+
         <main>
             <section class="registration-form">
+
                 <h1>Regístrate</h1>
+
                 <p>¿Listo para crear un nuevo tú?</p>
+
                 <form>
+
                     <div class="name-container">
+
                         <div class="input-group">
                             <label for="first-name">Nombre</label>
                             <input type="text" id="first-name" name="first-name" placeholder="" required>
                         </div>
+
                         <div class="input-group">
                             <label for="last-name">Apellido</label>
                             <input type="text" id="last-name" name="last-name" placeholder="" required>
                         </div>
+
                     </div>
 
                     <div class="name-container">
+
                         <div class="input-group">
                             <label for="bith-date">Fecha de nacimiento</label>
                             <input type="date" id="birth-date" name="birth-date" placeholder="" required>
                         </div>
+
                         <div class="input-group">
                             <label for="number">Teléfono</label>
                             <input type="text" id="number" name="number" placeholder="" required>
                         </div>
+
                     </div>
 
                     <label for="genero">Género</label>
+
                     <select id="gender" name="gender">
                         <option value="femenino">Femenino</option>
                         <option value="masculino">Masculino</option>
@@ -60,30 +88,17 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="" required>
                     <button  onclick="event.preventDefault(); handleSubmit();">Subir</button>
+
                 </form>
+
                 <div id="error-message" class="error-message" style="display: none;"></div> <!-- Contenedor para mostrar el mensaje de error -->
+
             </section>
+
             <section class="image-section">
                 <img src="assets/GranadaRegistro.png" alt="Pomegranate">
             </section>
-        </main>
-        <footer>
-            <div class="footerc">
-                <div><h2>DVLPD BY</h2>
-                </div>
-                <div class="creators">
-                    <p>Regina Ramos</p>
-                    <p>Jorge Chavira</p>
-                    <p>Oliver Manríquez</p>
-                </div>
-                <div class="creators2">
-                    <p>Santiago Medellín</p>
-                    <p>Andrik Rivera</p>
-                    <p>Alonso Vázquez</p>
-                </div>
-            </div>
-        </footer>
-    </div>
 
+        </main>
 </body>
 </html>
