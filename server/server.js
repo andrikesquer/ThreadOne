@@ -7,6 +7,7 @@ import { PORT, SECRET_KEY } from "./config.js";
 
 const server = express();
 
+server.set("view engine", "ejs"); // Configuración del motor de plantillas
 server.use(express.json()); // Middleware para parsear el body de las peticiones
 server.use(cookieParser()); // Middleware para parsear las cookies
 server.use(cors()); // Middleware para permitir peticiones desde cualquier origen
@@ -26,6 +27,10 @@ server.use((req, res, next) => {
 });
 
 // Endponts
+
+server.get("/", (req, res) => {
+  res.render("index");
+});
 
 server.get("/home", (req, res) => {
   const { usuario } = req.session.usuario;
