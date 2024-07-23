@@ -19,6 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'path_to_image_2',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
+        },{
+
+            id: 2,
+            name: 'Camisa Gris',
+            price: 200,
+            available: false,
+            quantity: 1,
+            image: 'path_to_image_2',
+            colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
+            sizes: ['XS', 'S', 'M', 'L']
         }
     ];
 
@@ -34,28 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
         products.forEach(product => {
             if (product.quantity > 0) {
                 const productElement = document.createElement('div');
-                productElement.className = 'bg-white shadow-md rounded-lg p-4 flex justify-between items-center';
+                productElement.className = 'product';
 
                 productElement.innerHTML = `
-                    <div class="flex items-center space-x-4">
-                        <img src="${product.image}" alt="Product Image" class="w-20 h-20 rounded-lg">
+                    <div class="product-info">
+                        <img src="${product.image}" alt="Product Image">
                         <div>
-                            <h2 class="font-bold">${product.name}</h2>
-                            <p class="${product.available ? 'text-green-500' : 'text-red-500'}">${product.available ? 'Disponible' : 'Inaccesible'}</p>
+                            <h2>${product.name}</h2>
+                            <p class="${product.available ? 'available' : 'unavailable'}">${product.available ? 'Disponible' : 'Inaccesible'}</p>
                             <div class="flex items-center space-x-2 mt-2">
-                                <input type="number" value="${product.quantity}" min="1" class="w-12 border rounded-md text-center" onchange="updateQuantity(${product.id}, this.value)">
-                                <select class="border rounded-md" onchange="updateColor(${product.id}, this.value)">
+                                <input type="number" value="${product.quantity}" min="1" class="quantity-input" onchange="updateQuantity(${product.id}, this.value)">
+                                <select class="color-select" onchange="updateColor(${product.id}, this.value)">
                                     ${product.colors.map(color => `<option value="${color}">${color}</option>`).join('')}
                                 </select>
-                                <select class="border rounded-md" onchange="updateSize(${product.id}, this.value)">
+                                <select class="size-select" onchange="updateSize(${product.id}, this.value)">
                                     ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <span class="text-lg font-bold">$${product.price}</span>
-                        <button class="text-red-500" onclick="removeFromCart(${product.id})">&times;</button>
+                    <div class="product-actions">
+                        <span>$${product.price}</span>
+                        <button onclick="removeFromCart(${product.id})">&times;</button>
                     </div>
                 `;
 
