@@ -1,70 +1,75 @@
 header {
-    background-image: url(../default_header/FondoHeader.png);
     background-size: cover;
-    background-position: center;
-    padding: 20px 20px;
-    height: 60px;
-    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     justify-content: space-between;
+    padding: 20px;
+    height: 7vh;
+    display: flex;
     align-items: center;
+    font-family: "Cormorant", serif;
+    background-image: url("/Perfil/assets/fondito.jpg");
+    box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
 }
 
 .header-left,
 .header-right {
-    display: flex;
+  display: flex;
 }
 
 .logo {
-    width: 45px;
+  width: 45px;
+}
+
+.logo-button{
+  transition: transform .4s ease-in-out;
 }
 
 .account-button,
-.cart-button,
-.favorites-button {
-    color: white;
-    padding: 8px;
-    font-size: 1em;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
+.cart-button {
+  color: #000000;
+  padding: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 20px;
+  transition: background-color 0.7s ease-in-out;
 }
 
 .account-button{
-    background-color: transparent
+  background-color: transparent;
+  color: white;
 }
 
-.cart-button, 
-.favorites-button {
-    background-color: rgba(255, 255, 255, 0.350);
+.cart-button {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .account-button span,
-.cart-button span,
-.favorites-button span {
-    margin-right: 10px;
+.cart-button span {
+  margin-right: 10px;
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
-.account-button:hover,
-.cart-button:hover,
-.favorites-button:hover,
-.logo-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.logo-button:hover{
+  transform: scale(1.2);
 }
 
-@media (max-width: 768px) {
-    .account-button,
-    .cart-button,
-    .favorites-button {
-        margin-left: 5px;
-        margin-top: 10px;
-    }
+.account-button:hover{
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.cart-button:hover{
+  background-color: rgba(255, 255, 255, 0.1);
 }

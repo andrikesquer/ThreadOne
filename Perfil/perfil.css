@@ -26,12 +26,12 @@ header {
 .header-right {
     display: flex;
 }
-  
+
 .logo {
     width: 45px;
 }
-  
-.logo-button{
+
+.logo-button {
     transition: transform .4s ease-in-out;
 }
 
@@ -46,40 +46,38 @@ header {
     border-radius: 20px;
     transition: background-color 0.7s ease-in-out;
 }
-  
+
 .cart-button {
     background-color: rgba(255, 255, 255, 0.5);
 }
-  
+
 .cart-button span {
     margin-right: 10px;
 }
-  
+
 .icon {
     width: 20px;
     height: 20px;
     border-radius: 50%;
 }
-  
-.logo-button:hover{
+
+.logo-button:hover {
     transform: scale(1.2);
 }
 
-  
-.cart-button:hover{
+.cart-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-/*                Fin Cosas del HEADER */
 
 main {
     display: flex;
     position: relative;
-    top: 4.5vh;
+    top: 6vh;
     margin-bottom: 0;
     margin-top: 8vh;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     font-family: "Cormorant", serif;
+    flex-wrap: wrap;
 }
 
 h1 {
@@ -89,36 +87,59 @@ h1 {
     margin: 5px 20px 20px;
 }
 
-.datos {
+.datos{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 7.5vh;
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 100%;
+    margin: 2vh;
     background-color: white;
-    padding: 2%;
+    padding: 3%;
     border-radius: 20px;
     box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
 }
 
-.datos h1 {
+.otros {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2vh;
+    background-color: white;
+    padding: 3%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+.datos {
+    max-width: 530px;
+    width: 100%;
+}
+
+.otros {
+    max-width: 350px;
+    width: 100%;
+}
+
+.datos h1, .otros h1 {
     font-family: "Cormorant", serif;
     font-size: 70px;
     font-weight: 700;
-    margin-top: 0px;
+    margin: 0;
     margin-bottom: 20px;
 }
 
-.datos p {
-    margin-bottom: 20px;
-    margin-top: 0px;
-    font-size: 30px;
+.datos p, .otros p {
+    margin-top: 5px;
+    font-size: 20px;
     font-family: "Cormorant", serif;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
-.datos form {
+.datos form, .otros form {
     display: flex;
     flex-direction: column;
 }
@@ -139,7 +160,7 @@ h1 {
     margin-right: 0;
 }
 
-.datos label {
+.datos label, .otros label {
     margin-bottom: 5px;
     font-size: 1.1em;
 }
@@ -152,11 +173,11 @@ h1 {
 }
 
 .datos select {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: "Cormorant", serif;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Cormorant", serif;
 }
 
 .datos button {
@@ -169,20 +190,64 @@ h1 {
     cursor: pointer;
     outline: none;
     box-shadow: none;
+    width: 100%;
     transition: background-color 0.7s, transform 0.7s;
-    font-family: Cormorant serif;
-    margin-top: 20px;
-    width: 48%;
     font-family: "Cormorant", serif;
+    margin-top: 20px;
 }
 
-.botones{
+.otros button{
+    padding: 10px;
+    background-color: #790b0b;
+    color: white;
+    border-radius: 10px;
+    border-width: 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+    transition: background-color 0.7s, transform 0.7s;
+    font-family: "Cormorant", serif;
+    margin: 10px 0px 10px;
+}
+
+.datos button:hover, .otros button:hover {
+    background-color: rgba(0, 0, 0);
+    transform: scale(1.05);
+}
+
+.botones {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
 }
 
-.datos button:hover{
-    background-color: rgba(0, 0, 0);
-    transform: scale(1.05);
+.botoncillo {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.nose {
+    justify-content: end;
+    align-items: end;
+}
+
+.yanose button{
+    margin: 5px;
+}
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-width: 100%;
+    margin-bottom: 10px;
+
 }
