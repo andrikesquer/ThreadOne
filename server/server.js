@@ -78,7 +78,7 @@ server.post("/login", async (req, res) => {
 });
 
 server.get("/registro", (req, res) => {
-  res.render("login");
+  res.render("registro");
 });
 
 server.post("/registro", async (req, res) => {
@@ -101,7 +101,7 @@ server.post("/registro", async (req, res) => {
     contrasena_usuario,
   });
   try {
-    const id_usuario = await ThreadOne.create({
+    const usuario = await ThreadOne.create({
       nombre_usuario,
       apellido_usuario,
       fecha_nacimiento_usuario,
@@ -111,7 +111,7 @@ server.post("/registro", async (req, res) => {
       contrasena_usuario,
     });
     res.send({
-      id_usuario,
+      usuario,
     });
   } catch (error) {
     res.status(400).send(error.message);
