@@ -8,20 +8,21 @@ import { PORT, SECRET_KEY } from "./config.js";
 const server = express();
 
 server.set("view engine", "ejs"); // Configuración del motor de plantillas
-server.use(express.json()); // Middleware para parsear el body de las peticiones
-server.use(cookieParser()); // Middleware para parsear las cookies
-server.use(cors()); // Middleware para permitir peticiones desde cualquier origen
-server.disable("x-powered-by"); // Middleware para ocultar la tecnología que usamos
+// Midlewares: son funciones que modifican las peticiones o las respuestas antes de que lleguen a su destino
+server.use(express.json()); // Parsear el body de las peticiones
+server.use(cookieParser()); // Parsear las cookies
+server.use(cors()); //Permitir peticiones desde cualquier origen
+server.disable("x-powered-by"); // Ocultar la tecnología que usamos
 
+// Middleware para verificar si el usuario está autenticado
 server.use((req, res, next) => {
-  // Middleware para verificar si el usuario está autenticado
   const token = req.cookies.access_token;
   req.session = { usuario: null };
 
   try {
     const data = jwt.verify(token, SECRET_KEY);
     req.session.usuario = data;
-  } catch (error) {}
+  } catch {}
 
   next(); // Siguiente ruta o middleware
 });
@@ -29,12 +30,8 @@ server.use((req, res, next) => {
 // Endponts
 
 server.get("/", (req, res) => {
-  res.render("index");
-});
-
-server.get("/home", (req, res) => {
-  const { usuario } = req.session.usuario;
-  res.render("home", { usuario });
+  const usuario = req.session.usuario;
+  res.render("index", usuario);
 });
 
 server.post("/login", async (req, res) => {
@@ -45,7 +42,13 @@ server.post("/login", async (req, res) => {
       contrasena_usuario,
     });
     const token = jwt.sign(
-      { id_usuario: usuario.id_usuario, email_usuario: usuario.email_usuario },
+      {
+        id_usuario: usuario.id_usuario,
+        email_usuario: usuario.email_usuario,
+        nombre_usuario: usuario.nombre_usuario,
+        apellido_usuario: usuario.apellido_usuario,
+        telefono_usuario: usuario.telefono_usuario,
+      },
       SECRET_KEY,
       { expiresIn: "1h" }
     );
@@ -55,7 +58,7 @@ server.post("/login", async (req, res) => {
       sameSite: "strict", // La cookie no se envía en peticiones de otros dominios
       maxAge: 1000 * 60 * 60, // La cookie expira en 1 hora
     });
-    res.send({ usuario, token });
+    res.send({ usuario });
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -100,7 +103,7 @@ server.post("/registro", async (req, res) => {
 
 server.post("/logout", (req, res) => {
   res.clearCookie("access_token");
-  res.redirect("/home");
+  res.redirect("/");
 });
 
 server.get("/protected", (req, res) => {
