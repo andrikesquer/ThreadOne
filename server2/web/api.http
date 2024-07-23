@@ -1,8 +1,0 @@
-### Mostrar todos los usuario
-GET http://localhost:3000/login
-
-### Mostrar un usuario
-GET http://localhost:3000/usuarios/1
-
-### Crear un usuario
-POST http://localhost:3000/registro
