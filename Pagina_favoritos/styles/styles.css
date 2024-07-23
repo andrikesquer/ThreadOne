@@ -1,22 +1,48 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3ececda;
+    background-color: #eeeeee;
+    margin: 0rem;
+    overflow-x: hidden;
+    z-index: -5;
 }
 
 h1 {
+    font-family: "Cormorant", serif;
+    font-size: 70px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
+.information {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh;
+    background-color: white;
+    padding: 2%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
 .subtitle {
-    font-size: 1.2em;
-    color: #333;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    font-size: 30px;
+    font-family: "Cormorant", serif;
     text-align: center;
 }
 
 main {
-    padding: 20px;
+    display: flex;
+    position: relative;
+    top: 8vh;
+    margin: 15%;
+    margin-bottom: 0;
+    margin-top: 6vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: "Cormorant", serif;
 }
 
 .favorites {
@@ -29,8 +55,8 @@ main {
 .favorite-item {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 7px 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 300px;
     text-align: center;
@@ -59,6 +85,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
 }
 
 .favorite-item h2 {
@@ -85,16 +112,18 @@ main {
     position: absolute;
     top: 10px;
     right: 10px;
+    cursor: pointer;
 }
 
 .remove-icon {
     width: 24px;
     height: 24px;
     border-radius: 5px;
+    transition: transform .5s ease-in-out;
 }
 
 .remove-favorite:hover .remove-icon {
-    filter: brightness(0.8);
+    transform: scale(1.5);
 }
 
 @media (max-width: 768px) {
@@ -104,6 +133,6 @@ main {
     }
 
     .favorite-item {
-        width: 90%;
+        width: 80%;
     }
 }
