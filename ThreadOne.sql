@@ -27,7 +27,7 @@ create table usuarios(
     fk_genero int,
     email_usuario varchar(50) not null unique,
     telefono_usuario varchar(10) not null unique,
-    contrasena_usuario varchar(8) not null,
+    contrasena_usuario varchar(100) not null,
     fecha_registro_usuario timestamp default current_timestamp,
     codigo_unico varchar(10),
     bloqueo boolean default false,
