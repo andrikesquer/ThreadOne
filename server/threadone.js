@@ -27,7 +27,6 @@ export class ThreadOne {
     Validation.lastName(apellido_usuario);
     // validacion de fecha de nacimiento mayor de 18 años
     // validacion de correo no repetido
-    Validation.phone(telefono_usuario);
     // validacion de telefono no repetido
     Validation.password(contrasena_usuario);
 
@@ -95,16 +94,6 @@ class Validation {
   }
 
   // Validar fecha de nacimiento
-
-  // Validar que el telefono sea un numero de 10 digitos
-  static phone(telefono_usuario) {
-    if (typeof telefono_usuario !== "number") {
-      throw new Error("El telefono del usuario debe ser un numero");
-    }
-    if (telefono_usuario.toString().length != 10) {
-      throw new Error("El telefono debe tener 10 digitos");
-    }
-  }
 
   // validar que el numero no se encuentre registrado
 
