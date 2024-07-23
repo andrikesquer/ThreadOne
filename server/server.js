@@ -8,6 +8,7 @@ import { PORT, SECRET_KEY } from "./config.js";
 const server = express();
 
 server.set("view engine", "ejs"); // Configuración del motor de plantillas
+server.use(express.static("public")); // Configuración de la carpeta de archivos estáticos
 // Midlewares: son funciones que modifican las peticiones o las respuestas antes de que lleguen a su destino
 server.use(express.json()); // Parsear el body de las peticiones
 server.use(cookieParser()); // Parsear las cookies
@@ -27,11 +28,23 @@ server.use((req, res, next) => {
   next(); // Siguiente ruta o middleware
 });
 
-// Endponts
+// Endpoints
 
+// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
+/*
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
   res.render("index", usuario);
+});
+*/
+
+server.get("/", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("home", usuario);
+});
+
+server.get("/login", (req, res) => {
+  res.render("login");
 });
 
 server.post("/login", async (req, res) => {
@@ -62,6 +75,10 @@ server.post("/login", async (req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
+});
+
+server.get("/registro", (req, res) => {
+  res.render("login");
 });
 
 server.post("/registro", async (req, res) => {
@@ -106,6 +123,8 @@ server.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// Endpoint de prueba, muestra una ruta protegida
+/*
 server.get("/protected", (req, res) => {
   const usuario = req.session.usuario;
 
@@ -115,6 +134,7 @@ server.get("/protected", (req, res) => {
 
   res.render("protected", usuario);
 });
+*/
 
 server.use((req, res) => {
   res.status(404).send("Not found");
