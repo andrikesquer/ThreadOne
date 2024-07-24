@@ -122,8 +122,11 @@ server.get("/usuario", (req, res) => {
 });
 
 server.patch("/usuario", async (req, res) => {
+  const usuario = req.session.usuario;
+  const anterior_email_usuario = usuario.email_usuario;
+
   const {
-    id_usuario,
+    id_usuario = await ThreadOne.getUserId(anterior_email_usuario),
     nombre_usuario,
     apellido_usuario,
     fecha_nacimiento_usuario,
@@ -132,6 +135,7 @@ server.patch("/usuario", async (req, res) => {
     telefono_usuario,
     contrasena_usuario,
   } = req.body;
+
   console.log({
     id_usuario,
     nombre_usuario,
@@ -142,6 +146,7 @@ server.patch("/usuario", async (req, res) => {
     telefono_usuario,
     contrasena_usuario,
   });
+
   try {
     const usuario = await ThreadOne.update({
       id_usuario,
@@ -152,6 +157,23 @@ server.patch("/usuario", async (req, res) => {
       email_usuario,
       telefono_usuario,
       contrasena_usuario,
+    });
+    const token = jwt.sign(
+      {
+        id_usuario: usuario.id_usuario,
+        email_usuario: usuario.email_usuario,
+        nombre_usuario: usuario.nombre_usuario,
+        apellido_usuario: usuario.apellido_usuario,
+        telefono_usuario: usuario.telefono_usuario,
+      },
+      SECRET_KEY,
+      { expiresIn: "1h" }
+    );
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 1000 * 60 * 60,
     });
     res.send({ usuario });
   } catch (error) {

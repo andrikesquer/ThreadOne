@@ -76,6 +76,14 @@ export class ThreadOne {
     };
   }
 
+  static async getUserId(email_usuario) {
+    const [results] = await connection.execute(
+      "SELECT id_usuario FROM usuarios WHERE email_usuario = ?",
+      [email_usuario]
+    );
+    return results[0].id_usuario;
+  }
+
   static async update({
     id_usuario,
     nombre_usuario,
@@ -93,7 +101,7 @@ export class ThreadOne {
 
     const hashedPassword = await bcrypt.hash(contrasena_usuario, SALT_ROUNDS);
 
-    const [result] = await connection.execute(
+    await connection.execute(
       "UPDATE usuarios SET nombre_usuario = ?, apellido_usuario = ?, fecha_nacimiento_usuario = ?, fk_genero = ?, email_usuario = ?, telefono_usuario = ?, contrasena_usuario = ? WHERE id_usuario = ?",
       [
         nombre_usuario,
@@ -107,7 +115,19 @@ export class ThreadOne {
       ]
     );
 
-    return result;
+    const [consulta] = await connection.execute(
+      "SELECT bloqueo FROM usuarios WHERE id_usuario = ?",
+      [id_usuario]
+    );
+
+    const bloqueo = consulta[0];
+
+    return {
+      nombre_usuario,
+      apellido_usuario,
+      email_usuario,
+      bloqueo_usuario: bloqueo,
+    };
   }
 }
 

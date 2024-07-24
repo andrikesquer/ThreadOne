@@ -23,7 +23,6 @@ updateUserForm?.addEventListener("submit", async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id_usuario: 10, // Hardcoded for now
         nombre_usuario,
         apellido_usuario,
         fecha_nacimiento_usuario,
@@ -38,7 +37,7 @@ updateUserForm?.addEventListener("submit", async (e) => {
       updateUserSpan.innerText = "Actualización exitosa";
       updateUserSpan.style.color = "green";
       setTimeout(() => {
-        window.location.reload(); // Refresh the page
+        window.location.reload();
       }, 1000);
     } else {
       updateUserSpan.innerText = "Error al actualizar";
