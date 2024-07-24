@@ -30,8 +30,8 @@ server.use((req, res, next) => {
 
 // Endpoints
 
-// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
 /*
+// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
   res.render("index", usuario);
@@ -110,9 +110,50 @@ server.post("/registro", async (req, res) => {
       telefono_usuario,
       contrasena_usuario,
     });
-    res.send({
-      usuario,
+    res.send({ usuario });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+server.get("/usuario", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("usuario", usuario);
+});
+
+server.patch("/usuario", async (req, res) => {
+  const {
+    id_usuario,
+    nombre_usuario,
+    apellido_usuario,
+    fecha_nacimiento_usuario,
+    fk_genero,
+    email_usuario,
+    telefono_usuario,
+    contrasena_usuario,
+  } = req.body;
+  console.log({
+    id_usuario,
+    nombre_usuario,
+    apellido_usuario,
+    fecha_nacimiento_usuario,
+    fk_genero,
+    email_usuario,
+    telefono_usuario,
+    contrasena_usuario,
+  });
+  try {
+    const usuario = await ThreadOne.update({
+      id_usuario,
+      nombre_usuario,
+      apellido_usuario,
+      fecha_nacimiento_usuario,
+      fk_genero,
+      email_usuario,
+      telefono_usuario,
+      contrasena_usuario,
     });
+    res.send({ usuario });
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -123,8 +164,8 @@ server.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// Endpoint de prueba, muestra una ruta protegida
 /*
+// Endpoint de prueba, muestra una ruta protegida
 server.get("/protected", (req, res) => {
   const usuario = req.session.usuario;
 
