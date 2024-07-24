@@ -5,6 +5,8 @@ const updateUserSpan = $("#updateUserForm span");
 
 const logoutButton = $("#close-session");
 
+const deleteUserButton = $("#delete-user");
+
 updateUserForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -60,4 +62,25 @@ logoutButton?.addEventListener("click", (e) => {
     console.log(res);
     window.location.href = "/";
   });
+});
+
+deleteUserButton?.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("/usuario", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      setTimeout(() => {
+        window.location.href = "/logout";
+      }, 1000);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });

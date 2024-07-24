@@ -1,7 +1,7 @@
 import mysql from "mysql2/promise";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
 
-import { SALT_ROUNDS } from "./config.js";
+// import { SALT_ROUNDS } from "./config.js";
 
 const config = {
   host: "localhost",
@@ -28,7 +28,7 @@ export class ThreadOne {
     Validation.phoneNumberExists(telefono_usuario);
     Validation.password(contrasena_usuario);
 
-    const hashedPassword = await bcrypt.hash(contrasena_usuario, SALT_ROUNDS);
+    // const hashedPassword = await bcrypt.hash(contrasena_usuario, SALT_ROUNDS);
 
     const [result] = await connection.execute(
       "INSERT INTO usuarios (nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -39,7 +39,8 @@ export class ThreadOne {
         fk_genero,
         email_usuario,
         telefono_usuario,
-        hashedPassword,
+        // hashedPassword,
+        contrasena_usuario,
       ]
     );
 
@@ -60,10 +61,11 @@ export class ThreadOne {
     // Extraccion del usuario de la base de datos
     const usuario = results[0];
 
-    const isValidPassword = await bcrypt.compare(
-      contrasena_usuario,
-      usuario.contrasena_usuario
-    );
+    // const isValidPassword = await bcrypt.compare(
+    //   contrasena_usuario,
+    //   usuario.contrasena_usuario
+    // );
+    const isValidPassword = contrasena_usuario === usuario.contrasena_usuario;
     if (!isValidPassword) {
       throw new Error("Contraseña incorrecta");
     }
@@ -99,7 +101,7 @@ export class ThreadOne {
     await Validation.phoneNumberExistsForUpdate(telefono_usuario, id_usuario);
     Validation.password(contrasena_usuario);
 
-    const hashedPassword = await bcrypt.hash(contrasena_usuario, SALT_ROUNDS);
+    // const hashedPassword = await bcrypt.hash(contrasena_usuario, SALT_ROUNDS);
 
     await connection.execute(
       "UPDATE usuarios SET nombre_usuario = ?, apellido_usuario = ?, fecha_nacimiento_usuario = ?, fk_genero = ?, email_usuario = ?, telefono_usuario = ?, contrasena_usuario = ? WHERE id_usuario = ?",
@@ -110,7 +112,8 @@ export class ThreadOne {
         fk_genero,
         email_usuario,
         telefono_usuario,
-        hashedPassword,
+        // hashedPassword,
+        contrasena_usuario,
         id_usuario,
       ]
     );
@@ -128,6 +131,12 @@ export class ThreadOne {
       email_usuario,
       bloqueo_usuario: bloqueo,
     };
+  }
+
+  static async delete(email_usuario) {
+    await connection.execute("DELETE FROM usuarios WHERE email_usuario = ?", [
+      email_usuario,
+    ]);
   }
 }
 

@@ -181,6 +181,25 @@ server.patch("/usuario", async (req, res) => {
   }
 });
 
+server.delete("/usuario", async (req, res) => {
+  const usuario = req.session.usuario;
+  const email_usuario = usuario.email_usuario;
+
+  try {
+    await ThreadOne.delete(email_usuario);
+    res.send("Usuario eliminado");
+    console.log("Usuario eliminado");
+  } catch (error) {
+    res.status(400).send(error.message);
+    console.log(error);
+  }
+});
+
+server.get("/logout", (req, res) => {
+  res.clearCookie("access_token");
+  res.redirect("/");
+});
+
 server.post("/logout", (req, res) => {
   res.clearCookie("access_token");
   res.redirect("/");
