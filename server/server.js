@@ -30,8 +30,8 @@ server.use((req, res, next) => {
 
 // Endpoints
 
-// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
 /*
+// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
   res.render("index", usuario);
@@ -110,12 +110,94 @@ server.post("/registro", async (req, res) => {
       telefono_usuario,
       contrasena_usuario,
     });
-    res.send({
-      usuario,
-    });
+    res.send({ usuario });
   } catch (error) {
     res.status(400).send(error.message);
   }
+});
+
+server.get("/usuario", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("usuario", usuario);
+});
+
+server.patch("/usuario", async (req, res) => {
+  const usuario = req.session.usuario;
+  const anterior_email_usuario = usuario.email_usuario;
+
+  const {
+    id_usuario = await ThreadOne.getUserId(anterior_email_usuario),
+    nombre_usuario,
+    apellido_usuario,
+    fecha_nacimiento_usuario,
+    fk_genero,
+    email_usuario,
+    telefono_usuario,
+    contrasena_usuario,
+  } = req.body;
+
+  console.log({
+    id_usuario,
+    nombre_usuario,
+    apellido_usuario,
+    fecha_nacimiento_usuario,
+    fk_genero,
+    email_usuario,
+    telefono_usuario,
+    contrasena_usuario,
+  });
+
+  try {
+    const usuario = await ThreadOne.update({
+      id_usuario,
+      nombre_usuario,
+      apellido_usuario,
+      fecha_nacimiento_usuario,
+      fk_genero,
+      email_usuario,
+      telefono_usuario,
+      contrasena_usuario,
+    });
+    const token = jwt.sign(
+      {
+        id_usuario: usuario.id_usuario,
+        email_usuario: usuario.email_usuario,
+        nombre_usuario: usuario.nombre_usuario,
+        apellido_usuario: usuario.apellido_usuario,
+        telefono_usuario: usuario.telefono_usuario,
+      },
+      SECRET_KEY,
+      { expiresIn: "1h" }
+    );
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 1000 * 60 * 60,
+    });
+    res.send({ usuario });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+server.delete("/usuario", async (req, res) => {
+  const usuario = req.session.usuario;
+  const email_usuario = usuario.email_usuario;
+
+  try {
+    await ThreadOne.delete(email_usuario);
+    res.send("Usuario eliminado");
+    console.log("Usuario eliminado");
+  } catch (error) {
+    res.status(400).send(error.message);
+    console.log(error);
+  }
+});
+
+server.get("/logout", (req, res) => {
+  res.clearCookie("access_token");
+  res.redirect("/");
 });
 
 server.post("/logout", (req, res) => {
@@ -123,8 +205,8 @@ server.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// Endpoint de prueba, muestra una ruta protegida
 /*
+// Endpoint de prueba, muestra una ruta protegida
 server.get("/protected", (req, res) => {
   const usuario = req.session.usuario;
 
