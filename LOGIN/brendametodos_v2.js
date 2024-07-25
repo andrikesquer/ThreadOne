@@ -14,7 +14,16 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
         });
 
         if (!response.ok) {
-            throw new Error("Correo o contraseña incorrectos");
+            const result = await response.json();
+            let errorMessage;
+            if (result.error === "wrong_password") {
+                errorMessage = "Contraseña incorrecta";
+            } else if (result.error === "wrong_email") {
+                errorMessage = "Correo incorrecto";
+            } else {
+                errorMessage = "Error desconocido";
+            }
+            throw new Error(errorMessage);
         }
 
         // Si el inicio de sesión fue exitoso, redirigir al usuario al home
@@ -33,7 +42,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
                 errorMessageElement.style.display = "none";
                 errorMessageElement.style.opacity = "1"; // Restaurar la opacidad original
             }, 1000); // Tiempo de desvanecimiento: 1 segundo
-        }, 1000); // Tiempo de visualización: 1 segundos
+        }, 3000); // Tiempo de visualización: 3 segundos
     }
 });
 
