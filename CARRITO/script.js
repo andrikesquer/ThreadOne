@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 270,
             available: true,
             quantity: 1,
-            image: 'path_to_image_1',
+            image: 'Br/br_negra.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
         },
@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 200,
             available: false,
             quantity: 1,
-            image: 'path_to_image_2',
+            image: 'contexto/contexto_gris.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
-        },{
-
-            id: 2,
-            name: 'Camisa Gris',
+        },
+        {
+            id: 3,  // Cambiado a id: 3 para evitar duplicados
+            name: 'Camisa Blanca',
             price: 200,
             available: false,
             quantity: 1,
-            image: 'path_to_image_2',
+            image: 'CSS/CSS blanca.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
         }
@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="flex items-center space-x-2 mt-2">
                                 <input type="number" value="${product.quantity}" min="1" class="quantity-input" onchange="updateQuantity(${product.id}, this.value)">
                                 <select class="color-select" onchange="updateColor(${product.id}, this.value)">
-                                    ${product.colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                    ${product.colors.map(color => `<option value="${color}" ${product.color === color ? 'selected' : ''}>${color}</option>`).join('')}
                                 </select>
                                 <select class="size-select" onchange="updateSize(${product.id}, this.value)">
-                                    ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                    ${product.sizes.map(size => `<option value="${size}" ${product.size === size ? 'selected' : ''}>${size}</option>`).join('')}
                                 </select>
                             </div>
                         </div>
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const iva = subtotal * 0.05;
         const total = subtotal + iva;
 
-        subtotalElement.textContent = `$${subtotal}`;
-        ivaElement.textContent = `$${iva}`;
-        totalElement.textContent = `$${total}`;
+        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        ivaElement.textContent = `$${iva.toFixed(2)}`;
+        totalElement.textContent = `$${total.toFixed(2)}`;
     }
 
     window.updateQuantity = (id, quantity) => {
