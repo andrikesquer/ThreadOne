@@ -1,48 +1,92 @@
-
-
-.customization {
+main {
     display: flex;
+    position: relative;
+    top: 8vh;
+    margin: 15%;
+    margin-bottom: 0;
+    margin-top: 7vh;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-evenly;
+    font-family: "Cormorant", serif;
 }
 
-.shirt-image {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 5vh;
+    background-color: white;
+    padding: 3%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.image-section {
+    flex: 1;
+    margin: 20px;
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección del contenido a columna */
+    align-items: center; /* Asegura que el contenido esté centrado horizontalmente */
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+}
+
+.product-image img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-height: 50vh; /* Asegúrate de que la imagen no exceda el contenedor */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.file-drop-area {
+    margin-top: 3vh; /* Agrega un margen superior de 10vh */
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .product-details {
-    max-width: 400px;
+    flex: 2; /* La sección de detalles del producto ocupará más espacio */
+    max-width: 500px;
+    font-family: "Cormorant", serif;
+    margin: 20px;
 }
 
 .product-details h1 {
     font-size: 1.8em;
     color: #333;
     margin-bottom: 10px;
+    font-family: "Cormorant", serif;
 }
 
 .price {
     font-size: 1.5em;
     color: #000000;
     margin: 10px 0;
+    font-family: "Cormorant", serif;
 }
 
 .options {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Cormorant", serif;
 }
 
 .options label {
     font-size: 1em;
     color: #333;
     font-weight: bold;
+    font-family: "Cormorant", serif;
 }
 
 .options select {
@@ -50,77 +94,73 @@
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ddd;
+    font-family: "Cormorant", serif;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 20px;
+    font-family: "Cormorant", serif;
+    margin-bottom: 5px;
 }
 
 hr {
     border: 1px solid #ddd;
-    margin: 20px 0;
+    margin: 0;
+}
+
+h1{
+    margin-top: 0;
+}
+
+.save-design,
+.add-to-cart,
+.save-favorite {
+    padding: 10px;
+    background-color: #790b0b; /* Color de fondo para los botones */
+    color: white;
+    border-radius: 10px; /* Bordes redondeados */
+    border-width: 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+    transition: background-color 0.7s, transform 0.7s;
+    font-family: "Cormorant", serif;
+    text-align: center; /* Centra el texto */
+    margin-top: 10px;
 }
 
 .save-design {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 1em;
-    color: #ffffff;
-    background-color: #1c4b7e;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    background-color: #790b0b; /* Color de fondo específico para este botón */
+    margin-bottom: 10px;
 }
 
-.save-design:hover {
-    background-color: #193655;
-}
-
-.action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.save-favorite,
 .add-to-cart {
-    padding: 15px 30px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease;
-    text-align: center;
+    background-color: #790b0b; /* Color de fondo específico para este botón */
 }
 
 .save-favorite {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #790b0b; /* Color de fondo específico para este botón */
 }
 
+.save-design:hover,
+.add-to-cart:hover,
 .save-favorite:hover {
-    background-color:  #d82121c2;
+    background-color: rgb(0, 0, 0); /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Escala ligeramente el botón */
 }
 
-.add-to-cart {
-    background-color: #000000;
-    color: #ffffff;
-}
+@media (max-width: 768px) {
+    .information {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.add-to-cart:hover {
-    background-color: #333333;
-}
-
-.file-drop-area {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 10px;
+    .product-details {
+        max-width: 100%;
+    }
 }
 
 .file-drop-area p {
@@ -128,11 +168,9 @@ hr {
     font-size: 1em;
     color: #333;
     display: block;
+    font-family: "Cormorant", serif;
 }
 
-.file-drop-area:hover {
-    background-color: #f9f9f9;
-}
 
 @media (max-width: 768px) {
     .customization {
