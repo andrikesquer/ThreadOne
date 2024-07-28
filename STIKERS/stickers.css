@@ -195,7 +195,17 @@ body{
     margin-bottom: 5px;
     text-align: center;
 }
+/*STOCK*/
+.disponible{
+  font-family: "Cormorant", serif;
+  color: rgb(0, 0, 0);
+}
 
+.agotado{
+  font-family: "Cormorant", serif;
+  color: rgb(198, 30, 30);
+}
+/*FIN STOCK*/
 /*BOTON*/
 button {
   margin-top: 30px;
