@@ -218,6 +218,25 @@ server.get("/protected", (req, res) => {
 });
 */
 
+server.get("/camisetas", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("camisetas",usuario);
+});
+
+server.get("/camisetaProducto", (req, res) => {
+  const { name, price, image } = req.query;
+  const usuario = req.session.usuario;
+
+  res.render("camisetaProducto", {
+      usuario,
+      product: {
+          name: name,
+          price: price,
+          imageUrl: image
+      }
+  });
+});
+
 server.use((req, res) => {
   res.status(404).send("Not found");
 });
