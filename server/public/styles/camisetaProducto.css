@@ -1,0 +1,227 @@
+header {
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    padding: 20px;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    font-family: "Cormorant", serif;
+    background-image: url("/images/FondoHeader.jpg");
+    box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+}
+
+.header-left,
+.header-right {
+  display: flex;
+}
+
+.logo {
+  width: 45px;
+}
+
+.logo-button{
+  transition: transform .4s ease-in-out;
+}
+
+.account-button,
+.cart-button {
+  color: #000000;
+  padding: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 20px;
+  transition: background-color 0.7s ease-in-out;
+}
+
+.account-button{
+  background-color: transparent;
+  color: white;
+}
+
+.cart-button {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.cart-button span {
+  margin-right: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.logo-button:hover{
+  transform: scale(1.2);
+}
+
+.account-button:hover{
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.cart-button:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+main {
+    display: flex;
+    position: relative;
+    top: 8vh;
+    margin: 15%;
+    margin-bottom: 0;
+    margin-top: 7vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: "Cormorant", serif;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 5vh;
+    background-color: white;
+    padding: 3%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.image-section {
+    flex: 1;
+    margin: 20px;
+    display: flex;
+    align-items: center; /* Asegura que la imagen esté centrada verticalmente */
+    justify-content: center; /* Asegura que la imagen esté centrada horizontalmente */
+}
+
+.image-section img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-height: 50vh; /* Asegúrate de que la imagen no exceda el contenedor */
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.product-details {
+    flex: 2; /* La sección de detalles del producto ocupará más espacio */
+    max-width: 500px;
+    font-family: "Cormorant", serif;
+    margin: 20px;
+}
+
+.product-details h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: "Cormorant", serif;
+}
+
+.price {
+    font-size: 1.5em;
+    color: #000000;
+    margin: 10px 0;
+    font-family: "Cormorant", serif;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Cormorant", serif;
+}
+
+.options label {
+    font-size: 1em;
+    color: #333;
+    font-weight: bold;
+    font-family: "Cormorant", serif;
+}
+
+.options select {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: "Cormorant", serif;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 20px;
+    font-family: "Cormorant", serif;
+    margin-bottom: 5px;
+}
+
+hr {
+    border: 1px solid #ddd;
+    margin: 0;
+}
+
+h1{
+    margin-top: 0;
+}
+
+.save-design,
+.add-to-cart,
+.save-favorite {
+    padding: 10px;
+    background-color: #790b0b; /* Color de fondo para los botones */
+    color: white;
+    border-radius: 10px; /* Bordes redondeados */
+    border-width: 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+    transition: background-color 0.7s, transform 0.7s;
+    font-family: "Cormorant", serif;
+    text-align: center; /* Centra el texto */
+    margin-top: 10px;
+}
+
+.save-design {
+    background-color: #790b0b; /* Color de fondo específico para este botón */
+    margin-bottom: 10px;
+}
+
+.add-to-cart {
+    background-color: #790b0b; /* Color de fondo específico para este botón */
+}
+
+.save-favorite {
+    background-color: #790b0b; /* Color de fondo específico para este botón */
+}
+
+.save-design:hover,
+.add-to-cart:hover,
+.save-favorite:hover {
+    background-color: rgb(0, 0, 0); /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Escala ligeramente el botón */
+}
+
+@media (max-width: 768px) {
+    .information {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-details {
+        max-width: 100%;
+    }
+}
