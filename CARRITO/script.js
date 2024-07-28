@@ -2,31 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = [
         {
             id: 1,
-            name: 'Camisa Negra',
+            name: 'Br',
             price: 270,
             available: true,
             quantity: 1,
-            image: 'Br/br_negra.png',
+            image: 'Br/br negra.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
         },
         {
             id: 2,
-            name: 'Camisa Gris',
+            name: 'Cerebro',
             price: 200,
             available: false,
             quantity: 1,
-            image: 'contexto/contexto_gris.png',
+            image: 'cerebro/cerebro gris.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
         },
         {
-            id: 3,  // Cambiado a id: 3 para evitar duplicados
-            name: 'Camisa Blanca',
+            id: 3,
+            name: 'Contexto',
             price: 200,
             available: false,
             quantity: 1,
-            image: 'CSS/CSS blanca.png',
+            image: 'contexto/contexto blanca.png',
             colors: ['Negro', 'Gris', 'Blanco', 'Rojo'],
             sizes: ['XS', 'S', 'M', 'L']
         }
@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtotalElement = document.getElementById('subtotal');
     const ivaElement = document.getElementById('iva');
     const totalElement = document.getElementById('total');
+
+    function getImageUrl(productName, color) {
+        const folder = productName.toLowerCase().replace(' ', '');
+        const formattedColor = color.toLowerCase();
+        return `${folder}/${folder} ${formattedColor}.png`;
+    }
 
     function renderCart() {
         cartElement.innerHTML = '';
@@ -95,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = products.find(p => p.id === id);
         if (product) {
             product.color = color;
+            product.image = getImageUrl(product.name, color);
             renderCart();
         }
     };
