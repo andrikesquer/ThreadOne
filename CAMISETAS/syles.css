@@ -1,4 +1,4 @@
- /*            Cosas del HEADER                     */
+/*            Cosas del HEADER                     */
 header {
   background-image: url(/CAMISETAS/perchero.jpg);
   background-size: cover;
@@ -61,6 +61,9 @@ header {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.perfil{
+  color: white;
+}
 main {
   padding: 20px;
 }
@@ -83,7 +86,7 @@ body{
 .swiper-slide{
   width: 300px;
   height: 360px;
-  background-color: #a0a0a0;
+  background-color: #6d828a;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
   padding: 40px;
   text-align: center;
@@ -115,18 +118,29 @@ body{
   flex-basis: 50%;
   text-align: left;
 }
+/*STOCK*/
+.disponible{
+  font-family: "Cormorant", serif;
+  color: rgb(0, 0, 0);
+}
+
+.agotado{
+  font-family: "Cormorant", serif;
+  color: rgb(198, 30, 30);
+}
+/*FIN STOCK*/
 
 .product-txt span{
   font-size: 20px;
-  color:#ffffff ;
-  font-weight: bold; 
+  color:#ffffff ; 
+  font-family: "Cormorant", serif;
 }
 
 .product-txt h3{
-  font-size: 20px;
+  font-size: 15px;
   color: #f5f5f5;
   text-transform: uppercase;
-  font-family: 'Neo Sans', sans-serif;
+  font-family: "Cormorant", serif;
 }
 
 .product-img{
@@ -135,7 +149,7 @@ body{
 }
 
 .product-img img{
-  width: 200px;
+  width: 300px;
   height: auto;
 }
 
@@ -159,19 +173,22 @@ body{
 
 .gato{
   text-align: center;
-  margin-top: 30px;
+  margin-top: 7vh;
 }
 
 .gato h1{
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0;
+  font-family: "Cormorant", serif;
+  font-size: 70px;
+  font-weight: 700;
+  margin: 5px 20px 5px;
 }
 
 .gato p{
-  font-size: 1em;
-  color: #888;
-  margin: 0;
+  margin-top: 5px;
+  font-size: 20px;
+  font-family: "Cormorant", serif;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 /*BOTON*/
@@ -180,16 +197,17 @@ button {
   padding: 15px 25px;
   border: unset;
   border-radius: 15px;
-  color: #212121;
+  color: #ffffff;
   z-index: 1;
-  background: #e8e8e8;
+  background: #790b0b;
   position: relative;
-  font-weight: 1000;
   font-size: 17px;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
   transition: all 250ms;
   overflow: hidden;
+  font-family: "Cormorant", serif;
+  cursor: pointer;
  }
  
  button::before {
@@ -200,7 +218,7 @@ button {
   height: 100%;
   width: 0;
   border-radius: 15px;
-  background-color: #212121;
+  background-color: #000000;
   z-index: -1;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -214,6 +232,8 @@ button {
  button:hover::before {
   width: 100%;
  }
+
+ /* Fin BOTON */
 /*Corazon*/
 .heart-container {
   --heart-color: rgb(255, 255, 255);

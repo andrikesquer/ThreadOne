@@ -58,25 +58,36 @@ server.get("/usuarios", (req, res) => {
 
 server.post("/login", (req, res) => {
     const { email_usuario, contrasena_usuario } = req.body;
-    conn.query(
-        "SELECT * FROM usuarios WHERE email_usuario = ? AND contrasena_usuario = ?",
-        [email_usuario, contrasena_usuario],
-        (error, results) => {
-            if (error) {
-                console.log("Error al consultar la base de datos", error);
-                res.status(500).send("Error al consultar la base de datos");
+
+    conn.query("SELECT * FROM usuarios WHERE email_usuario = ?", [email_usuario], (error, results) => {
+        if (error) {
+            console.log("Error al consultar la base de datos", error);
+            res.status(500).send("Error al consultar la base de datos");
+        } else {
+            if (results.length === 0) {
+                res.status(401).json({ error: "wrong_email" });
             } else {
-                if (results.length > 0) {
-                    // Si se encuentra un usuario con las credenciales proporcionadas
-                    res.status(200).json({ message: "Inicio de sesión exitoso" });
-                } else {
-                    // Si no se encuentra ningún usuario con las credenciales proporcionadas
-                    res.status(401).json({ message: "Credenciales incorrectas" });
-                }
+                conn.query(
+                    "SELECT * FROM usuarios WHERE email_usuario = ? AND contrasena_usuario = ?",
+                    [email_usuario, contrasena_usuario],
+                    (error, results) => {
+                        if (error) {
+                            console.log("Error al consultar la base de datos", error);
+                            res.status(500).send("Error al consultar la base de datos");
+                        } else {
+                            if (results.length === 0) {
+                                res.status(401).json({ error: "wrong_password" });
+                            } else {
+                                res.status(200).json({ message: "Inicio de sesión exitoso" });
+                            }
+                        }
+                    }
+                );
             }
         }
-    );
+    });
 });
+
 
 server.post("/registro", (req, res) => {
     const { nombre_usuario, apellido_usuario, fecha_nacimiento_usuario, fk_genero, email_usuario, telefono_usuario, contrasena_usuario } = req.body;
