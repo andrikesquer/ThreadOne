@@ -1,0 +1,339 @@
+/* General Styles */
+body {
+    background-color: #eeeeee;
+    margin: 0;
+    overflow-x: hidden;
+    z-index: -5;
+    font-family: "Cormorant", serif; /* Cambiado a Cormorant */
+  }
+  
+  header {
+    background-image: url("/Perfil/assets/fondito.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    max-height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  a {
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .header-left, .header-right {
+    display: flex;
+  }
+  
+  .logo {
+    width: 45px;
+  }
+  
+  .logo-button {
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .account-button, .cart-button {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    font-size: 1em;
+    margin-left: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.7s ease-in-out;
+  }
+  
+  .account-button {
+    background-color: transparent;
+    color: white;
+  }
+  
+  .cart-button {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .cart-button span {
+    margin-right: 10px;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .logo-button:hover {
+    transform: scale(1.2);
+  }
+  
+  .account-button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+  
+  .cart-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  main {
+    display: flex;
+    position: relative;
+    top: 6vh;
+    margin-bottom: 0;
+    margin-top: 8vh;
+    justify-content: center;
+    font-family: "Cormorant", serif;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  
+  /* Container Styles */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh;
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo según sea necesario */
+  }
+  
+  .left-container, .right-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    padding: 3%;
+    box-sizing: border-box;
+  }
+  
+  .left-container {
+    width: 65%;
+  }
+  
+  .right-container {
+    width: 30%;
+  }
+  
+  /* Information and Summary Styles */
+  .datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2vh;
+    background-color: white;
+    padding: 3%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+  }
+  
+  .otros {
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2vh;
+    background-color: white;
+    padding: 3%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+  }
+  
+  .datos {
+    max-width: 530px;
+    width: 100%;
+  }
+  
+  .otros {
+    max-width: 350px;
+    width: 100%;
+    height: fit-content;
+  }
+  
+  .datos h1, .otros h1 {
+    font-family: "Cormorant", serif;
+    font-size: 70px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  
+  
+  .cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .products-container {
+    width: 100%;
+    max-width: 65%;
+  }
+  
+  
+  
+  .summary-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .promo-input {
+    font-family: "Cormorant", serif;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .summary-content {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1rem;
+  }
+  
+  .summary-row, .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .summary-total {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .buy-button {
+    padding: 10px;
+      background-color: #790b0b;
+      color: white;
+      border-radius: 10px;
+      border-width: 0;
+      font-size: 1.1em;
+      cursor: pointer;
+      outline: none;
+      box-shadow: none;
+      width: 100%;
+      transition: background-color 0.7s, transform 0.7s;
+      font-family: "Cormorant", serif;
+      margin-top: 20px;
+  }
+  
+  .buy-button:hover {
+    background-color: rgba(0, 0, 0);
+    transform: scale(1.05);
+  }
+  
+  /* Product Styles */
+  .product {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0; /* Línea separadora */
+  }
+  
+  .product:last-child {
+    border-bottom: none; /* Quita la línea del último producto */
+  }
+  
+  .product img {
+  
+    height: 10rem;
+    border-radius: 0.5rem;
+  }
+  
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .product-info h2 {
+    font-weight: bold;
+  }
+  
+  .product-info p {
+    margin-top: 0.5rem;
+  }
+  
+  .product-info select, .product-info input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Cormorant", serif;
+  
+  }
+  
+  .product-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 0;
+    width: 100px;
+  }
+  
+  .product-actions span {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .product-actions button {
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-items: center;
+    transition: transform .5s ease-in-out;
+    background-image: url("/CARRITO/close_111152.webp");
+    background-size: cover;
+  }
+  
+  .product-actions button:hover {
+    color: transparent;
+    transform: scale(1.5);
+  }
+  
+  .product-info > div{
+    border-right: 1px solid #e2e8f0
+  }
+  
+  .product-actions{
+    margin: 20px;
+  }
+  
+  .product:last-child {
+    border-right: none; /* Quita la línea del último producto */
+  }
+  
+  h2{
+    margin-top: 10px;
+  }
+  
+  .promo{
+    margin-top: 10px;
+    max-width: 400px;
+  }
+  
+  .image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-section img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-width: 100%;
+    margin-bottom: 10px;
+  
+  }
