@@ -26,6 +26,16 @@ body {
   z-index: 2;
 }
 
+h1{
+  position: absolute;
+  top: 8vh;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+}
+
 .fresa p {
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
@@ -67,14 +77,26 @@ a {
   transform: scale(1.1);
 }
 
+.textt{
+  font-family: "Cormorant", serif;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 9vh;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  margin-top: 4vh;
+}
+
 .texto {
   font-family: "Cormorant", serif;
   font-style: normal;
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
   line-height: 1.5;
   margin: 0;
+  margin-top: 12vh;
 }
 
 .pepino {
@@ -85,6 +107,7 @@ a {
     padding-left: 50px;
     padding-right: 50px;
     height: 189.93px;
+    margin-top: vh;
 }
 
 .cajona {
@@ -138,7 +161,6 @@ header {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-
 .cart-button span {
   margin-right: 10px;
 }
@@ -179,6 +201,7 @@ header {
   color: #e8eaed;
 
 }
+
 /*                Fin Cosas del HEADER */
 
 /*                Inicio animacioncilla                */
@@ -314,3 +337,4 @@ header {
   margin-right: 4vmin; /* Gap between images */
 }
 /*                Fin cosas usadas en el javaScript             */
+
