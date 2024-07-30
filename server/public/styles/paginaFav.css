@@ -1,0 +1,138 @@
+body {
+    background-color: #eeeeee;
+    margin: 0rem;
+    overflow-x: hidden;
+    z-index: -5;
+}
+
+h1 {
+    font-family: "Cormorant", serif;
+    font-size: 70px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh;
+    background-color: white;
+    padding: 2%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    margin-top: 0px;
+    font-size: 30px;
+    font-family: "Cormorant", serif;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    position: relative;
+    top: 8vh;
+    margin: 15%;
+    margin-bottom: 0;
+    margin-top: 6vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: "Cormorant", serif;
+}
+
+.favorites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.favorite-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 7px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.favorite-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.favorite-item:hover {
+    transform: scale(1.05);
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.favorite-item h2 {
+    font-size: 1.2em;
+    margin: 15px 0;
+    color: #333;
+}
+
+.price {
+    font-size: 1.1em;
+    color: #000000;
+    margin: 10px 0;
+}
+
+.availability {
+    font-size: 0.9em;
+    color: green;
+    text-align: center;
+}
+
+.remove-favorite {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.remove-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    transition: transform .5s ease-in-out;
+}
+
+.remove-favorite:hover .remove-icon {
+    transform: scale(1.5);
+}
+
+@media (max-width: 768px) {
+    .favorites {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favorite-item {
+        width: 80%;
+    }
+}

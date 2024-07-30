@@ -66,14 +66,22 @@ server.post("/login", async (req, res) => {
       { expiresIn: "1h" }
     );
     res.cookie("access_token", token, {
-      httpOnly: true, // La cookie no puede ser leída por JavaScript, solo por el servidor
-      secure: process.env.NODE_ENV === "production", // La cookie solo se envía por nttps en producción
-      sameSite: "strict", // La cookie no se envía en peticiones de otros dominios
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
       maxAge: 1000 * 60 * 60, // La cookie expira en 1 hora
     });
     res.send({ usuario });
   } catch (error) {
-    res.status(400).send(error.message);
+    let errorMessage;
+    if (error.message === "Email no encontrado") {
+      errorMessage = "wrong_email";
+    } else if (error.message === "Contraseña incorrecta") {
+      errorMessage = "wrong_password";
+    } else {
+      errorMessage = "unknown_error";
+    }
+    res.status(400).json({ error: errorMessage });
   }
 });
 
