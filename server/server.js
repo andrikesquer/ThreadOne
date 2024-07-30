@@ -30,14 +30,6 @@ server.use((req, res, next) => {
 
 // Endpoints
 
-/*
-// Endpoint prueba, dirige a un formulario de login y de registro, ambos de prueba también.
-server.get("/", (req, res) => {
-  const usuario = req.session.usuario;
-  res.render("index", usuario);
-});
-*/
-
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
   res.render("home", usuario);
@@ -213,22 +205,9 @@ server.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-/*
-// Endpoint de prueba, muestra una ruta protegida
-server.get("/protected", (req, res) => {
-  const usuario = req.session.usuario;
-
-  if (!usuario) {
-    return res.status(403).send("Acceso no autorizado");
-  }
-
-  res.render("protected", usuario);
-});
-*/
-
 server.get("/camisetas", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("camisetas",usuario);
+  res.render("camisetas", usuario);
 });
 
 server.get("/camisetaProducto", (req, res) => {
@@ -236,18 +215,18 @@ server.get("/camisetaProducto", (req, res) => {
   const usuario = req.session.usuario;
 
   res.render("camisetaProducto", {
-      usuario,
-      product: {
-          name: name,
-          price: price,
-          imageUrl: image
-      }
+    usuario,
+    product: {
+      name: name,
+      price: price,
+      imageUrl: image,
+    },
   });
 });
 
 server.get("/camisetaPersonalizable", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("camisetaPersonalizable",usuario);
+  res.render("camisetaPersonalizable", usuario);
 });
 
 server.use((req, res) => {
