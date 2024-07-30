@@ -237,6 +237,11 @@ server.get("/camisetaProducto", (req, res) => {
   });
 });
 
+server.get("/camisetaPersonalizable", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("camisetaPersonalizable",usuario);
+});
+
 server.use((req, res) => {
   res.status(404).send("Not found");
 });
