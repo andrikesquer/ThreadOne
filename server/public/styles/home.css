@@ -160,6 +160,25 @@ header {
 .cart-button:hover{
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.language-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  color: #e8eaed;
+
+}
 /*                Fin Cosas del HEADER */
 
 /*                Inicio animacioncilla                */
