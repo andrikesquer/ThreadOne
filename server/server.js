@@ -205,6 +205,21 @@ server.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
+server.get("/stickers", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("stickers", usuario);
+});
+
+server.get("/sticker", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("stickerProducto", usuario);
+});
+
+server.get("/custom", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("camisetaPersonalizable", usuario);
+});
+
 server.get("/camisetas", (req, res) => {
   const usuario = req.session.usuario;
   res.render("camisetas", usuario);
