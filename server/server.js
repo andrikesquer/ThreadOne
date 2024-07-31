@@ -239,6 +239,11 @@ server.get("/carrito", (req, res) => {
   res.render("carrito", usuario);
 });
 
+server.get("/favoritos", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("favoritos", usuario);
+});
+
 server.use((req, res) => {
   res.status(404).send("Not found");
 });
