@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo de Camisas</title>
-    <link rel="icon" href="/images/LogoThreadOne.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="/styles/camisetas.css">
 
@@ -31,16 +31,16 @@
 
             <a href="/carrito" class="cart-button">
                 <span>Carrito</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                  </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                    </svg>
             </a>
 
             <a href="/favoritos" class="cart-button">
                 <span>Favoritos</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 -1 16 16">
-                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-                  </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 -1 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                    </svg>
             </a>
 
             <% if (typeof email_usuario === 'undefined') { %>
@@ -53,13 +53,14 @@
                     <span>Hey, <%= nombre_usuario %></span>
                 </a>
             <% } %>
-
         </div>
     </header>
 
+    <main>
+
       <!--BODY-->   
   <div class="gato">
-    <h1>Camisas</h1>
+    <h1>Camisetas</h1>
     <p>Descubre lo que tenemos para ti</p>
   </div>
 
@@ -143,6 +144,7 @@
                 <span>$300</span>
                 <h3>Camisa BR</h3>
                 <p class="disponible">Disponible</p>
+                
             </div>
 
             <div class="product-img">
@@ -150,10 +152,9 @@
             </div> 
         </div>
         
-        <a href="/camisetaProducto?name=Camisa%20BR&price=300&image=/images/CamisetasImagenes/Br/br%20negra.png">
+        <a href="/camisetaProducto?name=Camisa%20BR&price=300&status=Disponible&image1=/images/CamisetasImagenes/Br/br blanca.png&image2=/images/CamisetasImagenes/Br/br negra.png&image3=/images/CamisetasImagenes/Br/br gris.png">
             <button>Ver detalles</button>
         </a>
-        
     </div>
     <!-- FIN PRODUCTO 1-->
                      <!--PRODUCTO 2-->
@@ -193,8 +194,8 @@
                                 <img src="/images/CamisetasImagenes/cerebro/Cerebro negro.png" alt="">
                             </div> 
                         </div>
-                        <a href="/camisetaProducto?name=Prenda%20el%20cerebro,%20ing&price=300&image=/images/CamisetasImagenes/cerebro/Cerebro negro.png">
-                            <button>Ver detalles</button>
+                        <a href="/camisetaProducto?name=Prenda%20el%20cerebro,%20ing&price=300&status=Disponible&image1=/images/CamisetasImagenes/cerebro/Cerebro blanco.png&image2=/images/CamisetasImagenes/cerebro/Cerebro negro.png&image3=/images/CamisetasImagenes/cerebro/Cerebro gris.png">
+                            <button>Ver detalles</button> 
                         </a>
                     </div>
                     <!-- FIN PRODUCTO 2-->
@@ -238,8 +239,8 @@
 
                         </div> 
                     </div>
-                    <a href="/camisetaProducto?name=Contexto&price=300&image=/images/CamisetasImagenes/contexto/contexto negra.png">
-                        <button>Ver detalles</button>
+                    <a href="/camisetaProducto?name=Contexto&price=300&status=Disponible&image1=/images/CamisetasImagenes/contexto/contexto blanca.png&image2=/images/CamisetasImagenes/contexto/contexto negra.png&image3=/images/CamisetasImagenes/contexto/contexto gris.png">
+                        <button>Ver detalles</button> 
                     </a>
                 </div>
                 <!-- FIN PRODUCTO 3-->
@@ -283,8 +284,8 @@
     
                             </div> 
                         </div>
-                        <a href="/camisetaProducto?name=CSS&price=300&image=/images/CamisetasImagenes/CSS/CSS negro.png">
-                            <button>Ver detalles</button>
+                        <a href="/camisetaProducto?name=CSS&price=300&status=Agotado&image1=/images/CamisetasImagenes/CSS/CSS blanca.png&image2=/images/CamisetasImagenes/CSS/CSS negro.png&image3=/images/CamisetasImagenes/CSS/CSS gris.png">
+                            <button>Ver detalles</button> 
                         </a>
                     </div>
                     <!-- FIN PRODUCTO 4-->
@@ -328,8 +329,8 @@
 
                         </div> 
                     </div>
-                    <a href="/camisetaProducto?name=Hello%20World&price=300&image=/images/CamisetasImagenes/Hw/Hw negra.png">
-                        <button>Ver detalles</button>
+                    <a href="/camisetaProducto?name=Hello%20World&price=300&status=Agotado&image1=/images/CamisetasImagenes/Hw/Hw blanca.png&image2=/images/CamisetasImagenes/Hw/Hw negra.png&image3=/images/CamisetasImagenes/Hw/Hw gris.png">
+                        <button>Ver detalles</button>   
                     </a>
                 </div>
                 <!-- FIN PRODUCTO 5-->
@@ -373,8 +374,8 @@
     
                             </div> 
                         </div>
-                        <a href="/camisetaProducto?name=Iguana&price=300&image=/images/CamisetasImagenes/iguana/Iguana Negra.png">
-                            <button>Ver detalles</button>
+                        <a href="/camisetaProducto?name=Iguana&price=300&status=Disponible&image1=/images/CamisetasImagenes/iguana/Iguana blanca.png&image2=/images/CamisetasImagenes/iguana/Iguana Negra.png&image3=/images/CamisetasImagenes/iguana/Iguana Gris.png">
+                            <button>Ver detalles</button>  
                         </a>
                     </div>
                     <!-- FIN PRODUCTO 6-->
@@ -418,7 +419,7 @@
 
                         </div> 
                     </div>
-                    <a href="/camisetaProducto?name=Linux&price=300&image=/images/CamisetasImagenes/linux/Linux negra.png">
+                    <a href="/camisetaProducto?name=;%20Survivor&price=300&status=Disponible&image1=/images/CamisetasImagenes/linux/Linux blanco.png&image2=/images/CamisetasImagenes/linux/Linux negra.png&image3=/images/CamisetasImagenes/linux/Linux gris.png">
                         <button>Ver detalles</button>
                     </a>
                 </div>
@@ -463,8 +464,8 @@
     
                             </div> 
                         </div>
-                        <a href="/camisetaProducto?name=;%20Survivor&price=300&image=/images/CamisetasImagenes/Punto coma/; negra.png">
-                            <button>Ver detalles</button>
+                        <a href="/camisetaProducto?name=Wr&price=300&status=Disponible&image1=/images/CamisetasImagenes/Punto coma/; blanca.png&image2=/images/CamisetasImagenes/Punto coma/; negra.png&image3=/images/CamisetasImagenes/Punto coma/; gris.png">
+                            <button>Ver detalles</button>   
                         </a>
                     </div>
                     <!-- FIN PRODUCTO 8-->
@@ -508,8 +509,8 @@
 
                         </div> 
                     </div>
-                    <a href="/camisetaProducto?name=Wr&price=300&image=/images/CamisetasImagenes/Wr/Wr negra.png">
-                        <button>Ver detalles</button>
+                    <a href="/camisetaProducto?name=Wr&price=300&status=Disponible&image1=/images/CamisetasImagenes/Wr/Wr blanca.png&image2=/images/CamisetasImagenes/Wr/Wr negra.png&image3=/images/CamisetasImagenes/Wr/Wr gris.png">
+                        <button>Ver detalles</button>   
                     </a>
                 </div>
                 <!-- FIN PRODUCTO 9-->
@@ -517,7 +518,7 @@
     </div>
 
     <!--FIN CARRETE-->
-    <script src="/javascript/camisetas.js"></script>
+
      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
      <script>
         var swiper = new Swiper(".mySwiper", {
@@ -535,6 +536,8 @@
             }
         })
      </script>
+
+</main>
 </body>
    <!--FIN BODY-->
 </html>
