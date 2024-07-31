@@ -239,14 +239,19 @@ server.get("/camisetaProducto", (req, res) => {
   });
 });
 
-server.get("/camisetaPersonalizable", (req, res) => {
+server.get("/carrito", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("camisetaPersonalizable", usuario);
+  res.render("carrito", usuario);
+});
+
+server.get("/favoritos", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("favoritos", usuario);
 });
 
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("compra", usuario)
+  res.render("compra", usuario);
 });
 
 server.use((req, res) => {
