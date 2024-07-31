@@ -8,7 +8,7 @@ body {
   }
   
   header {
-    background-image: url("/Perfil/assets/fondito.jpg");
+    background-image: url("/images/FondoHeader.jpg");
     background-size: cover;
     position: fixed;
     top: 0;
