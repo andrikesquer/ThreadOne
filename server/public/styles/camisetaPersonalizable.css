@@ -257,3 +257,17 @@ h1{
         max-width: 100%;
     }
 }
+.product-image {
+    position: relative;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde del contenedor */
+    width: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
+    height: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
+}
+
+#uploaded-image {
+    display: block; /* Elimina el espacio debajo de la imagen */
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el relleno por defecto */
+    border: none; /* Elimina cualquier borde */
+    box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total */
+}
