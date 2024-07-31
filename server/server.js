@@ -239,5 +239,5 @@ server.listen(PORT, () => {
 
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("compra", usuario)
+  res.render("compra", usuario);
 });

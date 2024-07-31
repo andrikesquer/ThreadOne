@@ -6,7 +6,7 @@ import mysql from "mysql2/promise";
 const config = {
   host: "localhost",
   user: "root",
-  password: "holaaaaa",
+  password: "root",
   port: 3306,
   database: "ThreadOne",
 };
@@ -120,20 +120,23 @@ export class ThreadOne {
 
     app.post("/login", async (req, res) => {
       const { email_usuario, contrasena_usuario } = req.body;
-  
+
       try {
-          const result = await ThreadOne.login({ email_usuario, contrasena_usuario });
-  
-          if (result.error) {
-              return res.status(400).json({ error: result.error });
-          }
-  
-          // Si el login es exitoso, devolver los datos del usuario
-          res.status(200).json(result);
+        const result = await ThreadOne.login({
+          email_usuario,
+          contrasena_usuario,
+        });
+
+        if (result.error) {
+          return res.status(400).json({ error: result.error });
+        }
+
+        // Si el login es exitoso, devolver los datos del usuario
+        res.status(200).json(result);
       } catch (error) {
-          res.status(500).json({ error: "Error desconocido" });
+        res.status(500).json({ error: "Error desconocido" });
       }
-  });
+    });
 
     const [consulta] = await connection.execute(
       "SELECT bloqueo FROM usuarios WHERE id_usuario = ?",
