@@ -229,15 +229,15 @@ server.get("/camisetaPersonalizable", (req, res) => {
   res.render("camisetaPersonalizable", usuario);
 });
 
+server.get("/compra", (req, res) => {
+  const usuario = req.session.usuario;
+  res.render("compra", usuario);
+});
+
 server.use((req, res) => {
   res.status(404).send("Not found");
 });
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
-
-server.get("/compra", (req, res) => {
-  const usuario = req.session.usuario;
-  res.render("compra", usuario);
 });
