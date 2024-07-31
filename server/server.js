@@ -32,7 +32,7 @@ server.use((req, res, next) => {
 
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("home", usuario);
+  res.render("index", usuario);
 });
 
 server.get("/login", (req, res) => {
