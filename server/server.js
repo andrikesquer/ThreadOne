@@ -226,17 +226,17 @@ server.get("/camisetas", (req, res) => {
 });
 
 server.get("/camisetaProducto", (req, res) => {
-  const { name, price, image } = req.query;
+  const { name, price, status, image1, image2, image3 } = req.query;
   const usuario = req.session.usuario;
 
-  res.render("camisetaProducto", {
-    usuario,
-    product: {
-      name: name,
-      price: price,
-      imageUrl: image,
-    },
-  });
+  const product = {
+    name,
+    price,
+    status,
+    images: [image1, image2, image3]
+  };
+
+  res.render("camisetaProducto", { usuario, product });
 });
 
 server.get("/carrito", (req, res) => {
