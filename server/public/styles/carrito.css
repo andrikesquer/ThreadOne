@@ -294,7 +294,7 @@ body {
     cursor: pointer;
     align-items: center;
     transition: transform .5s ease-in-out;
-    background-image: url("/CARRITO/close_111152.webp");
+    background-image: url("/images/IconoEliminar.webp");
     background-size: cover;
   }
   
