@@ -211,11 +211,33 @@ server.get("/stickers", (req, res) => {
 });
 
 server.get("/stickers/:producto", async (req, res) => {
-  const usuario = req.session.usuario;
+  const usuario = req.session?.usuario;
+  const { producto } = req.params;
+  const precio = req.query.precio;
+  const imagen = req.query.imagen;
+  console.log(req);
+  console.log(req.params);
+  const sticker = {
+    descripcion_sticker: producto,
+    precio: precio,
+    imagen: imagen,
+  };
+  console.log(sticker);
+  res.render("stickerProducto", { sticker, usuario });
+});
 
-  const producto = await ThreadOne.getProducto(req.params.producto);
+server.post("/stickers", async (req, res) => {
+  const usuario = req.session?.usuario;
 
-  res.render("stickerProducto", { producto, usuario });
+  const { descripcion_sticker, precio, imagen } = req.body;
+  console.log({
+    descripcion_sticker,
+    precio,
+    imagen,
+  });
+
+  const producto = descripcion_sticker;
+  res.json({ producto });
 });
 
 server.get("/custom", (req, res) => {

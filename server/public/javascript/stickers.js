@@ -1,48 +1,48 @@
-function addToCart() {
-  const product = {
-    name: "Sticker diseño original",
-    price: 30,
-    size: document.getElementById("size").value,
-  };
+// function addToCart() {
+//   const product = {
+//     name: "Sticker diseño original",
+//     price: 30,
+//     size: document.getElementById("size").value,
+//   };
 
-  fetch("/add-to-cart", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ product }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert(data.message);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
+//   fetch("/add-to-cart", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ product }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       alert(data.message);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
 
-function addToFavorites() {
-  const product = {
-    name: "Sticker diseño original",
-    price: 30,
-    size: document.getElementById("size").value,
-  };
+// function addToFavorites() {
+//   const product = {
+//     name: "Sticker diseño original",
+//     price: 30,
+//     size: document.getElementById("size").value,
+//   };
 
-  fetch("/add-to-favorites", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ product }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert(data.message);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
+//   fetch("/add-to-favorites", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ product }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       alert(data.message);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
 
 // Función para cargar los stickers desde el archivo JSON
 function loadStickers() {
@@ -79,18 +79,18 @@ function loadStickers() {
                                         </div>
                                     </div>
                                     
-                                    <div class="product-content">
+                                    <div class="product-content" id="productContent">
                                         <div class="product-txt">
-                                            <span>$${sticker.precio}</span>
-                                            <h3>${sticker.descripcion_sticker}</h3>
+                                            <span id="precio">$${sticker.precio}</span>
+                                            <h3 id="descripcion_sticker">${sticker.descripcion_sticker}</h3>
                                             <p>Disponible</p>
                                         </div>
                                         <div class="product-img">
-                                            <img src="${sticker.imagen}" alt="${sticker.nombre}">
+                                            <img src="${sticker.imagen}" alt="${sticker.nombre}" id="imagen">
                                         </div>
                                     </div>
-                                    <a href="/stickers/${sticker.descripcion_sticker}">
-                                        <button>Ver más</button>
+                                    <a href="/stickers/${sticker.descripcion_sticker}?precio=${sticker.precio}&imagen=${sticker.imagen}">
+                                        <button id="detalles">Ver más</button>
                                     </a>
                                 `;
         container.appendChild(stickerElement);

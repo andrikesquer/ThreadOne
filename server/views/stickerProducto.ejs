@@ -53,15 +53,13 @@
 
         <section class="information">
             <section class="image-section">
-                <img src="/images/stickers/linux.png" alt="Camiseta" class="shirt-image">
+                <img src="<%= sticker.imagen %>" alt="Camiseta" class="shirt-image">
             </section>
             <div class="product-details">
 
-                <h1><%= nombre_sticker %></h1>
+                <h1><%= sticker.descripcion_sticker %></h1>
                 
-                <p><%= descripcion_sticker %></p>
-                
-                <p class="price"> <%= precio_sticker %></p>
+                <p class="price">Precio <%= sticker.precio %></p>
                 
                 <hr>
                 
