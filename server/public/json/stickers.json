@@ -1,0 +1,43 @@
+[
+    {
+        "descripcion_sticker": "Sticker Granada",
+        "precio": "20",
+        "imagen": "/images/stickers/Granada.png"
+    },
+    {
+        "descripcion_sticker": "Sticker Iguana;",
+        "precio": "20",
+        "imagen": "/images/stickers/Iguana.png"
+    },
+    {
+        "descripcion_sticker": "Puro Linux",
+        "precio": "20",
+        "imagen": "/images/stickers/Linux.png"
+    },
+    {
+        "descripcion_sticker": "need a <br>",
+        "precio": "20",
+        "imagen": "/images/stickers/br.png"
+    },
+    {
+        "descripcion_sticker": "Sticker Absolut",
+        "precio": "20",
+        "imagen": "/images/stickers/Vodka.png"
+    },
+    {
+        "descripcion_sticker": "Sticker ChatGPT",
+        "precio": "20",
+        "imagen": "/images/stickers/Idk.png"
+    },
+    {
+        "descripcion_sticker": "Sticker Developer",
+        "precio": "20",
+        "imagen": "/images/stickers/Developer.png"
+    },
+    {
+        "descripcion_sticker": "Sticker Gato Alien",
+        "precio": "20",
+        "imagen": "/images/stickers/Gato.png"
+    }
+]
+  
