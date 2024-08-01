@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     uploadedImage = document.createElement('img');
                     uploadedImage.id = 'uploaded-image';
                     uploadedImage.style.position = 'absolute';
-                    uploadedImage.style.top = '0'; // Alinea la imagen al contenedor
-                    uploadedImage.style.left = '0'; // Alinea la imagen al contenedor
-                    uploadedImage.style.width = '100px'; // Tamaño inicial más pequeño
-                    uploadedImage.style.height = '100px'; // Tamaño inicial más pequeño
-                    uploadedImage.style.objectFit = 'contain'; // Ajusta la imagen sin distorsión
-                    uploadedImage.style.cursor = 'move'; // Cursor para mover la imagen
+                    uploadedImage.style.top = '0';
+                    uploadedImage.style.left = '0';
+                    uploadedImage.style.width = '100px';
+                    uploadedImage.style.height = '100px';
+                    uploadedImage.style.objectFit = 'fill'; // Ajuste sin distorsión
+                    uploadedImage.style.cursor = 'move';
                     shirtImageContainer.style.position = 'relative';
-                    shirtImageContainer.style.overflow = 'hidden'; // Oculta cualquier desbordamiento
+                    shirtImageContainer.style.overflow = 'hidden';
                     shirtImageContainer.appendChild(uploadedImage);
 
                     // Inicializar Interact.js para la imagen
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             modifiers: [
                                 interact.modifiers.restrict({
                                     restriction: 'parent',
-                                    endOnly: true
+                                    endOnly: false
                                 })
                             ],
                             inertia: true
@@ -57,23 +57,28 @@ document.addEventListener('DOMContentLoaded', function () {
                             listeners: {
                                 move(event) {
                                     const { x, y } = event.target.dataset;
-                                    const newWidth = Math.max(event.rect.width, 10); // Tamaño mínimo para evitar que desaparezca
-                                    const newHeight = Math.max(event.rect.height, 10); // Tamaño mínimo para evitar que desaparezca
+                                    const { width, height } = event.rect;
 
                                     const containerRect = shirtImageContainer.getBoundingClientRect();
                                     const imgRect = event.target.getBoundingClientRect();
-                                    
-                                    // Restricción de redimensionamiento dentro del contenedor
+
+                                    const newWidth = Math.max(width, 10); // Tamaño mínimo para evitar desaparición
+                                    const newHeight = Math.max(height, 10); // Tamaño mínimo para evitar desaparición
+
+                                    // Ajustar la posición y tamaño
                                     const newLeft = Math.max(0, Math.min(imgRect.left - containerRect.left, containerRect.width - newWidth));
                                     const newTop = Math.max(0, Math.min(imgRect.top - containerRect.top, containerRect.height - newHeight));
 
-                                    Object.assign(event.target.style, {
-                                        width: `${newWidth}px`,
-                                        height: `${newHeight}px`,
-                                        transform: `translate(${newLeft}px, ${newTop}px)`
-                                    });
+                                    // Aplicar el nuevo tamaño y la transformación correcta
+                                    event.target.style.width = `${newWidth}px`;
+                                    event.target.style.height = `${newHeight}px`;
 
-                                    Object.assign(event.target.dataset, { x: newLeft, y: newTop });
+                                    // Asegurarse de que la imagen se mantenga dentro del contenedor
+                                    const finalLeft = Math.max(0, Math.min(newLeft, containerRect.width - newWidth));
+                                    const finalTop = Math.max(0, Math.min(newTop, containerRect.height - newHeight));
+
+                                    event.target.style.transform = `translate(${finalLeft}px, ${finalTop}px)`;
+                                    Object.assign(event.target.dataset, { x: finalLeft, y: finalTop });
                                 }
                             },
                             modifiers: [
@@ -91,4 +96,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
