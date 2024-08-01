@@ -4,8 +4,28 @@ import cors from "cors";
 import { ThreadOne } from "./threadone.js";
 import jwt from "jsonwebtoken";
 import { PORT, SECRET_KEY } from "./config.js";
+import mysql from "mysql2/promise";
+
+const connectionConfig = {
+  host: "localhost",
+  user: "root",
+  password: "HCHHPRa4",
+  port: 3306,
+  database: "ThreadOne",
+};
 
 const server = express();
+
+let connection;
+
+const initializeDatabaseConnection = async () => {
+  connection = await mysql.createConnection(connectionConfig);
+};
+
+initializeDatabaseConnection().catch((err) => {
+  console.error("Error initializing database connection:", err);
+  process.exit(1);
+});
 
 server.set("view engine", "ejs"); // Configuración del motor de plantillas
 server.use(express.static("public")); // Configuración de la carpeta de archivos estáticos
@@ -252,6 +272,24 @@ server.get("/favoritos", (req, res) => {
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
   res.render("compra", usuario);
+});
+
+server.post("/cart/add", async (req, res) => {
+  const { color, size, quantity } = req.body;
+
+  // Generate a shirtId
+  const shirtId = `shirt-${color}-${size}`;
+
+  try {
+    await connection.execute(
+      "INSERT INTO juan (shirtId, color, size, quantity) VALUES (?, ?, ?, ?)",
+      [shirtId, color, size, quantity]
+    );
+    res.send("Hola mama");
+  } catch (error) {
+    console.error("Error adding to juan table:", error);
+    res.status(500).send("Server error");
+  }
 });
 
 server.use((req, res) => {
