@@ -1,13 +1,45 @@
-let currentIndex = 0;
+let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
 
-function moveCarousel(direction) {
-    const items = document.querySelectorAll('.carousel-item');
-    const totalItems = items.length;
+        const swiperContainer = document.querySelector('.mySwiper');
 
-    items[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + direction + totalItems) % totalItems;
-    items[currentIndex].classList.add('active');
+        swiperContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            currentTranslate = swiper.getTranslate();
+        });
 
-    const carouselInner = document.querySelector('.carousel-inner');
-    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+        swiperContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const diffX = e.clientX - startX;
+            swiper.setTranslate(currentTranslate + diffX);
+        });
+
+        swiperContainer.addEventListener('mouseup', () => {
+            isDragging = false;
+            swiper.slideToClosest();
+        });
+
+        swiperContainer.addEventListener('mouseleave', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            swiper.slideToClosest();
+        });
+
+        swiperContainer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            currentTranslate = swiper.getTranslate();
+        });
+
+        swiperContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const diffX = e.touches[0].clientX - startX;
+            swiper.setTranslate(currentTranslate + diffX);
+        });
+
+        swiperContainer.addEventListener('touchend', () => {
+            isDragging = false;
+            swiper.slideToClosest();
+        });
