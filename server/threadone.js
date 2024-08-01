@@ -6,10 +6,10 @@ import mysql from "mysql2/promise";
 const config = {
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "Li2O45+MySQL",
   port: 3306,
-  database: "ThreadOne",
-};
+  database: "ThreadOneFV",
+}; 
 
 const connection = await mysql.createConnection(config);
 

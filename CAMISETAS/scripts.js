@@ -11,3 +11,5 @@ function moveCarousel(direction) {
     const carouselInner = document.querySelector('.carousel-inner');
     carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
+ /*TEMA*/
+ 

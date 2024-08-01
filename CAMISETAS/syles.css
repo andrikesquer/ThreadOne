@@ -6,18 +6,20 @@ body {
 }
 
 header {
-  background-size: fill;
-  position: fixed;
+  background-size:cover; /* Ajusta la imagen al tamaño del contenedor sin estirarla */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen en el contenedor */
+  position: static;
   top: 0;
   left: 0;
   right: 0;
   justify-content: space-between;
-  padding: 20px;
-  height: 7vh;
+  padding: 30px;
+  height: 20vh; /* Puedes ajustar esto según sea necesario */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   font-family: "Cormorant", serif;
-  background-image: url("/CAMISETAS/86c8bf52ec96f4cc09a820e83b991904.jpg");
+  background-image: url("/CAMISETAS/perchero.jpg");
   box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
@@ -37,7 +39,7 @@ transition: transform .4s ease-in-out;
 
 .account-button,
 .cart-button {
-color: #ffffff;
+color: #000000;
 padding: 8px;
 font-size: 1em;
 text-decoration: none;
@@ -91,15 +93,15 @@ main {
 }
 
 .swiper{
-  width: 100%;
-  padding: 50px 0 30px 0;
+  width:auto;
+  padding: 40px 0 30px 0;
 }
 
 .swiper-slide{
   width: 300px;
   height: 360px;
-  backdrop-filter: blur(30px);
-  background-color: rgba(195, 195, 195, 0.308);
+  backdrop-filter: blur(20px);
+   background-color: rgba(95, 95, 95, 0.507);
   border: 1px solid rgba(255, 255, 255, 0.089);
   padding: 40px;
   text-align: center;
@@ -143,7 +145,7 @@ main {
 
 .product-txt h3{
   font-size: 20px;
-  color: #000000;
+  color: #ffffff;
   font-family: "Cormorant", serif;
 }
 
@@ -169,8 +171,7 @@ main {
 
 .gato{
   text-align: center;
-  margin-top: 7vh;
-
+  margin-top: 4vh;
 }
 
 .gato h1{
@@ -191,7 +192,7 @@ main {
 /*STOCK*/
 .disponible{
   font-family: "Cormorant", serif;
-  color: rgb(0, 0, 0);
+  color: rgb(200, 255, 192);
 }
 
 .agotado{
@@ -330,3 +331,77 @@ button {
   }
 }
 /*Fin corazon*/
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Tema claro */
+.light-theme {
+  background-color: #eeeeee; /* Fondo claro */
+  color: #000000; /* Texto oscuro */
+}
+
+/* Tema oscuro */
+.dark-theme {
+  background-color: #000000; /* Fondo oscuro */
+  color: #ffffff; /* Texto claro */
+}
+
+/* Estilos específicos del header */
+header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: static;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  padding: 30px;
+  height: 20vh;
+  display: flex;
+  align-items: flex-start;
+  font-family: "Cormorant", serif;
+  background-image: url("/CAMISETAS/perchero.jpg");
+  box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: background-color 0.3s; /* Transición para el header */
+}
+
+header.light-theme {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo claro en el header */
+}
+
+header.dark-theme {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro en el header */
+}
+
+/* Botones y enlaces */
+.account-button,
+.cart-button {
+  color: inherit; /* Usa el color de texto del body */
+  padding: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 20px;
+  transition: background-color 0.7s ease-in-out;
+}
+
+.account-button {
+  background-color: transparent;
+}
+
+.cart-button {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.cart-button span {
+  margin-right: 10px;
+}
+
