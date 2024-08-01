@@ -38,7 +38,7 @@
 
             <% if (typeof email_usuario === 'undefined') { %>
                 <a href="/usuario" class="account-button">
-                    <span id="greeting">Hey, tú %></span>
+                    <span id="greeting">Hey, tú></span>
                 </a>
             <% } %>
             <% if (typeof email_usuario !== 'undefined') { %>
@@ -57,23 +57,22 @@
             </section>
             <div class="product-details">
 
-                <h1>Nombre del producto</h1>
+                <h1><%= nombre_sticker %></h1>
                 
-                <p>Sticker diseño original</p>
+                <p><%= descripcion_sticker %></p>
                 
-                <p class="price">$MX30.00</p>
+                <p class="price"> <%= precio_sticker %></p>
                 
                 <hr>
                 
                 <div class="options">
                     <label for="size"><strong>Seleccionar tamaño</strong></label>
                     <select id="size">
-                        <option value="pequeño">5 x 8 cm</option>
-                        <option value="mediano">8 x 11 cm</option>
-                        <option value="grande">11 x 14 cm</option>
+                        <option value="1">5 x 8 cm</option>
+                        <option value="2">8 x 11 cm</option>
+                        <option value="3">11 x 14 cm</option>
                     </select>
                 </div>
-                <button class="save-design">Guardar diseño</button>
                 <hr>
                 <div class="action-buttons">
                     <button class="add-to-cart" onclick="addToCart()">Añadir al carrito</button>

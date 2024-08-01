@@ -210,9 +210,12 @@ server.get("/stickers", (req, res) => {
   res.render("stickers", usuario);
 });
 
-server.get("/sticker", (req, res) => {
+server.get("/stickers/:producto", async (req, res) => {
   const usuario = req.session.usuario;
-  res.render("stickerProducto", usuario);
+
+  const producto = await ThreadOne.getProducto(req.params.producto);
+
+  res.render("stickerProducto", { producto, usuario });
 });
 
 server.get("/custom", (req, res) => {
@@ -233,7 +236,7 @@ server.get("/camisetaProducto", (req, res) => {
     name,
     price,
     status,
-    images: [image1, image2, image3]
+    images: [image1, image2, image3],
   };
 
   res.render("camisetaProducto", { usuario, product });
