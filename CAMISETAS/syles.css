@@ -98,8 +98,9 @@ main {
 .swiper-slide{
   width: 300px;
   height: 360px;
-  background-color: #c2beb9;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(30px);
+  background-color: rgba(195, 195, 195, 0.308);
+  border: 1px solid rgba(255, 255, 255, 0.089);
   padding: 40px;
   text-align: center;
   border-radius: 30px;
