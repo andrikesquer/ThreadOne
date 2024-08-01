@@ -226,8 +226,8 @@ server.get("/camisetas", (req, res) => {
 });
 
 server.get("/camisetaProducto", (req, res) => {
-  const { name, price, status, image1, image2, image3 } = req.query;
   const usuario = req.session.usuario;
+  const { name, price, status, image1, image2, image3 } = req.query;
 
   const product = {
     name,
