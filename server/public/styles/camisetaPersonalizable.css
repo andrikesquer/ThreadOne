@@ -16,6 +16,10 @@ header {
 
 }
 
+body{
+    background-image: url(/server/Fondo.png);
+}
+
 .header-left,
 .header-right {
   display: flex;
