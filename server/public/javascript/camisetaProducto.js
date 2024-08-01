@@ -22,39 +22,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const size = sizeMap[sizeName];
 
         if (color !== undefined && size !== undefined) {
+            const newItem = { color, size, quantity };
+
             try {
                 const response = await fetch('/cart/add', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ color, size, quantity }),
+                    body: JSON.stringify(newItem)
                 });
 
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
-
                 if (response.ok) {
-                    const data = await response.json(); // Parse response body as JSON if available
-                    console.log('Response data:', data);
-                    alert("Added to cart!");
-                } else if (response.status === 401) {
-                    alert("You are not authenticated. Please log in.");
-                } else if (response.status === 404) {
-                    alert("Product not found.");
+                    // If the server responded with "Hola mama"
+                    const message = await response.text();
+                    alert(message);
+
+                    // Optionally, update the local storage
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push(newItem);
+                    localStorage.setItem('cart', JSON.stringify(cart));
                 } else {
-                    alert("An error occurred. Please try again.");
+                    // Handle server errors
+                    alert("Failed to add to cart. Server error.");
                 }
             } catch (error) {
-                console.error('Error adding to cart:', error);
-                alert("Failed to add to cart.");
+                console.error("Error adding to cart:", error);
+                alert("Failed to add to cart. Client error.");
             }
         } else {
             alert("Invalid color or size selection.");
         }
-    });
-
-    document.querySelector(".save-favorite").addEventListener("click", async () => {
-    console.log("hola mama");
     });
 });
