@@ -170,6 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  
+  renderCart();
+});
+
   const buyButton = document.querySelector('.buy-button');
   const popup = document.getElementById('popup');
   const closePopup = document.getElementById('closePopup');
@@ -192,8 +196,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
   });
 
-  renderCart();
+  // Close the popup if the user clicks outside of it
+  window.addEventListener('click', function(event) {
+    if (event.target === popup) {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            popup.style.display = 'none';
+            // Redirect to the home page
+            window.location.href = '/';
+        }, 300);
+    }
 });
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
