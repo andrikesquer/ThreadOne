@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camiseta - ThreadOne</title>
     <link rel="icon" href="/images/LogoThreadOne.png">
-    <link rel="stylesheet" href="/default_styles/default_header/default_header.css">
     <link rel="stylesheet" href="/styles/sticker.css">
     <link rel="stylesheet" href="/styles/default_header.css">
+    <script type="text/javascript" src="/javascript/stickerProducto.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,20 +50,18 @@
     </header>
 
     <main>
+        <form id="producto">
 
-        <section class="information">
+        </form>
+        <section id="informacion" class="information">
             <section class="image-section">
                 <img src="<%= sticker.imagen %>" alt="Camiseta" class="shirt-image">
             </section>
-            <div class="product-details">
-
-                <h1><%= sticker.descripcion_sticker %></h1>
-                
+            <div id="detalles" class="product-details">
+                <h1 id="descripcion"><%= sticker.descripcion_sticker %></h1>
                 <p class="price">$MX<%= sticker.precio %></p>
-                
                 <hr>
-                
-                <div class="options">
+                <div id="opciones" class="options">
                     <label for="size"><strong>Seleccionar tamaño</strong></label>
                     <select id="size">
                         <option value="1">5 x 8 cm</option>
@@ -72,10 +70,20 @@
                     </select>
                 </div>
                 <hr>
-                <div class="action-buttons">
-                    <button class="add-to-cart" onclick="addToCart()">Añadir al carrito</button>
-                    <button class="save-favorite" onclick="addToFavorites()">Añadir a favoritos</button>
+
+                <div id="acciones" class="action-buttons">
+                    <% if ( usuario === 'undefined') { %>
+                        <button id="login" class="add-to-cart">Añadir al carrito</button>
+                        <button id="login" class="save-favorite">Añadir a favoritos</button>
+                    <% } %>
+                    <% if (usuario !== 'undefined') { %>
+                        <button id="carrito" class="add-to-cart">Añadir al carrito</button>
+                        <button id="favorito" class="save-favorite">Añadir a favoritos</button>
+                    <% } %>
                 </div>
+                
+                <span>&nbsp;</span>
+            </div>
             </div>
         </section>
     </main>
