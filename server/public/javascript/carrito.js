@@ -233,6 +233,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         });
 
+        subtotal+=370;
+
         const iva = subtotal * 0.05;
         const total = subtotal + iva;
 
