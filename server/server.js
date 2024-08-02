@@ -9,7 +9,7 @@ import mysql from "mysql2/promise";
 const connectionConfig = {
   host: "localhost",
   user: "root",
-  password: "holaaaaa",
+  password: "Santirod205",
   port: 3306,
   database: "ThreadOne",
 };
@@ -313,7 +313,7 @@ server.post("/add-to-cart", async (req, res) => {
       size,
       id_usuario,
     });
-    res.json({ message: "Producto agregado al carrito" });
+    
     console.log("Producto agregado al carrito");
   } catch (error) {
     res.status(400).send(error.message);
@@ -368,7 +368,7 @@ server.post('/favorites/add', async (req, res) => {
           "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?)",
           [favoriteData.shirtId, favoriteData.stickerId, favoriteData.color, favoriteData.size, favoriteData.quantity, favoriteData.pathToImg, favoriteData.price]
       );
-      res.send('Producto agregado a favoritos!');
+     
   } catch (error) {
       console.error('Error agregando producto a favoritos:', error);
       res.status(500).send('Error al agregar producto a favoritos');
@@ -381,7 +381,7 @@ server.delete('/favorites/delete/:id', async (req, res) => {
 
   try {
     await connection.execute('DELETE FROM pepe WHERE id = ?', [id]);
-    res.status(200).send('Producto eliminado de favoritos');
+    
   } catch (error) {
     console.error('Error eliminando producto de favoritos:', error);
     res.status(500).send('Error del servidor');
@@ -412,7 +412,7 @@ server.post("/cart/add", async (req, res) => {
       "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
       [name, color, size, quantity, path,price]
     );
-    res.send("Añadido al carrito!");
+   
   } catch (error) {
     console.error("Error añadiendo a favoritos:", error);
     res.status(500).send("Server error");

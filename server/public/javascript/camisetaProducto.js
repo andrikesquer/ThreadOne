@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (response.ok) {
-                    alert('Producto agregado a favoritos');
+                    
                 } else {
                     alert('Error al agregar producto a favoritos');
                 }

@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
   
           if (response.ok) {
-            alert('Producto agregado a favoritos');
+            
           } else {
             alert('Error al agregar producto a favoritos');
           }
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
   
           if (response.ok) {
-            alert('Producto agregado a favoritos');
+            
           } else {
             alert('Error al agregar producto a favoritos');
           }
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               const deleteResponse = await fetch(`/favorites/delete/${id}`, { method: 'DELETE' });
               if (deleteResponse.ok) {
                 event.target.parentElement.remove();
-                alert('Producto eliminado de favoritos');
+                
               } else {
                 alert('Error al eliminar producto de favoritos');
               }
