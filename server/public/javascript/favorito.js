@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           position: relative;
           top: 8vh;
           margin: 15%;
-          margin-bottom: 0;
+          margin-bottom: 0px;
           margin-top: 7vh;
           flex-wrap: wrap;
           justify-content: space-evenly;
@@ -56,10 +56,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         .information {
             background-color: white;
             padding: 2%;
-            border-radius: 20px;
+            border-radius: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 1200px;
+            margin-bottom: 20px;
         }
         h1 {
             font-family: "Cormorant", serif;
