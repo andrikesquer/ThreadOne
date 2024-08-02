@@ -141,7 +141,6 @@ header {
 
 .account-button,
 .cart-button {
-  color: #000000;
   padding: 8px;
   font-size: 1em;
   text-decoration: none;
@@ -150,6 +149,7 @@ header {
   margin-left: 10px;
   border-radius: 20px;
   transition: background-color 0.7s ease-in-out;
+  color: white;
 }
 
 .account-button{
@@ -163,6 +163,7 @@ header {
 
 .cart-button span {
   margin-right: 10px;
+  color: white;
 }
 
 .icon {

@@ -146,6 +146,6 @@ h1{
     }
 
     .product-details {
-        max-width: 100%;
-    }
+        max-width: 100%; /* Asegúrate de usar un espacio regular */
+    }
 }
