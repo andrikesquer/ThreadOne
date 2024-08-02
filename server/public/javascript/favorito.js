@@ -8,22 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
         }
-        header {
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-        }
-        .logo-button img {
-            height: 40px;
-        }
+
         .cart-button, .account-button {
             margin-left: 20px;
             display: flex;
@@ -31,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             text-decoration: none;
             color: inherit;
             font-size: 16px;
+            color: #ffffff;
         }
         .cart-button svg {
             margin-left: 8px;
