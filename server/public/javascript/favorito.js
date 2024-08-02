@@ -2,142 +2,142 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const style = document.createElement('style');
     style.textContent = `
-        body {
-            background-color: #eeeeee;
-            margin: 0;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-        header {
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-        }
-        .logo-button img {
-            height: 40px;
-        }
-        .cart-button, .account-button {
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            font-size: 16px;
-        }
-        .cart-button svg {
-            margin-left: 8px;
-        }
-        main {
-          display: flex;
-          position: relative;
-          top: 8vh;
-          margin: 15%;
-          margin-bottom: 0;
-          margin-top: 7vh;
-          flex-wrap: wrap;
-          justify-content: space-evenly;
-          font-family: "Cormorant", serif;
-        }
-        .main-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: calc(100vh - 70px);
-            padding: 20px;
-        }
-        .information {
-            background-color: white;
-            padding: 2%;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 1200px;
-        }
-        h1 {
-            font-family: "Cormorant", serif;
-            font-size: 70px;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .subtitle {
-            margin-bottom: 20px;
-            margin-top: 0;
-            font-size: 30px;
-            font-family: "Cormorant", serif;
-            text-align: center;
-        }
-        .favorites {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-        }
-        .favorite-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            position: relative;
-            transition: transform 0.2s;
-            padding: 4%;
-        }
-        .favorite-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        .favorite-item h2 {
-            font-size: 1.2em;
-            margin: 15px 0;
-            color: #333;
-        }
-        .price {
-            font-size: 1.1em;
-            color: #000000;
-            margin: 10px 0;
-        }
-        .availability {
-            font-size: 0.9em;
-            color: green;
-            text-align: center;
-        }
-        .remove-favorite {
-            background-color: transparent;
-            border: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .remove-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 5px;
-            transition: transform .5s ease-in-out;
-        }
-        .remove-favorite:hover .remove-icon {
-            transform: scale(1.5);
-        }
-        @media (max-width: 768px) {
-            .favorites {
-                grid-template-columns: 1fr;
-            }
-        }
+    body {
+      background-color: #eeeeee;
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+  }
+  header {
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+  }
+  .header-left, .header-right {
+      display: flex;
+      align-items: center;
+  }
+  .logo-button img {
+      height: 40px;
+  }
+  .cart-button, .account-button {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+  }
+  .cart-button svg {
+      margin-left: 8px;
+  }
+  main {
+      display: flex;
+      position: relative;
+      top: 8vh;
+      margin: 15%;
+      margin-bottom: 15px;
+      margin-top: 7vh;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      font-family: "Cormorant", serif;
+  }
+  .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 70px);
+      padding: 20px;
+  }
+  .information {
+      background-color: white;
+      padding: 2%;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 1200px;
+  }
+  h1 {
+      font-family: "Cormorant", serif;
+      font-size: 70px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+  }
+  .subtitle {
+      margin-bottom: 20px;
+      margin-top: 0;
+      font-size: 30px;
+      font-family: "Cormorant", serif;
+      text-align: center;
+  }
+  .favorites {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+  }
+  .favorite-item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s;
+      padding: 4%;
+  }
+  .favorite-item img {
+      width: 50%;
+      height: auto;
+      object-fit: cover;
+  }
+  .favorite-item h2 {
+      font-size: 1.2em;
+      margin: 15px 0;
+      color: #333;
+  }
+  .price {
+      font-size: 1.1em;
+      color: #000000;
+      margin: 10px 0;
+  }
+  .availability {
+      font-size: 0.9em;
+      color: green;
+      text-align: center;
+  }
+  .remove-favorite {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+  }
+  .remove-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      transition: transform .5s ease-in-out;
+  }
+  .remove-favorite:hover .remove-icon {
+      transform: scale(1.5);
+  }
+  @media (max-width: 768px) {
+      .favorites {
+          grid-template-columns: 1fr;
+      }
+  }
     `;
     document.head.appendChild(style);
     // Función para manejar el click en "Añadir a favoritos" para camisetas
