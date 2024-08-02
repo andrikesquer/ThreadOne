@@ -264,6 +264,16 @@ server.get("/carrito", (req, res) => {
   res.render("carrito", usuario);
 });
 
+server.get("/cart/items", async (req, res) => {
+  try {
+    const [rows] = await connection.execute("SELECT * FROM juan");
+    res.json(rows);
+  } catch (error) {
+    console.error("Error retrieving items from the database:", error);
+    res.status(500).send("Server error");
+  }
+});
+
 server.get("/favoritos", (req, res) => {
   const usuario = req.session.usuario;
   res.render("favoritos", usuario);
@@ -275,22 +285,32 @@ server.get("/compra", (req, res) => {
 });
 
 server.post("/cart/add", async (req, res) => {
-  const { color, size, quantity } = req.body;
-
-  // Generate a shirtId
-  const shirtId = `shirt-${color}-${size}`;
+  const {name, color, size, quantity, path, price } = req.body;
 
   try {
     await connection.execute(
-      "INSERT INTO juan (shirtId, color, size, quantity) VALUES (?, ?, ?, ?)",
-      [shirtId, color, size, quantity]
+      "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
+      [name, color, size, quantity, path,price]
     );
-    res.send("Hola mama");
+    res.send("Añadido a favoritos!");
   } catch (error) {
-    console.error("Error adding to juan table:", error);
+    console.error("Error añadiendo a favoritos:", error);
     res.status(500).send("Server error");
   }
 });
+
+server.delete("/cart/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await connection.execute("DELETE FROM juan WHERE id = ?", [id]);
+    res.status(200).send("Product deleted");
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    res.status(500).send("Server error");
+  }
+});
+
 
 server.use((req, res) => {
   res.status(404).send("Not found");
