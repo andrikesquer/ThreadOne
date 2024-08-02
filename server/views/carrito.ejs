@@ -48,9 +48,30 @@
             </section>
             <section>
                 <div class="cart-container">
-                        <div class="col-span-2 space-y-4" id="cart">
+                    <div class="col-span-2 space-y-4" id="cart">
                         <!-- Los productos se añadirán aquí dinámicamente -->
+                    </div>
+                    <div class="product">
+                        <div class="product-info">
+                            <img src="/images/ajedrez.png" alt="Contexto">
+                            <div>
+                                <h2>Contexto</h2>
+                                <div class="flex items-center space-x-2 mt-2">
+                                    <div class="quantity-display">
+                                        Quantity: 1
+                                    </div>
+                                    <div class="size-display">
+                                        Size: M
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="product-actions">
+                            <span>$370</span>
+                            <button onclick="removeFromCart(3)">&times;</button>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </section>
@@ -63,11 +84,11 @@
                 <div class="summary-total">
                     
                         <span>  TOTAL</span>
-                        <span id="subtotal">$0</span>
+                        <span id="subtotal">$</span>
                     </div>
                     
                 <a href="compra">
-                    <button class="buy-button">Comprar Ahora</button>
+                    <button class="buy-button">Comprar ahora</button>
                 </a>
         </section>
     </main>

@@ -290,7 +290,8 @@ main {
   }
   
   .product-info > div{
-    border-right: 1px solid #e2e8f0
+    border-right: 1px solid #e2e8f0;
+    padding-right: 20px;
   }
   
   .product-actions{
