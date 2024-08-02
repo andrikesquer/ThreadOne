@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos - ThreadOne</title>
     <link rel="icon" href="/images/LogoThreadOne.png">
-    <link rel="stylesheet" href="/styles/favoritos.css">
+    <link rel="stylesheet" href="/server/public/styles/favoritos.css">
     <link rel="stylesheet" href="/styles/default_header.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <script src="/javascript/favorito.js"></script>
+    <script src="/javascript/favorito.js" defer></script>
 </head>
 <body>
     <header>
@@ -30,7 +30,7 @@
             </a>
             <% if (typeof email_usuario === 'undefined') { %>
                 <a href="/usuario" class="account-button">
-                    <span id="greeting">Hey, tú %></span>
+                    <span id="greeting">Hey, tú</span>
                 </a>
             <% } %>
             <% if (typeof email_usuario !== 'undefined') { %>
@@ -41,45 +41,11 @@
         </div>
     </header>
     <main>
-        
         <section class="information">
-            
             <h1>Favoritos</h1>
-            
             <p class="subtitle">Tus productos favoritos están aquí!</p>
-            
-            <section class="favorites">
-                <article class="favorite-item">
-                    <div id="favorites-container"></div>
-
-                </article>
-                <article class="favorite-item">
-                    <a href="StickerLinux.html">
-                        <div class="image-container">
-                            <img src="/images/stickers/Linux.png" alt="Sticker" class="product-image">
-                        </div>
-                        <h2>Sticker Linux</h2>
-                        <p class="price">$MX20.00</p>
-                        <p class="availability">Disponible</p>
-                    </a>
-                    <button class="remove-favorite" aria-label="Eliminar producto de favoritos">
-                        <img src="/images/IconoEliminar.webp" alt="Eliminar" class="remove-icon">
-                    </button>
-                </article>
-                <article class="favorite-item">
-                    <a href="StickerDeveloper.html">
-                        <div class="image-container">
-                            <img src="/images/stickers/Developer.png" alt="Sticker" class="product-image">
-                        </div>
-                        <h2>Sticker Developer</h2>
-                        <p class="price">$MX20.00</p>
-                        <p class="availability">Disponible</p>
-                    </a>
-                    <button class="remove-favorite" aria-label="Eliminar producto de favoritos">
-                        <img src="/images/IconoEliminar.webp" alt="Eliminar" class="remove-icon">
-                    </button>
-                </article>
-                
+            <section class="favorites" id="favorites-container">
+                <!-- Los productos favoritos se añadirán aquí dinámicamente -->
             </section>
         </section>
     </main>

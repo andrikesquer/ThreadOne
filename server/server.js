@@ -9,7 +9,7 @@ import mysql from "mysql2/promise";
 const connectionConfig = {
   host: "localhost",
   user: "root",
-  password: "Santirod205",
+  password: "holaaaaa",
   port: 3306,
   database: "ThreadOne",
 };
