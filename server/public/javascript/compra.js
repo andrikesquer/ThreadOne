@@ -45,28 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-  const products = [
-    {
-      id: 1,
-      name: "Br",
-      price: 270,
-      available: true,
-      quantity: 1,
-      image: "/images/CamisetasImagenes/Br/br negra.png",
-      colors: ["Negro", "Gris", "Blanco", "Rojo"],
-      sizes: ["XS", "S", "M", "L"],
-    },
-    {
-      id: 2,
-      name: "Cerebro",
-      price: 200,
-      available: true,
-      quantity: 1,
-      image: "/images/CamisetasImagenes/cerebro/cerebro gris.png",
-      colors: ["Negro", "Gris", "Blanco", "Rojo"],
-      sizes: ["XS", "S", "M", "L"],
-    },
-  ];
+  
 
   const cartElement = document.getElementById("cart");
   const subtotalElement = document.getElementById("subtotal");
