@@ -173,20 +173,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         "blanco": 1,
         "negro": 2,
         "gris": 3
-    };
+      };
 
-    const sizeMap = {
+      const sizeMap = {
         "S": 1,
         "M": 2,
         "L": 3,
         "XL": 4,
         "XXL": 5
-    };
+      };
 
-    
-    const reverseColorMap = Object.fromEntries(Object.entries(colorMap).map(([key, value]) => [value, key]));
-    const reverseSizeMap = Object.fromEntries(Object.entries(sizeMap).map(([key, value]) => [value, key]));
-
+      // Create reverse maps
+      const reverseColorMap = Object.fromEntries(Object.entries(colorMap).map(([key, value]) => [value, key]));
+      const reverseSizeMap = Object.fromEntries(Object.entries(sizeMap).map(([key, value]) => [value, key]));
 
       function getImageUrl(pathToImg) {
         return pathToImg;
@@ -205,27 +204,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             const sizeName = reverseSizeMap[product.size];
 
             productElement.innerHTML = `
-            <div class="product-info">
+              <div class="product-info">
                 <img src="${getImageUrl(product.pathToImg)}" alt="Product Image">
                 <div>
-                    <h2>${product.shirtId}</h2>
-                    <div class="flex items-center space-x-2 mt-2">
-                        <input type="number" value="${product.quantity}" min="1" class="quantity-input" onchange="updateQuantity(${product.id}, this.value)">
-                        <div class="color-display">
-                            Color: ${colorName ? colorName : 'No color selected'}
-                        </div>
-                        <div class="size-display">
-                            Size: ${sizeName ? sizeName : 'No size selected'}
-                        </div>
+                  <h2>${product.shirtId}</h2>
+                  <div class="flex items-center space-x-2 mt-2">
+                    <div class="quantity-display">
+                      Quantity: ${product.quantity}
                     </div>
+                    <div class="color-display">
+                      Color: ${colorName ? colorName : 'No color selected'}
+                    </div>
+                    <div class="size-display">
+                      Size: ${sizeName ? sizeName : 'No size selected'}
+                    </div>
+                  </div>
                 </div>
-            </div>
-            <div class="product-actions">
+              </div>
+              <div class="product-actions">
                 <span>$${product.price}</span>
                 <button onclick="removeFromCart(${product.id})">&times;</button>
-            </div>
-        `;
-          
+              </div>
+            `;
 
             cartElement.appendChild(productElement);
 
@@ -266,13 +266,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       };
 
-      // window.removeFromCart = (id) => {
-      //   const product = products.find((p) => p.id === id);
-      //   if (product) {
-      //     product.quantity = 0;
-      //     renderCart();
-      //   }
-      // };
+    // window.removeFromCart = (id) => {
+    //     const product = products.find((p) => p.id === id);
+    //     if (product) {
+    //       product.quantity = 0;
+    //       renderCart();
+    //     }
+    //   };
 
       window.removeFromCart = async (id) => {
         const product = products.find((p) => p.id === id);
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.error('Error deleting product from cart:', error);
             }
         }
-    };
+      };
 
       renderCart();
     } else {
@@ -301,4 +301,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error('Error fetching cart items:', error);
   }
 });
-
