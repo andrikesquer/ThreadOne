@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const paymentMethods = document.querySelectorAll(
     'input[name="payment-method"]'
   );
+  
   const paymentDetails = document.querySelectorAll(".payment-details");
   const paymentOptions = document.querySelectorAll(".payment-option");
 
@@ -169,9 +170,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const buyButton = document.querySelector('.buy-button');
+  const popup = document.getElementById('popup');
+  const closePopup = document.getElementById('closePopup');
+
+  buyButton.addEventListener('click', function() {
+      popup.style.display = 'block';
+      // Use setTimeout to trigger the transition
+      setTimeout(() => {
+          popup.classList.add('show');
+      }, 10);
+  });
+
+  closePopup.addEventListener('click', function() {
+      popup.classList.remove('show');
+      // Wait for the transition to finish before hiding the popup
+      setTimeout(() => {
+          popup.style.display = 'none';
+          // Redirect to the home page
+          window.location.href = '/';
+      }, 300);
+  });
+
   renderCart();
 });
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -315,4 +337,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error('Error fetching cart items:', error);
   }
+
+  
 });
