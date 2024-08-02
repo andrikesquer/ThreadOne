@@ -292,7 +292,7 @@ server.post("/cart/add", async (req, res) => {
       "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
       [name, color, size, quantity, path,price]
     );
-    res.send("Añadido a favoritos!");
+    res.send("Añadido al carrito!");
   } catch (error) {
     console.error("Error añadiendo a favoritos:", error);
     res.status(500).send("Server error");
