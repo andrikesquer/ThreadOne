@@ -9,7 +9,7 @@ import mysql from "mysql2/promise";
 const connectionConfig = {
   host: "localhost",
   user: "root",
-  password: "HCHHPRa4",
+  password: "Santirod205",
   port: 3306,
   database: "ThreadOne",
 };
@@ -384,6 +384,16 @@ server.delete('/favorites/delete/:id', async (req, res) => {
     res.status(200).send('Producto eliminado de favoritos');
   } catch (error) {
     console.error('Error eliminando producto de favoritos:', error);
+    res.status(500).send('Error del servidor');
+  }
+});
+
+server.get('/favorites', async (req, res) => {
+  try {
+    const [rows] = await connection.execute('SELECT * FROM pepe');
+    res.json(rows);
+  } catch (error) {
+    console.error('Error obteniendo productos favoritos:', error);
     res.status(500).send('Error del servidor');
   }
 });
