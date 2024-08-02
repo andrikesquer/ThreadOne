@@ -1350,3 +1350,14 @@ call p_actualizar_cantidad_producto(3, 1234, 2);
   pathToImg varchar(255),
   price int not null
 );
+
+ CREATE TABLE pepe (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  shirtId VARCHAR(255),
+  stickerId VARCHAR(255),
+  color INT ,
+  size INT ,
+  quantity INT,
+  pathToImg varchar(255),
+  price int not null
+);

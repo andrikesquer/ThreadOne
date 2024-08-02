@@ -43,16 +43,19 @@
         <section class="information">
             <div class="image-section">
                 <div class="product-image">
-                    <img src="/images/WhatsApp Image 2024-08-01 at 23.27.18_2c1db85e.jpg" alt="">
-                <div class="file-drop-area">
-                    <p>Arrastra tu foto favorita aquí</p>
-                    <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)">
+                    <div class="image-cropper">
+                    <img src="/images/Basic Shirt.H01.2k.png" alt="Camiseta">
+                    </div>
+                    <div class="file-drop-area">
+                        <p>Arrastra tu foto favorita aquí</p>
+                        <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)">
+                    </div>
                 </div>
             </div>
             <div class="product-details">
                 <h1>Camiseta personalizada</h1>
                 <p class="price">$400.00</p>
-                <hr>
+
                 <div class="options">
                     <label for="size"><strong>Seleccionar talla</strong></label>
                     <select id="size">
@@ -60,7 +63,7 @@
                         <option value="M">M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
-                        <option value="XL">XXL</option>
+                        <option value="XXL">XXL</option>
                     </select>
                 </div>
                 <hr>
