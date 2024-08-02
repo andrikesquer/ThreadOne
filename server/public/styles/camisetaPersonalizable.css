@@ -5,11 +5,11 @@ body {
     background-image: url("/images/abstract-dark-3d-rendered-geometric-600nw-217413286.webp");
     background-size: cover;
     background-position: center;
+    font-family: "Cormorant", serif;
 }
 
 /* Estilo del header con fondo borroso */
 header {
-
     background-size: cover;
     position: fixed;
     top: 0;
@@ -44,13 +44,13 @@ header {
     width: 45px;
 }
 
-.logo-button{
+.logo-button {
     transition: transform .4s ease-in-out;
 }
 
 .account-button,
 .cart-button {
-    color: #000000;
+    color: #ffffff;
     padding: 8px;
     font-size: 1em;
     text-decoration: none;
@@ -61,7 +61,7 @@ header {
     transition: background-color 0.7s ease-in-out;
 }
 
-.account-button{
+.account-button {
     background-color: transparent;
     color: white;
 }
@@ -80,22 +80,22 @@ header {
     border-radius: 50%;
 }
 
-.logo-button:hover{
+.logo-button:hover {
     transform: scale(1.2);
 }
 
-.account-button:hover{
+.account-button:hover {
     background-color: rgba(255, 255, 255, 0.35);
 }
 
-.cart-button:hover{
+.cart-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
     display: flex;
     position: relative;
-    top: 8vh;
+    top: 7vh;
     margin: 15%;
     margin-bottom: 0;
     margin-top: 7vh;
@@ -105,13 +105,14 @@ main {
 }
 
 .information {
+    background-color: rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 5vh;
-    padding: 3%;
+    margin: 2vh;
+    padding: 2%;
     border-radius: 20px;
-    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.728);
     width: 100%;
     backdrop-filter: blur(5px);
 }
@@ -125,44 +126,90 @@ main {
 }
 
 .product-image {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
 }
 
 .product-image img {
+    width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
+    height: auto; /* Mantén la relación de aspecto */
+    display: block;
     border-radius: 20px;
     object-fit: cover;
-    max-height: 50vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+
 }
 
+.image-cropper {
+    width: 55vh; /* Ancho deseado */
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Forma del recorte */
+}
+
+.image-cropper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+
 .file-drop-area {
-    margin-top: 3vh;
+    margin-top: 20px; /* Asegúrate de que haya suficiente espacio */
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
+    background-color: #f9f9f900;
+    font-family: "Cormorant", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
+#custom-file-button {
+    background-color: #4caf4f00; /* Cambia este color según tu preferencia */
+    color: rgb(255, 255, 255);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: "Cormorant", serif;
+}
+
+#custom-file-button:hover {
+    background-color: #611e1b; /* Cambia este color según tu preferencia para el efecto hover */
+}
+
 
 .product-details {
     flex: 2;
     max-width: 500px;
-    font-family: "Cormorant", serif;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .product-details h1 {
     font-size: 1.8em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
+    font-family: "Cormorant", serif;
 }
 
 .price {
     font-size: 1.5em;
-    color: #000000;
+    color: #ffffff;
     margin: 10px 0;
+    font-family: "Cormorant", serif;
 }
 
 .options {
@@ -171,12 +218,12 @@ main {
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: "Cormorant", serif;
 }
+
 
 .options label {
     font-size: 1em;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -185,18 +232,20 @@ main {
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ddd;
+    font-family: "Cormorant", serif;
+    background-color: rgba(255, 255, 255, 0.299);
+    color: #ffffff;
 }
 
 p {
     margin-top: 5px;
     font-size: 20px;
-    font-family: "Cormorant", serif;
     margin-bottom: 5px;
 }
 
 hr {
     border: 1px solid #ddd;
-    margin: 0;
+    margin: 20px;
 }
 
 h1 {
@@ -206,6 +255,7 @@ h1 {
 .save-design,
 .add-to-cart,
 .save-favorite {
+    font-family: "Cormorant", serif;
     padding: 10px;
     background-color: #790b0b;
     color: white;
@@ -228,7 +278,9 @@ h1 {
 
 .add-to-cart {
     background-color: #790b0b;
+    font-family: "Cormorant", serif;
 }
+
 
 .save-favorite {
     background-color: #790b0b;
@@ -255,7 +307,7 @@ h1 {
 .file-drop-area p {
     margin: 0;
     font-size: 1em;
-    color: #333;
+    color: #ffffff;
     display: block;
 }
 
@@ -268,13 +320,6 @@ h1 {
     .product-details {
         max-width: 100%;
     }
-}
-
-.product-image {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
 }
 
 #uploaded-image {
