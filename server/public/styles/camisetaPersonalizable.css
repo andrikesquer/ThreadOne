@@ -1,3 +1,14 @@
+/* Aplica el fondo a toda la página */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/abstract-dark-3d-rendered-geometric-600nw-217413286.webp");
+    background-size: cover;
+    background-position: center;
+    font-family: "Cormorant", serif;
+}
+
+/* Estilo del header con fondo borroso */
 header {
     background-size: cover;
     position: fixed;
@@ -10,73 +21,81 @@ header {
     display: flex;
     align-items: center;
     font-family: "Cormorant", serif;
-    background-image: url("/images/FondoHeader.jpg");
     box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-
+    backdrop-filter: blur(5px); /* Aplica el efecto de desenfoque */
 }
 
+/* Asegúrate de que el header se muestre sobre otros elementos */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Otros estilos permanecen igual */
 .header-left,
 .header-right {
-  display: flex;
+    display: flex;
 }
 
 .logo {
-  width: 45px;
+    width: 45px;
 }
 
-.logo-button{
-  transition: transform .4s ease-in-out;
+.logo-button {
+    transition: transform .4s ease-in-out;
 }
 
 .account-button,
 .cart-button {
-  color: #000000;
-  padding: 8px;
-  font-size: 1em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  border-radius: 20px;
-  transition: background-color 0.7s ease-in-out;
+    color: #ffffff;
+    padding: 8px;
+    font-size: 1em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 20px;
+    transition: background-color 0.7s ease-in-out;
 }
 
-.account-button{
-  background-color: transparent;
-  color: white;
+.account-button {
+    background-color: transparent;
+    color: white;
 }
 
 .cart-button {
-  background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .cart-button span {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
-.logo-button:hover{
-  transform: scale(1.2);
+.logo-button:hover {
+    transform: scale(1.2);
 }
 
-.account-button:hover{
-  background-color: rgba(255, 255, 255, 0.35);
+.account-button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
 }
 
-.cart-button:hover{
-  background-color: rgba(255, 255, 255, 0.1);
+.cart-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
     display: flex;
     position: relative;
-    top: 8vh;
+    top: 7vh;
     margin: 15%;
     margin-bottom: 0;
     margin-top: 7vh;
@@ -86,64 +105,109 @@ main {
 }
 
 .information {
+    background-color: rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 5vh;
-    background-color: white;
-    padding: 3%;
+    margin: 2vh;
+    padding: 2%;
     border-radius: 20px;
-    box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.728);
     width: 100%;
+    backdrop-filter: blur(5px);
 }
 
 .image-section {
     flex: 1;
     margin: 20px;
     display: flex;
-    flex-direction: column; /* Cambiar la dirección del contenido a columna */
-    align-items: center; /* Asegura que el contenido esté centrado horizontalmente */
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-image {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
 }
 
 .product-image img {
+    width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
+    height: auto; /* Mantén la relación de aspecto */
+    display: block;
     border-radius: 20px;
     object-fit: cover;
-    max-height: 50vh; /* Asegúrate de que la imagen no exceda el contenedor */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+
 }
 
+.image-cropper {
+    width: 55vh; /* Ancho deseado */
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Forma del recorte */
+}
+
+.image-cropper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+
 .file-drop-area {
-    margin-top: 3vh; /* Agrega un margen superior de 10vh */
+    margin-top: 20px; /* Asegúrate de que haya suficiente espacio */
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
+    background-color: #f9f9f900;
+    font-family: "Cormorant", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.product-details {
-    flex: 2; /* La sección de detalles del producto ocupará más espacio */
-    max-width: 500px;
+#custom-file-button {
+    background-color: #4caf4f00; /* Cambia este color según tu preferencia */
+    color: rgb(255, 255, 255);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
     font-family: "Cormorant", serif;
+}
+
+#custom-file-button:hover {
+    background-color: #611e1b; /* Cambia este color según tu preferencia para el efecto hover */
+}
+
+
+.product-details {
+    flex: 2;
+    max-width: 500px;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .product-details h1 {
     font-size: 1.8em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
     font-family: "Cormorant", serif;
 }
 
 .price {
     font-size: 1.5em;
-    color: #000000;
+    color: #ffffff;
     margin: 10px 0;
     font-family: "Cormorant", serif;
 }
@@ -154,14 +218,13 @@ main {
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: "Cormorant", serif;
 }
+
 
 .options label {
     font-size: 1em;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
-    font-family: "Cormorant", serif;
 }
 
 .options select {
@@ -170,31 +233,33 @@ main {
     border-radius: 5px;
     border: 1px solid #ddd;
     font-family: "Cormorant", serif;
+    background-color: rgba(255, 255, 255, 0.299);
+    color: #ffffff;
 }
 
 p {
     margin-top: 5px;
     font-size: 20px;
-    font-family: "Cormorant", serif;
     margin-bottom: 5px;
 }
 
 hr {
     border: 1px solid #ddd;
-    margin: 0;
+    margin: 20px;
 }
 
-h1{
+h1 {
     margin-top: 0;
 }
 
 .save-design,
 .add-to-cart,
 .save-favorite {
+    font-family: "Cormorant", serif;
     padding: 10px;
-    background-color: #790b0b; /* Color de fondo para los botones */
+    background-color: #790b0b;
     color: white;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     border-width: 0;
     font-size: 1.1em;
     cursor: pointer;
@@ -202,29 +267,30 @@ h1{
     box-shadow: none;
     width: 100%;
     transition: background-color 0.7s, transform 0.7s;
-    font-family: "Cormorant", serif;
-    text-align: center; /* Centra el texto */
+    text-align: center;
     margin-top: 10px;
 }
 
 .save-design {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
     margin-bottom: 10px;
 }
 
 .add-to-cart {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
+    font-family: "Cormorant", serif;
 }
 
+
 .save-favorite {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
 }
 
 .save-design:hover,
 .add-to-cart:hover,
 .save-favorite:hover {
-    background-color: rgb(0, 0, 0); /* Color de fondo al pasar el ratón */
-    transform: scale(1.05); /* Escala ligeramente el botón */
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -241,11 +307,9 @@ h1{
 .file-drop-area p {
     margin: 0;
     font-size: 1em;
-    color: #333;
+    color: #ffffff;
     display: block;
-    font-family: "Cormorant", serif;
 }
-
 
 @media (max-width: 768px) {
     .customization {
@@ -257,17 +321,11 @@ h1{
         max-width: 100%;
     }
 }
-.product-image {
-    position: relative;
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde del contenedor */
-    width: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
-    height: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
-}
 
 #uploaded-image {
-    display: block; /* Elimina el espacio debajo de la imagen */
-    margin: 0; /* Elimina el margen por defecto */
-    padding: 0; /* Elimina el relleno por defecto */
-    border: none; /* Elimina cualquier borde */
-    box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total */
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
 }
