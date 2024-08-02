@@ -1,48 +1,53 @@
 const $ = (el) => document.querySelector(el);
 
-const carrito = $("#carrito");
-const login = $("#login");
+document.querySelector(".add-to-cart").addEventListener("click", async () => {
+  const colorName = document.getElementById("color").value;
+  const sizeName = document.getElementById("size").value;
+  const price = parseFloat(document.getElementById("price").textContent.replace('$',''));
+  const name = document.getElementById("nombre").textContent;
+  const quantity = 1;
 
-const detallesSpan = $("#detalles span");
+  const imageUrl = document.getElementById("shirt-image").src;
+  const url = new URL(imageUrl);
+  const path = url.pathname;
 
-carrito?.addEventListener("click", async (e) => {
-  e.preventDefault();
+  // const shirtId = 'shirt_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
 
-  const descripcion = $("#descripcion").innerText;
-  const size = $("#size").value;
+  const color = colorMap[colorName];
+  const size = sizeMap[sizeName];
+  
+  if (color !== undefined && size !== undefined) {
+      const newItem = { name, color, size, quantity, path, price };
 
-  try {
-    const res = await fetch("/add-to-cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ descripcion, size }),
-    });
+      try {
+          const response = await fetch('/cart/add', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(newItem)
+          });
 
-    if (res.ok) {
-      detallesSpan.innerText = "Producto agregado al carrito";
-      detallesSpan.style.color = "green";
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    } else {
-      detallesSpan.innerText = "Error al agregar el producto al carrito";
-      detallesSpan.style.color = "black";
-    }
-  } catch (error) {
-    console.error("Error al agregar producto al carrito:", error);
+          if (response.ok) {
+              // If the server responded with "Hola mama"
+              const message = await response.text();
+              alert(message);
+              console.log(imageUrl);
+              // Optionally, update the local storage
+              let cart = JSON.parse(localStorage.getItem('cart')) || [];
+              cart.push(newItem);
+              localStorage.setItem('cart', JSON.stringify(cart));
+              window.location.href="/camisetas"
+          } else {
+              // Handle server errors
+              alert("Failed to add to cart. Server error.");
+          }
+      } catch (error) {
+          console.error("Error adding to cart:", error);
+          alert("Failed to add to cart. Client error.");
+      }
+  } else {
+      alert("Invalid color or size selection.");
   }
 });
 
-login?.addEventListener("click", async (e) => {
-  e.preventDefault();
-
-  detallesSpan.innerText =
-    "Debe iniciar sesión para agregar productos al carrito";
-  detallesSpan.style.color = "black";
-
-  setTimeout(() => {
-    window.location.href = "/login";
-  }, 1000);
-});

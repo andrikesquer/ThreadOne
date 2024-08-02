@@ -1,4 +1,15 @@
+/* Aplica el fondo a toda la página */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/abstract-dark-3d-rendered-geometric-600nw-217413286.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilo del header con fondo borroso */
 header {
+
     background-size: cover;
     position: fixed;
     top: 0;
@@ -10,67 +21,76 @@ header {
     display: flex;
     align-items: center;
     font-family: "Cormorant", serif;
-    background-image: url("/images/FondoHeader.jpg");
     box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-
+    backdrop-filter: blur(5px); /* Aplica el efecto de desenfoque */
 }
 
+/* Asegúrate de que el header se muestre sobre otros elementos */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Otros estilos permanecen igual */
 .header-left,
 .header-right {
-  display: flex;
+    display: flex;
 }
 
 .logo {
-  width: 45px;
+    width: 45px;
 }
 
 .logo-button{
-  transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
 }
 
 .account-button,
 .cart-button {
-  color: #000000;
-  padding: 8px;
-  font-size: 1em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  border-radius: 20px;
-  transition: background-color 0.7s ease-in-out;
+    color: #000000;
+    padding: 8px;
+    font-size: 1em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 20px;
+    transition: background-color 0.7s ease-in-out;
 }
 
 .account-button{
-  background-color: transparent;
-  color: white;
+    background-color: transparent;
+    color: white;
 }
 
 .cart-button {
-  background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .cart-button span {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
 .logo-button:hover{
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .account-button:hover{
-  background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.35);
 }
 
 .cart-button:hover{
-  background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
@@ -90,19 +110,19 @@ main {
     flex-direction: row;
     justify-content: flex-start;
     margin: 5vh;
-    background-color: white;
     padding: 3%;
     border-radius: 20px;
     box-shadow: 20px 20px 70px rgba(0, 0, 0, 0.5);
     width: 100%;
+    backdrop-filter: blur(5px);
 }
 
 .image-section {
     flex: 1;
     margin: 20px;
     display: flex;
-    flex-direction: column; /* Cambiar la dirección del contenido a columna */
-    align-items: center; /* Asegura que el contenido esté centrado horizontalmente */
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-image {
@@ -113,13 +133,13 @@ main {
 .product-image img {
     border-radius: 20px;
     object-fit: cover;
-    max-height: 50vh; /* Asegúrate de que la imagen no exceda el contenedor */
+    max-height: 50vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
 }
 
 .file-drop-area {
-    margin-top: 3vh; /* Agrega un margen superior de 10vh */
+    margin-top: 3vh;
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
@@ -128,7 +148,7 @@ main {
 }
 
 .product-details {
-    flex: 2; /* La sección de detalles del producto ocupará más espacio */
+    flex: 2;
     max-width: 500px;
     font-family: "Cormorant", serif;
     margin: 20px;
@@ -138,14 +158,12 @@ main {
     font-size: 1.8em;
     color: #333;
     margin-bottom: 10px;
-    font-family: "Cormorant", serif;
 }
 
 .price {
     font-size: 1.5em;
     color: #000000;
     margin: 10px 0;
-    font-family: "Cormorant", serif;
 }
 
 .options {
@@ -161,7 +179,6 @@ main {
     font-size: 1em;
     color: #333;
     font-weight: bold;
-    font-family: "Cormorant", serif;
 }
 
 .options select {
@@ -169,7 +186,6 @@ main {
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ddd;
-    font-family: "Cormorant", serif;
 }
 
 p {
@@ -184,7 +200,7 @@ hr {
     margin: 0;
 }
 
-h1{
+h1 {
     margin-top: 0;
 }
 
@@ -192,9 +208,9 @@ h1{
 .add-to-cart,
 .save-favorite {
     padding: 10px;
-    background-color: #790b0b; /* Color de fondo para los botones */
+    background-color: #790b0b;
     color: white;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     border-width: 0;
     font-size: 1.1em;
     cursor: pointer;
@@ -202,29 +218,28 @@ h1{
     box-shadow: none;
     width: 100%;
     transition: background-color 0.7s, transform 0.7s;
-    font-family: "Cormorant", serif;
-    text-align: center; /* Centra el texto */
+    text-align: center;
     margin-top: 10px;
 }
 
 .save-design {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
     margin-bottom: 10px;
 }
 
 .add-to-cart {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
 }
 
 .save-favorite {
-    background-color: #790b0b; /* Color de fondo específico para este botón */
+    background-color: #790b0b;
 }
 
 .save-design:hover,
 .add-to-cart:hover,
 .save-favorite:hover {
-    background-color: rgb(0, 0, 0); /* Color de fondo al pasar el ratón */
-    transform: scale(1.05); /* Escala ligeramente el botón */
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -243,9 +258,7 @@ h1{
     font-size: 1em;
     color: #333;
     display: block;
-    font-family: "Cormorant", serif;
 }
-
 
 @media (max-width: 768px) {
     .customization {
@@ -257,17 +270,18 @@ h1{
         max-width: 100%;
     }
 }
+
 .product-image {
     position: relative;
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde del contenedor */
-    width: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
-    height: 100%; /* Asegúrate de que el contenedor tenga un tamaño adecuado */
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 #uploaded-image {
-    display: block; /* Elimina el espacio debajo de la imagen */
-    margin: 0; /* Elimina el margen por defecto */
-    padding: 0; /* Elimina el relleno por defecto */
-    border: none; /* Elimina cualquier borde */
-    box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total */
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
 }
