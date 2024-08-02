@@ -1341,10 +1341,12 @@ delimiter ;
 call p_actualizar_cantidad_producto(3, 1234, 2);
 -- select * from autoria_carrito_detalles;
 
-CREATE TABLE juan (
+ CREATE TABLE juan (
   id INT AUTO_INCREMENT PRIMARY KEY,
   shirtId VARCHAR(255) NOT NULL,
   color INT NOT NULL,
   size INT NOT NULL,
-  quantity INT NOT NULL
+  quantity INT NOT NULL,
+  pathToImg varchar(255),
+  price int not null
 );
