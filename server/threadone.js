@@ -158,6 +158,46 @@ export class ThreadOne {
       email_usuario,
     ]);
   }
+
+  static async addToCart({ descripcion, size, id_usuario }) {
+    const [results] = await connection.execute(
+      `SELECT productos.*
+       FROM productos
+       JOIN stickers ON productos.fk_sticker = stickers.id_sticker
+       WHERE stickers.descripcion_sticker = ? AND stickers.fk_tamano_sticker = ?`,
+      [descripcion, size]
+    );
+
+    if (results.length === 0) {
+      throw new Error("Producto no encontrado");
+    }
+
+    const id_producto = results[0].id_producto;
+
+    const [results2] = await connection.execute(
+      "SELECT * FROM carrito_compras WHERE fk_usuario = ?",
+      [id_usuario]
+    );
+
+    if (results2.length === 0) {
+      await connection.execute(
+        "INSERT INTO carrito_compras (fk_usuario) VALUES (?)",
+        [id_usuario]
+      );
+    }
+
+    const [results3] = await connection.execute(
+      "SELECT id_carrito FROM carrito_compras WHERE fk_usuario = ?",
+      [id_usuario]
+    );
+
+    const id_carrito = results3[0].id_carrito;
+
+    await connection.execute(
+      "INSERT INTO carrito_compra_detalles (fk_carrito, fk_producto, cantidad) VALUES (?, ?, ?)",
+      [id_carrito, id_producto, 1]
+    );
+  }
 }
 
 class Validation {

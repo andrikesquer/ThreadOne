@@ -215,7 +215,6 @@ server.get("/stickers/:producto", async (req, res) => {
   const { producto } = req.params;
   const precio = req.query.precio;
   const imagen = req.query.imagen;
-  console.log(req);
   console.log(req.params);
   const sticker = {
     descripcion_sticker: producto,
@@ -267,6 +266,29 @@ server.get("/camisetaProducto", (req, res) => {
 server.get("/carrito", (req, res) => {
   const usuario = req.session.usuario;
   res.render("carrito", usuario);
+});
+
+server.post("/add-to-cart", async (req, res) => {
+  const usuario = req.session.usuario;
+  const email_usuario = usuario.email_usuario;
+
+  const { descripcion, size } = req.body;
+  const id_usuario = await ThreadOne.getUserId(email_usuario);
+
+  console.log({ descripcion, size, id_usuario });
+
+  try {
+    await ThreadOne.addToCart({
+      descripcion,
+      size,
+      id_usuario,
+    });
+    res.json({ message: "Producto agregado al carrito" });
+    console.log("Producto agregado al carrito");
+  } catch (error) {
+    res.status(400).send(error.message);
+    console.log(error);
+  }
 });
 
 server.get("/favoritos", (req, res) => {
