@@ -326,6 +326,69 @@ server.get("/favoritos", (req, res) => {
   res.render("favoritos", usuario);
 });
 
+// server.get('/favoritos', async (req, res) => {
+//   try {
+//     const [rows] = await connection.execute('SELECT * FROM pepe');
+//     res.json(rows);
+//   } catch (error) {
+//     console.error('Error obteniendo productos favoritos:', error);
+//     res.status(500).send('Error del servidor');
+//   }
+// });
+
+server.post('/favorites/add', async (req, res) => {
+  // const { shirtId, stickerId, color, size, quantity, pathToImg, price } = req.body;
+
+  // try {
+  //   await connection.execute(
+  //     "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?) ",
+  //     [shirtId, stickerId, color, size, quantity, pathToImg, price]
+  //   );
+    
+
+  //   res.status(200).send('Producto agregado a favoritos');
+  // } catch (error) {
+  //   console.error('Error agregando producto a favoritos:', error);
+  //   res.status(500).send('Error del servidor');
+  // }
+  const { shirtId, stickerId, color, size, quantity, pathToImg, price } = req.body;
+
+  const favoriteData = {
+      shirtId: shirtId !== undefined ? shirtId : null,
+      stickerId: stickerId !== undefined ? stickerId : null,
+      color: color !== undefined ? color : null,
+      size: size !== undefined ? size : null,
+      quantity: quantity !== undefined ? quantity : null,
+      pathToImg: pathToImg !== undefined ? pathToImg : null,
+      price: price !== undefined ? price : null
+  };
+
+  try {
+      await connection.execute(
+          "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          [favoriteData.shirtId, favoriteData.stickerId, favoriteData.color, favoriteData.size, favoriteData.quantity, favoriteData.pathToImg, favoriteData.price]
+      );
+      res.send('Producto agregado a favoritos!');
+  } catch (error) {
+      console.error('Error agregando producto a favoritos:', error);
+      res.status(500).send('Error al agregar producto a favoritos');
+  } 
+
+});
+
+server.delete('/favorites/delete/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await connection.execute('DELETE FROM pepe WHERE id = ?', [id]);
+    res.status(200).send('Producto eliminado de favoritos');
+  } catch (error) {
+    console.error('Error eliminando producto de favoritos:', error);
+    res.status(500).send('Error del servidor');
+  }
+});
+
+
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
   res.render("compra", usuario);

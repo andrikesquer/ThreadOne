@@ -55,11 +55,11 @@
         </form>
         <section id="informacion" class="information">
             <section class="image-section">
-                <img src="<%= sticker.imagen %>" alt="Camiseta" class="shirt-image">
+                <img src="<%= sticker.imagen %>" alt="Camiseta" class="shirt-image" id="sticker-image">
             </section>
             <div id="detalles" class="product-details">
                 <h1 id="descripcion"><%= sticker.descripcion_sticker %></h1>
-                <p class="price">$MX<%= sticker.precio %></p>
+                <p class="price" id="precio">$MX<%= sticker.precio %></p>
                 <hr>
                 <div id="opciones" class="options">
                     <label for="size"><strong>Seleccionar tamaño</strong></label>

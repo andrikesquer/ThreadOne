@@ -1,53 +1,44 @@
-const $ = (el) => document.querySelector(el);
+document.addEventListener("DOMContentLoaded", () => {
+    // Función para manejar el click en "Añadir a favoritos"
+    const saveFavoriteButton = document.querySelector(".save-favorite");
+    if (saveFavoriteButton) {
+        saveFavoriteButton.addEventListener("click", async () => {
+            const nombre = document.getElementById("descripcion").value;
+            const price = parseFloat(document.getElementById("precio").textContent.replace('$MX', ''));
+            const size = document.getElementById("size").value;
+      
+            const imageUrl = document.getElementById("sticker-image").src;
+            const url = new URL(imageUrl);
+            const path = url.pathname;
 
-document.querySelector(".add-to-cart").addEventListener("click", async () => {
-  const colorName = document.getElementById("color").value;
-  const sizeName = document.getElementById("size").value;
-  const price = parseFloat(document.getElementById("price").textContent.replace('$',''));
-  const name = document.getElementById("nombre").textContent;
-  const quantity = 1;
+            const favoriteData = {
+                shirtId: null,
+                stickerId: nombre, // Asigna null o un valor adecuado
+                color: null, // No disponible en este contexto
+                size: parseInt(size),
+                quantity: 1,
+                pathToImg: path,
+                price: price
+            };
+            // [shirtId, stickerId, color, size, quantity, pathToImg, price]
+            try {
+                const response = await fetch('/favorites/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(favoriteData)
+                });
 
-  const imageUrl = document.getElementById("shirt-image").src;
-  const url = new URL(imageUrl);
-  const path = url.pathname;
-
-  // const shirtId = 'shirt_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
-
-  const color = colorMap[colorName];
-  const size = sizeMap[sizeName];
-  
-  if (color !== undefined && size !== undefined) {
-      const newItem = { name, color, size, quantity, path, price };
-
-      try {
-          const response = await fetch('/cart/add', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(newItem)
-          });
-
-          if (response.ok) {
-              // If the server responded with "Hola mama"
-              const message = await response.text();
-              alert(message);
-              console.log(imageUrl);
-              // Optionally, update the local storage
-              let cart = JSON.parse(localStorage.getItem('cart')) || [];
-              cart.push(newItem);
-              localStorage.setItem('cart', JSON.stringify(cart));
-              window.location.href="/camisetas"
-          } else {
-              // Handle server errors
-              alert("Failed to add to cart. Server error.");
-          }
-      } catch (error) {
-          console.error("Error adding to cart:", error);
-          alert("Failed to add to cart. Client error.");
-      }
-  } else {
-      alert("Invalid color or size selection.");
-  }
+                if (response.ok) {
+                    alert('Producto agregado a favoritos');
+                } else {
+                    alert('Error al agregar producto a favoritos');
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+                alert('Error en la solicitud');
+            }
+        });
+    }
 });
-
