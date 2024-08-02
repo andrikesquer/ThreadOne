@@ -29,7 +29,6 @@ header {
 /* Asegúrate de que el header se muestre sobre otros elementos */
 header {
     position: fixed;
-    width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
