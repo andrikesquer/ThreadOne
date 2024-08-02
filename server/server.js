@@ -4,8 +4,28 @@ import cors from "cors";
 import { ThreadOne } from "./threadone.js";
 import jwt from "jsonwebtoken";
 import { PORT, SECRET_KEY } from "./config.js";
+import mysql from "mysql2/promise";
+
+const connectionConfig = {
+  host: "localhost",
+  user: "root",
+  password: "HCHHPRa4",
+  port: 3306,
+  database: "ThreadOne",
+};
 
 const server = express();
+
+let connection;
+
+const initializeDatabaseConnection = async () => {
+  connection = await mysql.createConnection(connectionConfig);
+};
+
+initializeDatabaseConnection().catch((err) => {
+  console.error("Error initializing database connection:", err);
+  process.exit(1);
+});
 
 server.set("view engine", "ejs"); // Configuración del motor de plantillas
 server.use(express.static("public")); // Configuración de la carpeta de archivos estáticos
@@ -268,6 +288,16 @@ server.get("/carrito", (req, res) => {
   res.render("carrito", usuario);
 });
 
+server.get("/cart/items", async (req, res) => {
+  try {
+    const [rows] = await connection.execute("SELECT * FROM juan");
+    res.json(rows);
+  } catch (error) {
+    console.error("Error retrieving items from the database:", error);
+    res.status(500).send("Server error");
+  }
+});
+
 server.post("/add-to-cart", async (req, res) => {
   const usuario = req.session.usuario;
   const email_usuario = usuario.email_usuario;
@@ -299,6 +329,33 @@ server.get("/favoritos", (req, res) => {
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
   res.render("compra", usuario);
+});
+
+server.post("/cart/add", async (req, res) => {
+  const {name, color, size, quantity, path, price } = req.body;
+
+  try {
+    await connection.execute(
+      "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
+      [name, color, size, quantity, path,price]
+    );
+    res.send("Añadido al carrito!");
+  } catch (error) {
+    console.error("Error añadiendo a favoritos:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+server.delete("/cart/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await connection.execute("DELETE FROM juan WHERE id = ?", [id]);
+    res.status(200).send("Product deleted");
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    res.status(500).send("Server error");
+  }
 });
 
 server.use((req, res) => {
