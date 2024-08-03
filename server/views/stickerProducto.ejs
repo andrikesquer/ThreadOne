@@ -36,14 +36,14 @@
                 </svg>
             </a>
 
-            <% if (typeof email_usuario === 'undefined') { %>
+            <% if (typeof usuario === 'undefined') { %>
                 <a href="/usuario" class="account-button">
                     <span id="greeting">Hey, tú></span>
                 </a>
             <% } %>
-            <% if (typeof email_usuario !== 'undefined') { %>
+            <% if (typeof usuario !== 'undefined') { %>
                 <a href="/usuario" class="account-button">
-                    <span id="greeting">Hey, <%= nombre_usuario %></span>
+                    <span id="greeting">Hey, <%= usuario.nombre_usuario %></span>
                 </a>
             <% } %>
         </div>

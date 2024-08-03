@@ -6,26 +6,7 @@ import jwt from "jsonwebtoken";
 import { PORT, SECRET_KEY } from "./config.js";
 import mysql from "mysql2/promise";
 
-const connectionConfig = {
-  host: "localhost",
-  user: "root",
-  password: "holaaaaa",
-  port: 3306,
-  database: "ThreadOne",
-};
-
 const server = express();
-
-let connection;
-
-const initializeDatabaseConnection = async () => {
-  connection = await mysql.createConnection(connectionConfig);
-};
-
-initializeDatabaseConnection().catch((err) => {
-  console.error("Error initializing database connection:", err);
-  process.exit(1);
-});
 
 server.set("view engine", "ejs"); // Configuración del motor de plantillas
 server.use(express.static("public")); // Configuración de la carpeta de archivos estáticos
@@ -220,10 +201,7 @@ server.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-server.post("/logout", (req, res) => {
-  res.clearCookie("access_token");
-  res.redirect("/");
-});
+// Stickers
 
 server.get("/stickers", (req, res) => {
   const usuario = req.session.usuario;
@@ -246,8 +224,6 @@ server.get("/stickers/:producto", async (req, res) => {
 });
 
 server.post("/stickers", async (req, res) => {
-  const usuario = req.session?.usuario;
-
   const { descripcion_sticker, precio, imagen } = req.body;
   console.log({
     descripcion_sticker,
@@ -283,11 +259,15 @@ server.get("/camisetaProducto", (req, res) => {
   res.render("camisetaProducto", { usuario, product });
 });
 
+// Carrito
+
+// Ruta para mostrar el carrito
 server.get("/carrito", (req, res) => {
   const usuario = req.session.usuario;
   res.render("carrito", usuario);
 });
 
+// Ruta para mostrar los productos del carrito
 server.get("/cart/items", async (req, res) => {
   try {
     const [rows] = await connection.execute("SELECT * FROM juan");
@@ -298,6 +278,21 @@ server.get("/cart/items", async (req, res) => {
   }
 });
 
+// Ruta para mostrar los productos del carrito
+server.get("/cartItems", async (req, res) => {
+  const usuario = req.session.usuario;
+  const email_usuario = usuario.email_usuario;
+  const id_usuario = await ThreadOne.getUserId(email_usuario);
+  try {
+    const [rows] = await ThreadOne.getCartItems(id_usuario);
+    res.json(rows);
+  } catch (error) {
+    console.error("Error retrieving items from the database:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Ruta para agregar productos al carrito
 server.post("/add-to-cart", async (req, res) => {
   const usuario = req.session.usuario;
   const email_usuario = usuario.email_usuario;
@@ -321,6 +316,8 @@ server.post("/add-to-cart", async (req, res) => {
   }
 });
 
+// Favoritos
+
 server.get("/favoritos", (req, res) => {
   const usuario = req.session.usuario;
   res.render("favoritos", usuario);
@@ -336,7 +333,7 @@ server.get("/favoritos", (req, res) => {
 //   }
 // });
 
-server.post('/favorites/add', async (req, res) => {
+server.post("/favorites/add", async (req, res) => {
   // const { shirtId, stickerId, color, size, quantity, pathToImg, price } = req.body;
 
   // try {
@@ -344,50 +341,56 @@ server.post('/favorites/add', async (req, res) => {
   //     "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?) ",
   //     [shirtId, stickerId, color, size, quantity, pathToImg, price]
   //   );
-    
 
   //   res.status(200).send('Producto agregado a favoritos');
   // } catch (error) {
   //   console.error('Error agregando producto a favoritos:', error);
   //   res.status(500).send('Error del servidor');
   // }
-  const { shirtId, stickerId, color, size, quantity, pathToImg, price } = req.body;
+  const { shirtId, stickerId, color, size, quantity, pathToImg, price } =
+    req.body;
 
   const favoriteData = {
-      shirtId: shirtId !== undefined ? shirtId : null,
-      stickerId: stickerId !== undefined ? stickerId : null,
-      color: color !== undefined ? color : null,
-      size: size !== undefined ? size : null,
-      quantity: quantity !== undefined ? quantity : null,
-      pathToImg: pathToImg !== undefined ? pathToImg : null,
-      price: price !== undefined ? price : null
+    shirtId: shirtId !== undefined ? shirtId : null,
+    stickerId: stickerId !== undefined ? stickerId : null,
+    color: color !== undefined ? color : null,
+    size: size !== undefined ? size : null,
+    quantity: quantity !== undefined ? quantity : null,
+    pathToImg: pathToImg !== undefined ? pathToImg : null,
+    price: price !== undefined ? price : null,
   };
 
   try {
-      await connection.execute(
-          "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?)",
-          [favoriteData.shirtId, favoriteData.stickerId, favoriteData.color, favoriteData.size, favoriteData.quantity, favoriteData.pathToImg, favoriteData.price]
-      );
-      res.send('Producto agregado a favoritos!');
+    await connection.execute(
+      "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [
+        favoriteData.shirtId,
+        favoriteData.stickerId,
+        favoriteData.color,
+        favoriteData.size,
+        favoriteData.quantity,
+        favoriteData.pathToImg,
+        favoriteData.price,
+      ]
+    );
+    res.send("Producto agregado a favoritos!");
   } catch (error) {
-      console.error('Error agregando producto a favoritos:', error);
-      res.status(500).send('Error al agregar producto a favoritos');
-  } 
-
-});
-
-server.delete('/favorites/delete/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await connection.execute('DELETE FROM pepe WHERE id = ?', [id]);
-    res.status(200).send('Producto eliminado de favoritos');
-  } catch (error) {
-    console.error('Error eliminando producto de favoritos:', error);
-    res.status(500).send('Error del servidor');
+    console.error("Error agregando producto a favoritos:", error);
+    res.status(500).send("Error al agregar producto a favoritos");
   }
 });
 
+server.delete("/favorites/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await connection.execute("DELETE FROM pepe WHERE id = ?", [id]);
+    res.status(200).send("Producto eliminado de favoritos");
+  } catch (error) {
+    console.error("Error eliminando producto de favoritos:", error);
+    res.status(500).send("Error del servidor");
+  }
+});
 
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
@@ -395,12 +398,12 @@ server.get("/compra", (req, res) => {
 });
 
 server.post("/cart/add", async (req, res) => {
-  const {name, color, size, quantity, path, price } = req.body;
+  const { name, color, size, quantity, path, price } = req.body;
 
   try {
     await connection.execute(
       "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
-      [name, color, size, quantity, path,price]
+      [name, color, size, quantity, path, price]
     );
     res.send("Añadido al carrito!");
   } catch (error) {

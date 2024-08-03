@@ -6,7 +6,7 @@ import mysql from "mysql2/promise";
 const config = {
   host: "localhost",
   user: "root",
-  password: "holaaaaa",
+  password: "root",
   port: 3306,
   database: "ThreadOne",
 };
@@ -197,6 +197,32 @@ export class ThreadOne {
       "INSERT INTO carrito_compra_detalles (fk_carrito, fk_producto, cantidad) VALUES (?, ?, ?)",
       [id_carrito, id_producto, 1]
     );
+  }
+
+  static async getCartItems(id_usuario) {
+    const [results] = await connection.execute(
+      `SELECT productos.nombre_producto, productos.precio_producto, productos.imagen_producto, carrito_compra_detalles.cantidad
+       FROM carrito_compras
+       JOIN carrito_compra_detalles ON carrito_compras.id_carrito = carrito_compra_detalles.fk_carrito
+       JOIN productos ON carrito_compra_detalles.fk_producto = productos.id_producto
+       WHERE carrito_compras.fk_usuario = ?`,
+      [id_usuario]
+    );
+
+    // nombre del producto
+    // imagen
+    // cantidad
+    // color
+    // talla
+    // precio
+
+    // return results;
+    return results.map((result) => ({
+      nombre_producto: result.nombre_producto,
+      precio_producto: result.precio_producto,
+      imagen_producto: result.imagen_producto,
+      cantidad: result.cantidad,
+    }));
   }
 }
 

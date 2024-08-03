@@ -157,10 +157,9 @@
 //   renderCart();
 // });
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch('/cart/items');
+    const response = await fetch("/cart/items");
     if (response.ok) {
       const products = await response.json();
 
@@ -170,22 +169,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       const totalElement = document.getElementById("total");
 
       const colorMap = {
-        "blanco": 1,
-        "negro": 2,
-        "gris": 3
+        blanco: 1,
+        negro: 2,
+        gris: 3,
       };
 
       const sizeMap = {
-        "S": 1,
-        "M": 2,
-        "L": 3,
-        "XL": 4,
-        "XXL": 5
+        S: 1,
+        M: 2,
+        L: 3,
+        XL: 4,
+        XXL: 5,
       };
 
       // Create reverse maps
-      const reverseColorMap = Object.fromEntries(Object.entries(colorMap).map(([key, value]) => [value, key]));
-      const reverseSizeMap = Object.fromEntries(Object.entries(sizeMap).map(([key, value]) => [value, key]));
+      const reverseColorMap = Object.fromEntries(
+        Object.entries(colorMap).map(([key, value]) => [value, key])
+      );
+      const reverseSizeMap = Object.fromEntries(
+        Object.entries(sizeMap).map(([key, value]) => [value, key])
+      );
 
       function getImageUrl(pathToImg) {
         return pathToImg;
@@ -205,7 +208,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             productElement.innerHTML = `
               <div class="product-info">
-                <img src="${getImageUrl(product.pathToImg)}" alt="Product Image">
+                <img src="${getImageUrl(
+                  product.pathToImg
+                )}" alt="Product Image">
                 <div>
                   <h2>${product.shirtId}</h2>
                   <div class="flex items-center space-x-2 mt-2">
@@ -213,10 +218,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                       Quantity: ${product.quantity}
                     </div>
                     <div class="color-display">
-                      Color: ${colorName ? colorName : 'No color selected'}
+                      Color: ${colorName ? colorName : "No color selected"}
                     </div>
                     <div class="size-display">
-                      Size: ${sizeName ? sizeName : 'No size selected'}
+                      Size: ${sizeName ? sizeName : "No size selected"}
                     </div>
                   </div>
                 </div>
@@ -266,38 +271,38 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       };
 
-    // window.removeFromCart = (id) => {
-    //     const product = products.find((p) => p.id === id);
-    //     if (product) {
-    //       product.quantity = 0;
-    //       renderCart();
-    //     }
-    //   };
+      // window.removeFromCart = (id) => {
+      //     const product = products.find((p) => p.id === id);
+      //     if (product) {
+      //       product.quantity = 0;
+      //       renderCart();
+      //     }
+      //   };
 
       window.removeFromCart = async (id) => {
         const product = products.find((p) => p.id === id);
         if (product) {
-            try {
-                const response = await fetch(`/cart/delete/${id}`, {
-                    method: 'DELETE',
-                });
-                if (response.ok) {
-                    products.splice(products.indexOf(product), 1); // Remove the product from the array
-                    renderCart(); // Re-render the cart
-                } else {
-                    console.error('Failed to delete product from cart');
-                }
-            } catch (error) {
-                console.error('Error deleting product from cart:', error);
+          try {
+            const response = await fetch(`/cart/delete/${id}`, {
+              method: "DELETE",
+            });
+            if (response.ok) {
+              products.splice(products.indexOf(product), 1); // Remove the product from the array
+              renderCart(); // Re-render the cart
+            } else {
+              console.error("Failed to delete product from cart");
             }
+          } catch (error) {
+            console.error("Error deleting product from cart:", error);
+          }
         }
       };
 
       renderCart();
     } else {
-      console.error('Failed to fetch cart items.');
+      console.error("Failed to fetch cart items.");
     }
   } catch (error) {
-    console.error('Error fetching cart items:', error);
+    console.error("Error fetching cart items:", error);
   }
 });
