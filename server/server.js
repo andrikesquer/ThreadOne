@@ -4,7 +4,6 @@ import cors from "cors";
 import { ThreadOne } from "./threadone.js";
 import jwt from "jsonwebtoken";
 import { PORT, SECRET_KEY } from "./config.js";
-import mysql from "mysql2/promise";
 
 const server = express();
 
@@ -196,7 +195,7 @@ server.delete("/usuario", async (req, res) => {
   }
 });
 
-server.get("/logout", (req, res) => {
+server.post("/logout", (req, res) => {
   res.clearCookie("access_token");
   res.redirect("/");
 });
@@ -215,7 +214,7 @@ server.get("/stickers/:producto", async (req, res) => {
   const imagen = req.query.imagen;
   console.log(req.params);
   const sticker = {
-    descripcion_sticker: producto,
+    producto: producto,
     precio: precio,
     imagen: imagen,
   };
@@ -283,9 +282,10 @@ server.get("/cartItems", async (req, res) => {
   const usuario = req.session.usuario;
   const email_usuario = usuario.email_usuario;
   const id_usuario = await ThreadOne.getUserId(email_usuario);
+
   try {
-    const [rows] = await ThreadOne.getCartItems(id_usuario);
-    res.json(rows);
+    const cartItems = await ThreadOne.getCartItems(id_usuario);
+    res.json(cartItems);
   } catch (error) {
     console.error("Error retrieving items from the database:", error);
     res.status(500).send("Server error");
@@ -297,14 +297,14 @@ server.post("/add-to-cart", async (req, res) => {
   const usuario = req.session.usuario;
   const email_usuario = usuario.email_usuario;
 
-  const { descripcion, size } = req.body;
+  const { producto, size } = req.body;
   const id_usuario = await ThreadOne.getUserId(email_usuario);
 
-  console.log({ descripcion, size, id_usuario });
+  console.log({ producto, size, id_usuario });
 
   try {
     await ThreadOne.addToCart({
-      descripcion,
+      producto,
       size,
       id_usuario,
     });

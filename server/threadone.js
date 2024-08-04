@@ -3,6 +3,8 @@ import mysql from "mysql2/promise";
 
 // import { SALT_ROUNDS } from "./config.js";
 
+import { promises as fs } from "fs";
+
 const config = {
   host: "localhost",
   user: "root",
@@ -159,13 +161,13 @@ export class ThreadOne {
     ]);
   }
 
-  static async addToCart({ descripcion, size, id_usuario }) {
+  static async addToCart({ producto, size, id_usuario }) {
     const [results] = await connection.execute(
       `SELECT productos.*
        FROM productos
        JOIN stickers ON productos.fk_sticker = stickers.id_sticker
        WHERE stickers.descripcion_sticker = ? AND stickers.fk_tamano_sticker = ?`,
-      [descripcion, size]
+      [producto, size]
     );
 
     if (results.length === 0) {
@@ -200,29 +202,91 @@ export class ThreadOne {
   }
 
   static async getCartItems(id_usuario) {
-    const [results] = await connection.execute(
-      `SELECT productos.nombre_producto, productos.precio_producto, productos.imagen_producto, carrito_compra_detalles.cantidad
-       FROM carrito_compras
-       JOIN carrito_compra_detalles ON carrito_compras.id_carrito = carrito_compra_detalles.fk_carrito
-       JOIN productos ON carrito_compra_detalles.fk_producto = productos.id_producto
-       WHERE carrito_compras.fk_usuario = ?`,
-      [id_usuario]
+    let results;
+
+    // Obtener el identificador del carrito de compras del usuario
+    do {
+      [results] = await connection.execute(
+        "SELECT id_carrito FROM carrito_compras WHERE fk_usuario = ?",
+        [id_usuario]
+      );
+
+      // Si el usuario no tiene carrito, crear uno
+      if (results.length === 0) {
+        await connection.execute(
+          "INSERT INTO carrito_compras (fk_usuario) VALUES (?)",
+          [id_usuario]
+        );
+      }
+    } while (results.length === 0);
+
+    // Se asigna el valor del identificador del carrito
+    const id_carrito = results[0].id_carrito;
+
+    // Obtener los productos del carrito
+    const [results2] = await connection.execute(
+      "SELECT * FROM carrito_compra_detalles WHERE fk_carrito = ?",
+      [id_carrito]
     );
 
-    // nombre del producto
-    // imagen
-    // cantidad
-    // color
-    // talla
-    // precio
+    // Si el carrito no tiene productos, devolver un arreglo vacío
+    if (results2.length === 0) {
+      return [];
+    }
 
-    // return results;
-    return results.map((result) => ({
-      nombre_producto: result.nombre_producto,
-      precio_producto: result.precio_producto,
-      imagen_producto: result.imagen_producto,
-      cantidad: result.cantidad,
-    }));
+    // Leer el archivo JSON con las imágenes de los productos
+    const productosJson = JSON.parse(
+      await fs.readFile("public/json/productos.json", "utf-8")
+    );
+
+    // Obtener detalles de cada producto en el carrito
+    const products = await Promise.all(
+      results2.map(async (product) => {
+        const [results3] = await connection.execute(
+          `SELECT 
+            IFNULL(st.descripcion_sticker, d.descripcion_diseno) AS producto,
+            ccd.cantidad,
+            IFNULL(c.color, '') AS color,
+            IFNULL(t.talla, CONCAT(ts.largo, 'x', ts.ancho)) AS size,
+            CASE 
+              WHEN pd.precio_unitario IS NOT NULL THEN pd.precio_unitario
+              ELSE pr.precio
+            END AS precio
+           FROM productos prod
+           LEFT JOIN stickers st ON prod.fk_sticker = st.id_sticker
+           LEFT JOIN playeras_disenos pd ON prod.fk_playera_diseno = pd.id_playera_diseno
+           LEFT JOIN playeras pl ON pd.fk_playera = pl.id_playera
+           LEFT JOIN disenos d ON pd.fk_diseno = d.id_diseno
+           LEFT JOIN colores c ON pl.fk_color = c.id_color OR d.fk_color = c.id_color
+           LEFT JOIN tallas t ON pl.fk_talla = t.id_talla
+           LEFT JOIN tamanos_sticker ts ON st.fk_tamano_sticker = ts.id_tamano_sticker
+           LEFT JOIN precios pr ON 
+               (st.fk_precio = pr.id_precio) OR 
+               (d.fk_precio = pr.id_precio) OR 
+               (pl.fk_precio = pr.id_precio)
+           LEFT JOIN carrito_compra_detalles ccd ON ccd.fk_producto = prod.id_producto
+           WHERE prod.id_producto = ?`,
+          [product.fk_producto]
+        );
+
+        const producto = results3[0].producto;
+        const imagen = productosJson.find(
+          (p) => p.producto === producto
+        ).imagen;
+
+        return {
+          producto,
+          cantidad: product.cantidad,
+          color: results3[0].color,
+          size: results3[0].size,
+          precio: results3[0].precio,
+          imagen,
+          total: results3[0].precio * product.cantidad, // Calcular el total de cada producto
+        };
+      })
+    );
+
+    return products;
   }
 }
 

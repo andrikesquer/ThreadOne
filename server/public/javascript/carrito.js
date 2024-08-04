@@ -1,3 +1,4 @@
+/*
 // document.addEventListener("DOMContentLoaded", () => {
 //   const products = [
 //     {
@@ -306,3 +307,177 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching cart items:", error);
   }
 });
+*/
+/*
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("/cartItems");
+    if (response.ok) {
+      const products = await response.json();
+
+      const cartElement = document.getElementById("cart");
+      const totalElement = document.getElementById("total");
+
+      function renderCart(products) {
+        cartElement.innerHTML = "";
+        let total = 0;
+
+        products.forEach((products) => {
+          if (products.cantidad > 0) {
+            const productElement = document.createElement("div");
+            productElement.className = "product";
+
+            const colorName =
+              reverseColorMap[products.color] || "No se ha selecciado el color";
+            const sizeName =
+              reverseSizeMap[products.size] ||
+              "No se ha seleccionado talla o tamaño";
+
+            productElement.innerHTML = `
+              <div class="product-info">
+                <img src="${products.imagen}" alt="Product Image">
+                <div>
+                  <h2>${products.producto}</h2>
+                  <div class="flex items-center space-x-2 mt-2">
+                    <div class="quantity-display">
+                      Quantity: ${products.cantidad}
+                    </div>
+                    <div class="color-display">
+                      Color: ${colorName}
+                    </div>
+                    <div class="size-display">
+                      Size: ${sizeName}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="product-actions">
+                <span>$${products.precio}</span>
+                <button onclick="removeFromCart(${products.id})">&times;</button>
+              </div>
+            `;
+
+            cartElement.appendChild(productElement);
+          }
+        });
+
+        totalElement.textContent = `$${total.toFixed(2)}`;
+      }
+
+      window.updateQuantity = (id, quantity) => {
+        const product = products.find((p) => p.id === id);
+        if (product) {
+          product.cantidad = parseInt(quantity, 10);
+          renderCart();
+        }
+      };
+
+      window.updateColor = (id, color) => {
+        const product = products.find((p) => p.id === id);
+        if (product) {
+          product.color = color;
+          renderCart();
+        }
+      };
+
+      window.updateSize = (id, size) => {
+        const product = products.find((p) => p.id === id);
+        if (product) {
+          product.size = size;
+          renderCart();
+        }
+      };
+
+      window.removeFromCart = async (id) => {
+        const product = products.find((p) => p.id === id);
+        if (product) {
+          try {
+            const response = await fetch(`/cart/delete/${id}`, {
+              method: "DELETE",
+            });
+            if (response.ok) {
+              products.splice(products.indexOf(product), 1);
+              renderCart();
+            } else {
+              console.error("Failed to delete product from cart");
+            }
+          } catch (error) {
+            console.error("Error deleting product from cart:", error);
+          }
+        }
+      };
+
+      renderCart();
+    } else {
+      console.error("Error al cargar datos del carrito");
+    }
+  } catch (error) {
+    console.error("Error fetching cart items:", error);
+  }
+});
+*/
+async function fetchCartItems() {
+  try {
+    const response = await fetch("/cartItems");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const cartItems = await response.json();
+    displayCartItems(cartItems);
+  } catch (error) {
+    console.error("Error fetching cart items:", error);
+  }
+}
+
+function displayCartItems(cartItems) {
+  const cartContainer = document.getElementById("cart");
+  cartContainer.innerHTML = ""; // Limpiar el contenido previo
+
+  let totalCarrito = 0;
+
+  cartItems.forEach((item) => {
+    const productElement = document.createElement("div");
+    productElement.classList.add("cart-item");
+    productElement.className = "product";
+
+    productElement.innerHTML = `
+          <div class="product-info">
+            <img src="${item.imagen}" alt="Product Image">
+            <div>
+              <h2>${item.producto}</h2>
+              <div class="flex items-center space-x-2 mt-2">
+                <div class="quantity-display">
+                  Quantity: ${item.cantidad}
+                </div>
+                ${
+                  item.producto.startsWith("Sticker")
+                    ? ""
+                    : `
+                  <div class="color-display">
+                    Color: ${item.color ? item.color : "No color selected"}
+                  </div>`
+                }
+                <div class="size-display">
+                  Size: ${item.size ? item.size : "No size selected"}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <span>$${item.precio.toFixed(2)}</span>
+            <button onclick="removeFromCart(${item.id})">&times;</button>
+          </div>
+        `;
+
+    cartContainer.appendChild(productElement);
+
+    // Calcular el total del carrito
+    totalCarrito += item.total;
+  });
+
+  // Actualizar el total del carrito en el HTML
+  document.getElementById("total").textContent = `$${totalCarrito.toFixed(2)}`;
+}
+
+// Llamar a la función para obtener los productos del carrito cuando la página se carga
+window.onload = fetchCartItems;

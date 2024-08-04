@@ -1,6 +1,6 @@
 // Función para cargar los stickers desde el archivo JSON
 function loadStickers() {
-  fetch("/json/stickers.json")
+  fetch("/json/productos.json")
     .then((response) => response.json())
     .then((data) => {
       const container = document.getElementById("stickers-container");
@@ -36,14 +36,14 @@ function loadStickers() {
                                     <div class="product-content" id="productContent">
                                         <div class="product-txt">
                                             <span id="precio">$${sticker.precio}</span>
-                                            <h3 id="descripcion_sticker">${sticker.descripcion_sticker}</h3>
+                                            <h3 id="producto">${sticker.producto}</h3>
                                             <p>Disponible</p>
                                         </div>
                                         <div class="product-img">
                                             <img src="${sticker.imagen}" alt="${sticker.nombre}" id="imagen">
                                         </div>
                                     </div>
-                                    <a href="/stickers/${sticker.descripcion_sticker}?precio=${sticker.precio}&imagen=${sticker.imagen}">
+                                    <a href="/stickers/${sticker.producto}?precio=${sticker.precio}&imagen=${sticker.imagen}">
                                         <button id="detalles">Ver más</button>
                                     </a>
                                 `;

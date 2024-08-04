@@ -303,10 +303,6 @@ body {
     transform: scale(1.5);
   }
   
-  .product-info > div{
-    border-right: 1px solid #e2e8f0
-  }
-  
   .product-actions{
     margin: 20px;
   }
