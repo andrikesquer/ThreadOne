@@ -161,44 +161,224 @@ export class ThreadOne {
     ]);
   }
 
-  static async addToCart({ producto, size, id_usuario }) {
-    const [results] = await connection.execute(
-      `SELECT productos.*
-       FROM productos
-       JOIN stickers ON productos.fk_sticker = stickers.id_sticker
-       WHERE stickers.descripcion_sticker = ? AND stickers.fk_tamano_sticker = ?`,
-      [producto, size]
-    );
+  static async addToCart({ producto, size, quantity, color, id_usuario }) {
+    try {
+      var id_producto;
 
-    if (results.length === 0) {
-      throw new Error("Producto no encontrado");
+      // Consultar si el producto es un sticker
+      const [sticker] = await connection.execute(
+        `SELECT id_producto
+         FROM productos
+         JOIN stickers ON productos.fk_sticker = stickers.id_sticker
+         WHERE stickers.descripcion_sticker = ?`,
+        [producto]
+      );
+
+      if (sticker.length !== 0) {
+        var fk_tamano_sticker;
+        if (size === "5x8") {
+          fk_tamano_sticker = 1;
+        } else if (size === "8x11") {
+          fk_tamano_sticker = 2;
+        } else {
+          fk_tamano_sticker = 1;
+        }
+
+        const [res] = await connection.execute(
+          `SELECT id_producto
+           FROM productos
+           JOIN stickers ON productos.fk_sticker = stickers.id_sticker
+           WHERE stickers.descripcion_sticker = ? AND stickers.fk_tamano_sticker = ?`,
+          [producto, fk_tamano_sticker]
+        );
+
+        if (res.length === 0) {
+          throw new Error("Sticker no encontrado");
+        }
+
+        id_producto = res[0].id_producto;
+      }
+
+      // Consultar si el producto es una camiseta
+      const [camiseta] = await connection.execute(
+        `SELECT id_producto 
+        FROM productos
+        JOIN playeras_disenos ON productos.fk_playera_diseno = playeras_disenos.id_playera_diseno 
+        JOIN disenos ON playeras_disenos.fk_diseno = disenos.id_diseno 
+        WHERE disenos.descripcion_diseno = ?`,
+        [producto]
+      );
+
+      if (camiseta.length !== 0) {
+        var fk_color;
+        if (color === "Blanco") {
+          fk_color = 1;
+        } else if (color === "Negro") {
+          fk_color = 2;
+        } else if (color === "Gris") {
+          fk_color = 3;
+        }
+
+        const [res] = await connection.execute(
+          `SELECT DISTINCT productos.id_producto
+          FROM productos
+          JOIN playeras_disenos ON productos.fk_playera_diseno = playeras_disenos.id_playera_diseno
+          JOIN playeras ON playeras_disenos.fk_playera = playeras.id_playera
+          JOIN disenos ON playeras_disenos.fk_diseno = disenos.id_diseno
+          WHERE disenos.descripcion_diseno = ?
+          AND playeras.fk_talla = ?
+          AND playeras.fk_color = ?`,
+          [producto, size, fk_color]
+        );
+
+        if (res.length === 0) {
+          throw new Error("Camiseta no encontrada");
+        }
+
+        id_producto = res[0].id_producto;
+      }
+    } catch (error) {
+      throw error;
     }
 
-    const id_producto = results[0].id_producto;
-
-    const [results2] = await connection.execute(
+    const [res2] = await connection.execute(
       "SELECT * FROM carrito_compras WHERE fk_usuario = ?",
       [id_usuario]
     );
 
-    if (results2.length === 0) {
+    if (res2.length === 0) {
       await connection.execute(
         "INSERT INTO carrito_compras (fk_usuario) VALUES (?)",
         [id_usuario]
       );
     }
 
-    const [results3] = await connection.execute(
+    const [res3] = await connection.execute(
       "SELECT id_carrito FROM carrito_compras WHERE fk_usuario = ?",
       [id_usuario]
     );
 
-    const id_carrito = results3[0].id_carrito;
+    const id_carrito = res3[0].id_carrito;
 
-    await connection.execute(
-      "INSERT INTO carrito_compra_detalles (fk_carrito, fk_producto, cantidad) VALUES (?, ?, ?)",
-      [id_carrito, id_producto, 1]
+    const [res4] = await connection.execute(
+      "SELECT * FROM carrito_compra_detalles WHERE fk_carrito = ? AND fk_producto = ?",
+      [id_carrito, id_producto]
     );
+
+    if (res4.length === 0) {
+      await connection.execute(
+        "INSERT INTO carrito_compra_detalles (fk_carrito, fk_producto, cantidad) VALUES (?, ?, ?)",
+        [id_carrito, id_producto, quantity]
+      );
+    } else {
+      await connection.execute(
+        "UPDATE carrito_compra_detalles SET cantidad = cantidad + ? WHERE fk_carrito = ? AND fk_producto = ?",
+        [quantity, id_carrito, id_producto]
+      );
+    }
+  }
+
+  static async removeFromCart({ producto, size, color, id_usuario }) {
+    try {
+      var id_producto;
+
+      // Consultar si el producto es un sticker
+      const [sticker] = await connection.execute(
+        `SELECT id_producto
+         FROM productos
+         JOIN stickers ON productos.fk_sticker = stickers.id_sticker
+         WHERE stickers.descripcion_sticker = ?`,
+        [producto]
+      );
+
+      if (sticker.length !== 0) {
+        var fk_tamano_sticker;
+        if (size === "5x8") {
+          fk_tamano_sticker = 1;
+        } else if (size === "8x11") {
+          fk_tamano_sticker = 2;
+        } else {
+          fk_tamano_sticker = 1;
+        }
+
+        const [res] = await connection.execute(
+          `SELECT id_producto
+           FROM productos
+           JOIN stickers ON productos.fk_sticker = stickers.id_sticker
+           WHERE stickers.descripcion_sticker = ? AND stickers.fk_tamano_sticker = ?`,
+          [producto, fk_tamano_sticker]
+        );
+
+        if (res.length === 0) {
+          throw new Error("Sticker no encontrado");
+        }
+
+        // Asignar a una variable el valor del identificador del producto
+        id_producto = res[0].id_producto;
+      }
+
+      // Consultar si el producto es una camiseta
+      const [camiseta] = await connection.execute(
+        `SELECT id_producto 
+        FROM productos
+        JOIN playeras_disenos ON productos.fk_playera_diseno = playeras_disenos.id_playera_diseno 
+        JOIN disenos ON playeras_disenos.fk_diseno = disenos.id_diseno 
+        WHERE disenos.descripcion_diseno = ?`,
+        [producto]
+      );
+
+      if (camiseta.length !== 0) {
+        var fk_talla;
+        if (size === "S") {
+          fk_talla = 1;
+        } else if (size === "M") {
+          fk_talla = 2;
+        } else if (size === "L") {
+          fk_talla = 3;
+        } else if (size === "XL") {
+          fk_talla = 3;
+        } else if (size === "XXL") {
+          fk_talla = 3;
+        }
+
+        var fk_color;
+        if (color === "Blanco") {
+          fk_color = 1;
+        } else if (color === "Negro") {
+          fk_color = 2;
+        } else if (color === "Gris") {
+          fk_color = 3;
+        }
+
+        const [res] = await connection.execute(
+          `SELECT DISTINCT productos.id_producto
+          FROM productos
+          JOIN playeras_disenos ON productos.fk_playera_diseno = playeras_disenos.id_playera_diseno
+          JOIN playeras ON playeras_disenos.fk_playera = playeras.id_playera
+          JOIN disenos ON playeras_disenos.fk_diseno = disenos.id_diseno
+          WHERE disenos.descripcion_diseno = ?
+          AND playeras.fk_talla = ?
+          AND playeras.fk_color = ?`,
+          [producto, fk_talla, fk_color]
+        );
+
+        if (res.length === 0) {
+          throw new Error("Camiseta no encontrada");
+        }
+
+        id_producto = res[0].id_producto;
+      }
+
+      // Eliminar el producto del carrito
+      const [res2] = await connection.execute(
+        `DELETE FROM carrito_compra_detalles
+        WHERE fk_producto = ? AND fk_carrito =
+        (SELECT id_carrito FROM carrito_compras WHERE fk_usuario = ?)`,
+        [id_producto, id_usuario]
+      );
+    } catch (error) {
+      throw error;
+    }
   }
 
   static async getCartItems(id_usuario) {
@@ -244,35 +424,46 @@ export class ThreadOne {
       results2.map(async (product) => {
         const [results3] = await connection.execute(
           `SELECT 
-            IFNULL(st.descripcion_sticker, d.descripcion_diseno) AS producto,
-            ccd.cantidad,
-            IFNULL(c.color, '') AS color,
-            IFNULL(t.talla, CONCAT(ts.largo, 'x', ts.ancho)) AS size,
-            CASE 
-              WHEN pd.precio_unitario IS NOT NULL THEN pd.precio_unitario
-              ELSE pr.precio
-            END AS precio
-           FROM productos prod
-           LEFT JOIN stickers st ON prod.fk_sticker = st.id_sticker
-           LEFT JOIN playeras_disenos pd ON prod.fk_playera_diseno = pd.id_playera_diseno
-           LEFT JOIN playeras pl ON pd.fk_playera = pl.id_playera
-           LEFT JOIN disenos d ON pd.fk_diseno = d.id_diseno
-           LEFT JOIN colores c ON pl.fk_color = c.id_color OR d.fk_color = c.id_color
-           LEFT JOIN tallas t ON pl.fk_talla = t.id_talla
-           LEFT JOIN tamanos_sticker ts ON st.fk_tamano_sticker = ts.id_tamano_sticker
-           LEFT JOIN precios pr ON 
-               (st.fk_precio = pr.id_precio) OR 
-               (d.fk_precio = pr.id_precio) OR 
-               (pl.fk_precio = pr.id_precio)
-           LEFT JOIN carrito_compra_detalles ccd ON ccd.fk_producto = prod.id_producto
-           WHERE prod.id_producto = ?`,
+                    IFNULL(st.descripcion_sticker, d.descripcion_diseno) AS producto,
+                    ccd.cantidad,
+                    IFNULL(c.color, '') AS color,
+                    IFNULL(t.talla, CONCAT(ts.largo, 'x', ts.ancho)) AS size,
+                    CASE 
+                      WHEN prod.precio_unitario IS NOT NULL THEN prod.precio_unitario
+                      WHEN pd.precio_unitario IS NOT NULL THEN pd.precio_unitario
+                      ELSE pr.precio
+                    END AS precio
+                 FROM productos prod
+                 LEFT JOIN stickers st ON prod.fk_sticker = st.id_sticker
+                 LEFT JOIN playeras_disenos pd ON prod.fk_playera_diseno = pd.id_playera_diseno
+                 LEFT JOIN playeras pl ON pd.fk_playera = pl.id_playera
+                 LEFT JOIN disenos d ON pd.fk_diseno = d.id_diseno
+                 LEFT JOIN colores c ON pl.fk_color = c.id_color
+                 LEFT JOIN tallas t ON pl.fk_talla = t.id_talla
+                 LEFT JOIN tamanos_sticker ts ON st.fk_tamano_sticker = ts.id_tamano_sticker
+                 LEFT JOIN precios pr ON 
+                     (st.fk_precio = pr.id_precio) OR 
+                     (d.fk_precio = pr.id_precio) OR 
+                     (pl.fk_precio = pr.id_precio)
+                 LEFT JOIN carrito_compra_detalles ccd ON ccd.fk_producto = prod.id_producto
+                 WHERE prod.id_producto = ?`,
           [product.fk_producto]
         );
 
         const producto = results3[0].producto;
-        const imagen = productosJson.find(
-          (p) => p.producto === producto
-        ).imagen;
+        const color = results3[0].color;
+
+        let imagen;
+
+        if (producto.toLowerCase().includes("camiseta")) {
+          // Si es una camiseta, comparar también el color
+          imagen = productosJson.find(
+            (p) => p.producto === producto && p.color === color
+          ).imagen;
+        } else {
+          // Si no es una camiseta, no considerar el color
+          imagen = productosJson.find((p) => p.producto === producto).imagen;
+        }
 
         return {
           producto,

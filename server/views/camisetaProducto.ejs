@@ -12,30 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/styles/camisetaProducto.css">
-    <script src="/javascript/camisetaProducto.js"></script>
-    <script>
-        function changeColor(select) {
-            var image = document.getElementById('shirt-image');
-            var color = select.value;
-            var imageUrl;
-
-            switch(color) {
-                case 'blanco':
-                    imageUrl = "<%= product.images[0] %>";
-                    break;
-                case 'negro':
-                    imageUrl = "<%= product.images[1] %>";
-                    break;
-                case 'gris':
-                    imageUrl = "<%= product.images[2] %>";
-                    break;
-                default:
-                    imageUrl = "<%= product.images[0] %>";
-            }
-
-            image.src = imageUrl;
-        }
-    </script>
+    <script src="/javascript/camisetaProducto.js" defer></script>
 </head>
 <body>
     <header>
@@ -59,63 +36,62 @@
                 </svg>
             </a>
 
-            <% if (typeof usuario === 'undefined') { %>
+            <% if (typeof email_usuario === 'undefined') { %>
                 <a href="/usuario" class="account-button">
-                    <span>Hey, tú %></span>
+                    <span id="greeting">Hey, tú</span>
                 </a>
             <% } %>
-            <% if (typeof usuario !== 'undefined') { %>
+            <% if (typeof email_usuario !== 'undefined') { %>
                 <a href="/usuario" class="account-button">
-                    <span>Hey, <%= usuario.nombre_usuario %></span>
+                    <span id="greeting">Hey, <%= usuario.nombre_usuario %></span>
                 </a>
             <% } %>
         </div>
     </header>
 
     <main>
-
         <section class="information">
-
+            
             <section class="image-section">
-                <img id="shirt-image" src="<%= product.images[0] %>" alt="<%= product.name %>" class="shirt-image">
+                <img src="<%= camiseta.imagen %>" alt="<%= camiseta.producto %>" class="shirt-image" id="shirt-image">
             </section>
             
-            <div class="product-details">
-
-                <h1 id="nombre"><%= product.name %></h1>
-                
-                <p>Camiseta diseño original</p>
-                
-                <p class="price" id="price">$<%= product.price %></p>
-                
-                
+            <div id="detalles" class="product-details">
+                <h1 id="producto"><%= camiseta.producto %></h1>
+                <p class="price" id="precio">$MX<%= camiseta.precio %></p>
                 <hr>
-                
-                <div class="options">
+                <div id="opciones" class="options">
                     <label for="size"><strong>Seleccionar talla</strong></label>
                     <select id="size">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
+                        <option value=1>S</option>
+                        <option value=2>M</option>
+                        <option value=3>L</option>
+                        <option value=4>XL</option>
+                        <option value=5>XXL</option>
                     </select>
-                    <label for="color"><strong>Seleccionar color</strong></label>
-                     <select id="color" onchange="changeColor(this)">
-                        <option value="blanco">Blanco</option>
-                        <option value="negro">Negro</option>
-                        <option value="gris">Gris</option>
-                    </select>
+                    <label for="color"><strong>Color</strong></label>
+                    <p class="color" id="color"><%= camiseta.color %></p>
+                    <div id="cantidad" class="quantity">
+                        <label for="quantity"><strong>Seleccionar cantidad</strong></label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                    </div>
                 </div>
+                
                 <br>
                 <hr>
                 <br>
-                <div class="action-buttons">
-                    <% if (product.status === 'Disponible') { %>
-                        <button class="add-to-cart">Añadir al carrito</button>
+
+                <div id="acciones" class="action-buttons">
+                    <% if (!usuario) { %>
+                        <button id="login" class="add-to-cart">Añadir al carrito</button>
+                        <button id="login" class="save-favorite">Añadir a favoritos</button>
                     <% } %>
-                    <button class="save-favorite">Añadir a favoritos</button>
+                    <% if (usuario) { %>
+                        <button id="carrito" class="add-to-cart">Añadir al carrito</button>
+                        <button id="favorito" class="save-favorite">Añadir a favoritos</button>
+                    <% } %>
                 </div>
+                <span>&nbsp;</span>
             </div>
         </section>
     </main>

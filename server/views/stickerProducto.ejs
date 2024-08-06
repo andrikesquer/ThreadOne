@@ -36,12 +36,12 @@
                 </svg>
             </a>
 
-            <% if (typeof usuario === 'undefined') { %>
+            <% if (typeof email_usuario === 'undefined') { %>
                 <a href="/usuario" class="account-button">
                     <span id="greeting">Hey, tú></span>
                 </a>
             <% } %>
-            <% if (typeof usuario !== 'undefined') { %>
+            <% if (typeof email_usuario !== 'undefined') { %>
                 <a href="/usuario" class="account-button">
                     <span id="greeting">Hey, <%= usuario.nombre_usuario %></span>
                 </a>
@@ -66,14 +66,20 @@
                         <option value="3">11 x 14 cm</option>
                     </select>
                 </div>
+
+                <div id="cantidad" class="quantity">
+                    <label for="quantity"><strong>Seleccionar cantidad</strong></label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                </div>
+
                 <hr>
 
                 <div id="acciones" class="action-buttons">
-                    <% if ( usuario === 'undefined') { %>
+                    <% if ( usuario === null) { %>
                         <button id="login" class="add-to-cart">Añadir al carrito</button>
                         <button id="login" class="save-favorite">Añadir a favoritos</button>
                     <% } %>
-                    <% if (usuario !== 'undefined') { %>
+                    <% if (usuario !== null) { %>
                         <button id="carrito" class="add-to-cart">Añadir al carrito</button>
                         <button id="favorito" class="save-favorite">Añadir a favoritos</button>
                     <% } %>

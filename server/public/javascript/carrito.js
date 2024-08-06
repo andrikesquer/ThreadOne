@@ -441,33 +441,32 @@ function displayCartItems(cartItems) {
     productElement.className = "product";
 
     productElement.innerHTML = `
-          <div class="product-info">
-            <img src="${item.imagen}" alt="Product Image">
-            <div>
-              <h2>${item.producto}</h2>
-              <div class="flex items-center space-x-2 mt-2">
-                <div class="quantity-display">
-                  Quantity: ${item.cantidad}
-                </div>
-                ${
-                  item.producto.startsWith("Sticker")
-                    ? ""
-                    : `
-                  <div class="color-display">
-                    Color: ${item.color ? item.color : "No color selected"}
-                  </div>`
-                }
-                <div class="size-display">
-                  Size: ${item.size ? item.size : "No size selected"}
-                </div>
-              </div>
-            </div>
+      <div class="product-info">
+        <img src="${item.imagen}" alt="Product Image">
+        <div>
+          <h2>${item.producto}</h2>
+          <div class="flex items-center space-x-2 mt-2">
+            <div class="quantity-display">Cantidad: ${item.cantidad}</div>
+            ${
+              item.producto.startsWith("Sticker")
+                ? ""
+                : `<div class="color-display">Color: ${
+                    item.color ? item.color : "No color selected"
+                  }</div>`
+            }
+            <div class="size-display">Size: ${
+              item.size ? item.size : "No size selected"
+            }</div>
           </div>
-          <div class="product-actions">
-            <span>$${item.precio.toFixed(2)}</span>
-            <button onclick="removeFromCart(${item.id})">&times;</button>
-          </div>
-        `;
+        </div>
+      </div>
+      <div class="product-actions">
+        <span>$${item.precio.toFixed(2)}</span>
+        <button onclick="removeFromCart('${item.producto}', '${item.size}', '${
+      item.color
+    }')">&times;</button>
+      </div>
+    `;
 
     cartContainer.appendChild(productElement);
 
@@ -477,6 +476,29 @@ function displayCartItems(cartItems) {
 
   // Actualizar el total del carrito en el HTML
   document.getElementById("total").textContent = `$${totalCarrito.toFixed(2)}`;
+}
+
+async function removeFromCart(producto, size, color) {
+  try {
+    const response = await fetch("/remove-from-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ producto, size, color }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const result = await response.json();
+    console.log(result.message);
+    // Vuelve a cargar los productos del carrito
+    fetchCartItems();
+  } catch (error) {
+    console.error("Error removing cart item:", error);
+  }
 }
 
 // Llamar a la función para obtener los productos del carrito cuando la página se carga

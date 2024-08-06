@@ -30,11 +30,17 @@ server.use((req, res, next) => {
 
 // Endpoints
 
+// Mostar la pagina de inicio
 server.get("/", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("index", usuario);
+  if (usuario === null) {
+    res.render("index");
+  } else {
+    res.render("index", usuario);
+  }
 });
 
+// Mostrar la pagina de login
 server.get("/login", (req, res) => {
   res.render("login");
 });
@@ -202,11 +208,17 @@ server.post("/logout", (req, res) => {
 
 // Stickers
 
+// Mostar todos los stickers
 server.get("/stickers", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("stickers", usuario);
+  if (usuario === null) {
+    res.render("stickers");
+  } else {
+    res.render("stickers", usuario);
+  }
 });
 
+// Mostrar un sticker
 server.get("/stickers/:producto", async (req, res) => {
   const usuario = req.session?.usuario;
   const { producto } = req.params;
@@ -222,58 +234,67 @@ server.get("/stickers/:producto", async (req, res) => {
   res.render("stickerProducto", { sticker, usuario });
 });
 
-server.post("/stickers", async (req, res) => {
-  const { descripcion_sticker, precio, imagen } = req.body;
-  console.log({
-    descripcion_sticker,
-    precio,
-    imagen,
-  });
-
-  const producto = descripcion_sticker;
-  res.json({ producto });
-});
+// Personalizacion
 
 server.get("/custom", (req, res) => {
   const usuario = req.session.usuario;
   res.render("camisetaPersonalizable", usuario);
 });
 
+// Camisetas
+
+// Mostrar la pagina de camisetas
 server.get("/camisetas", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("camisetas", usuario);
+  if (usuario === null) {
+    res.render("camisetas");
+  } else {
+    res.render("camisetas", usuario);
+  }
 });
 
-server.get("/camisetaProducto", (req, res) => {
-  const { name, price, status, image1, image2, image3 } = req.query;
-  const usuario = req.session.usuario;
-
-  const product = {
-    name,
-    price,
-    status,
-    images: [image1, image2, image3],
+// Mostrar una camiseta
+server.get("/camisetas/:producto", async (req, res) => {
+  const usuario = req.session?.usuario;
+  const { producto } = req.params;
+  const precio = req.query.precio;
+  const imagen = req.query.imagen;
+  const color = req.query.color;
+  console.log(req.params);
+  const camiseta = {
+    producto: producto,
+    precio: precio,
+    imagen: imagen,
+    color: color,
   };
-
-  res.render("camisetaProducto", { usuario, product });
+  console.log(camiseta);
+  res.render("camisetaProducto", { camiseta, usuario });
 });
+
+// server.get("/camisetaProducto", (req, res) => {
+//   const { name, price, status, image1, image2, image3 } = req.query;
+//   const usuario = req.session.usuario;
+
+//   const product = {
+//     name,
+//     price,
+//     status,
+//     images: [image1, image2, image3],
+//   };
+
+//   res.render("camisetaProducto", { usuario, product });
+// });
 
 // Carrito
 
 // Ruta para mostrar el carrito
 server.get("/carrito", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("carrito", usuario);
-});
 
-// Ruta para mostrar los productos del carrito
-server.get("/cart/items", async (req, res) => {
-  try {
-    const [rows] = await connection.execute("SELECT * FROM juan");
-    res.json(rows);
-  } catch (error) {
-    console.error("Error retrieving items from the database:", error);
-    res.status(500).send("Server error");
+  if (usuario === null) {
+    res.render("login");
+  } else {
+    res.render("carrito", usuario);
   }
 });
 
@@ -297,15 +318,17 @@ server.post("/add-to-cart", async (req, res) => {
   const usuario = req.session.usuario;
   const email_usuario = usuario.email_usuario;
 
-  const { producto, size } = req.body;
+  const { producto, size, quantity, color } = req.body;
   const id_usuario = await ThreadOne.getUserId(email_usuario);
 
-  console.log({ producto, size, id_usuario });
+  console.log({ producto, size, quantity, color, id_usuario });
 
   try {
     await ThreadOne.addToCart({
       producto,
       size,
+      quantity,
+      color,
       id_usuario,
     });
     res.json({ message: "Producto agregado al carrito" });
@@ -316,112 +339,34 @@ server.post("/add-to-cart", async (req, res) => {
   }
 });
 
-// Favoritos
-
-server.get("/favoritos", (req, res) => {
+// Ruta para eliminar productos del carrito
+server.post("/remove-from-cart", async (req, res) => {
   const usuario = req.session.usuario;
-  res.render("favoritos", usuario);
-});
+  const email_usuario = usuario.email_usuario;
 
-// server.get('/favoritos', async (req, res) => {
-//   try {
-//     const [rows] = await connection.execute('SELECT * FROM pepe');
-//     res.json(rows);
-//   } catch (error) {
-//     console.error('Error obteniendo productos favoritos:', error);
-//     res.status(500).send('Error del servidor');
-//   }
-// });
+  const id_usuario = await ThreadOne.getUserId(email_usuario);
+  const { producto, size, color } = req.body;
 
-server.post("/favorites/add", async (req, res) => {
-  // const { shirtId, stickerId, color, size, quantity, pathToImg, price } = req.body;
-
-  // try {
-  //   await connection.execute(
-  //     "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?) ",
-  //     [shirtId, stickerId, color, size, quantity, pathToImg, price]
-  //   );
-
-  //   res.status(200).send('Producto agregado a favoritos');
-  // } catch (error) {
-  //   console.error('Error agregando producto a favoritos:', error);
-  //   res.status(500).send('Error del servidor');
-  // }
-  const { shirtId, stickerId, color, size, quantity, pathToImg, price } =
-    req.body;
-
-  const favoriteData = {
-    shirtId: shirtId !== undefined ? shirtId : null,
-    stickerId: stickerId !== undefined ? stickerId : null,
-    color: color !== undefined ? color : null,
-    size: size !== undefined ? size : null,
-    quantity: quantity !== undefined ? quantity : null,
-    pathToImg: pathToImg !== undefined ? pathToImg : null,
-    price: price !== undefined ? price : null,
-  };
+  console.log({ producto, size, color, id_usuario });
 
   try {
-    await connection.execute(
-      "INSERT INTO pepe (shirtId, stickerId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [
-        favoriteData.shirtId,
-        favoriteData.stickerId,
-        favoriteData.color,
-        favoriteData.size,
-        favoriteData.quantity,
-        favoriteData.pathToImg,
-        favoriteData.price,
-      ]
-    );
-    res.send("Producto agregado a favoritos!");
+    await ThreadOne.removeFromCart({
+      producto,
+      size,
+      color,
+      id_usuario,
+    });
+    res.json({ message: "Producto eliminado del carrito" });
+    console.log("Producto eliminado del carrito");
   } catch (error) {
-    console.error("Error agregando producto a favoritos:", error);
-    res.status(500).send("Error al agregar producto a favoritos");
-  }
-});
-
-server.delete("/favorites/delete/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await connection.execute("DELETE FROM pepe WHERE id = ?", [id]);
-    res.status(200).send("Producto eliminado de favoritos");
-  } catch (error) {
-    console.error("Error eliminando producto de favoritos:", error);
-    res.status(500).send("Error del servidor");
+    res.status(400).send(error.message);
+    console.log(error);
   }
 });
 
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
   res.render("compra", usuario);
-});
-
-server.post("/cart/add", async (req, res) => {
-  const { name, color, size, quantity, path, price } = req.body;
-
-  try {
-    await connection.execute(
-      "INSERT INTO juan (shirtId, color, size, quantity, pathToImg, price) VALUES (?, ?, ?, ?, ?, ?)",
-      [name, color, size, quantity, path, price]
-    );
-    res.send("Añadido al carrito!");
-  } catch (error) {
-    console.error("Error añadiendo a favoritos:", error);
-    res.status(500).send("Server error");
-  }
-});
-
-server.delete("/cart/delete/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await connection.execute("DELETE FROM juan WHERE id = ?", [id]);
-    res.status(200).send("Product deleted");
-  } catch (error) {
-    console.error("Error deleting product:", error);
-    res.status(500).send("Server error");
-  }
 });
 
 server.use((req, res) => {

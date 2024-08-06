@@ -105,6 +105,11 @@ main {
   border-radius: 30px;
 }
 
+.swiperrr{
+  width: 100%;
+  padding: 50px 0 30px 0;
+}
+
 .icons{
   display: flex;
   justify-content: space-between;

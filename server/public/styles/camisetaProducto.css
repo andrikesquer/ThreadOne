@@ -136,7 +136,8 @@ main {
     font-family: "Cormorant", serif;
 }
 
-.options {
+.options,
+.quantity {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -145,14 +146,16 @@ main {
     font-family: "Cormorant", serif;
 }
 
-.options label {
+.options label,
+.quantity label {
     font-size: 1em;
     color: #333;
     font-weight: bold;
     font-family: "Cormorant", serif;
 }
 
-.options select {
+.options select,
+.quantity input {
     padding: 10px;
     font-size: 1em;
     border-radius: 5px;

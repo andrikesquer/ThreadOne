@@ -4,7 +4,10 @@ function loadStickers() {
     .then((response) => response.json())
     .then((data) => {
       const container = document.getElementById("stickers-container");
-      data.forEach((sticker) => {
+      const filteredStickers = data.filter((sticker) =>
+        sticker.producto.startsWith("Sticker")
+      );
+      filteredStickers.forEach((sticker) => {
         const stickerElement = document.createElement("div");
         stickerElement.className = "swiper-slide";
         stickerElement.innerHTML = `
