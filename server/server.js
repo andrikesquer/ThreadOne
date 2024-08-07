@@ -12,7 +12,13 @@ server.use(express.static("public")); // Configuración de la carpeta de archivo
 // Midlewares: son funciones que modifican las peticiones o las respuestas antes de que lleguen a su destino
 server.use(express.json()); // Parsear el body de las peticiones
 server.use(cookieParser()); // Parsear las cookies
-server.use(cors()); //Permitir peticiones desde cualquier origen
+// server.use(cors()); //Permitir peticiones desde cualquier origen
+server.use(
+  cors({
+    origin: "https://threadone.onrender.com",
+    credentials: true,
+  })
+);
 server.disable("x-powered-by"); // Ocultar la tecnología que usamos
 
 // Middleware para verificar si el usuario está autenticado
