@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const elementsToTranslate = {
     en: {
       cart: "Cart",
-      favorites: "Favorites",
       greeting: "Hey, you",
       threadOne: "ThreadOne",
       discover: "DISCOVER EVERYTHING WE HAVE FOR YOU",
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     es: {
       cart: "Carrito",
-      favorites: "Favoritos",
       greeting: "Hey, tú",
       threadOne: "ThreadOne",
       discover: "DESCUBRE TODO LO QUE TENEMOS PARA TI",
@@ -39,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function translatePage(lang) {
     document.getElementById("cart").textContent =
       elementsToTranslate[lang].cart;
-    document.getElementById("favorites").textContent =
-      elementsToTranslate[lang].favorites;
     document.getElementById("greeting").textContent =
       elementsToTranslate[lang].greeting;
     document.getElementById("threadOne").textContent =
