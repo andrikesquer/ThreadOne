@@ -34,7 +34,7 @@ server.use((req, res, next) => {
   next(); // Siguiente ruta o middleware
 });
 
-// Endpoints
+// Endpoints o rutas
 
 // Mostar la pagina de inicio
 server.get("/", (req, res) => {
