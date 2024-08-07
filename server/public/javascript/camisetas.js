@@ -4,9 +4,8 @@ function loadCamisetas() {
     .then((response) => response.json())
     .then((data) => {
       const container = document.getElementById("camisetas-container");
-      const filteredCamisetas = data.filter(
-        (camiseta) =>
-          camiseta.producto.startsWith("Camiseta") && camiseta.color === "Negro"
+      const filteredCamisetas = data.filter((camiseta) =>
+        camiseta.producto.startsWith("Camiseta")
       );
       filteredCamisetas.forEach((camiseta) => {
         const camisetaElement = document.createElement("div");

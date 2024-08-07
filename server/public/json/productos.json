@@ -52,12 +52,6 @@
         "color": "Negro"
     },
     {
-        "producto": "Camiseta Iguana;",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/iguana/Iguana Gris.png",
-        "color": "Gris"
-    },
-    {
         "producto": "Camiseta need a <br>",
         "precio": "300",
         "imagen": "/images/camisetasImagenes/Br/br blanca.png",
@@ -68,12 +62,6 @@
         "precio": "300",
         "imagen": "/images/camisetasImagenes/Br/br negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta need a <br>",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Br/br gris.png",
-        "color": "Gris"
     },
     {
         "producto": "Camiseta Prenda el cerebro, ingeniero",
@@ -88,12 +76,6 @@
         "color": "Negro"
     },
     {
-        "producto": "Camiseta Prenda el cerebro, ingeniero",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/cerebro/Cerebro gris.png",
-        "color": "Gris"
-    },
-    {
         "producto": "Camiseta CSS: Cant style shit",
         "precio": "300",
         "imagen": "/images/camisetasImagenes/CSS/CSS blanca.png",
@@ -104,12 +86,6 @@
         "precio": "300",
         "imagen": "/images/camisetasImagenes/CSS/CSS negro.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta CSS: Cant style shit",
-        "precio": "300",
-        "imagen":"/images/camisetasImagenes/CSS/CSS gris.png",
-        "color": "Gris"
     },
     {
         "producto": "Camiseta Hello, world",
@@ -124,12 +100,6 @@
         "color": "Negro"
     },
     {
-        "producto": "Camiseta Hello, world",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Hw/Hw gris.png",
-        "color": "Gris"
-    },
-    {
         "producto": "Camiseta Puro Linux",
         "precio": "300",
         "imagen": "/images/camisetasImagenes/linux/Linux blanco.png",
@@ -140,12 +110,6 @@
         "precio": "300",
         "imagen": "/images/camisetasImagenes/linux/Linux negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta Puro Linux",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/linux/Linux gris.png",
-        "color": "Gris"
     },
     {
         "producto": "Camiseta ; Survivor",
@@ -160,12 +124,6 @@
         "color": "Negro"
     },
     {
-        "producto": "Camiseta ; Survivor",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Punto coma/; gris.png",
-        "color": "Gris"
-    },
-    {
         "producto": "Camiseta Wr",
         "precio": "300",
         "imagen": "/images/camisetasImagenes/Wr/Wr blanca.png",
@@ -176,11 +134,5 @@
         "precio": "300",
         "imagen": "/images/camisetasImagenes/Wr/Wr negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta Wr",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Wr/Wr gris.png",
-        "color": "Gris"
     }
 ]
