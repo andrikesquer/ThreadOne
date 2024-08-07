@@ -364,9 +364,26 @@ server.post("/remove-from-cart", async (req, res) => {
   }
 });
 
+server.post("/clear-cart", async (req, res) => {
+  const usuario = req.session.usuario;
+  const email_usuario = usuario.email_usuario;
+
+  const id_usuario = await ThreadOne.getUserId(email_usuario);
+  try {
+    await ThreadOne.clearCart(id_usuario);
+    res.json({ message: "Productos eliminados del carrito" });
+    console.log("Productos eliminados del carrito");
+  } catch (error) {
+    res.status(400).send(error.message);
+    console.log(error);
+  }
+});
+
 server.get("/compra", (req, res) => {
   const usuario = req.session.usuario;
-  res.render("compra", usuario);
+  const total = req.query.total;
+
+  res.render("compra", { usuario, total });
 });
 
 server.use((req, res) => {

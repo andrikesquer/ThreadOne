@@ -479,6 +479,29 @@ export class ThreadOne {
 
     return products;
   }
+
+  static async clearCart(id_usuario) {
+    try {
+      // Obtener el identificador del carrito de compras del usuario
+      const [results] = await connection.execute(
+        `SELECT id_carrito FROM carrito_compras WHERE fk_usuario = ?`,
+        [id_usuario]
+      );
+
+      console.log(results[0]);
+
+      // Se asigna el valor del identificador del carrito
+      const id_carrito = results[0].id_carrito;
+
+      // Eliminar los productos del carrito
+      await connection.execute(
+        `DELETE FROM carrito_compra_detalles WHERE fk_carrito = ?`,
+        [id_carrito]
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 class Validation {

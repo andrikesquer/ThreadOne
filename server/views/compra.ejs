@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camiseta - ThreadOne</title>
-    <link rel="icon" href="/Imagenes/Imagenes Barra superior/LogoThreadOne.png">
+    <title>Compra - ThreadOne</title>
+    <link rel="icon" href="/images/LogoThreadOne.png">
     <link rel="stylesheet" href="/styles/compra.css">
     <script type="text/javascript" src="/javascript/compra.js" defer ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,12 +119,11 @@
             </div>
             
             <div class="summary-total">
-                    <span>TOTAL</span>
-                    <span id="subtotal">$0</span>
-                </div>
-                
+                <span>TOTAL</span>
+                <span id="subtotal">$<%= total %></span>
             </div>
-            <button class="buy-button">Finalizar compra</button>
+
+            <button id="finalizarCompra" class="buy-button">Finalizar compra</button>
         </section>
 
         <div id="popup" class="popup">

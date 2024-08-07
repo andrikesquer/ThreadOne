@@ -4,9 +4,9 @@
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-create database ThreadOneFV;
+create database ThreadOne;
 
-use ThreadOneFV;
+use ThreadOne;
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -146,22 +146,12 @@ create table alertas_stock(
     fecha timestamp default current_timestamp
 );
 
-create table tamanos_diseno(
-	id_tamano_diseno int auto_increment primary key,
-	largo float not null,
-	ancho float not null
-);
-
 create table disenos(
     id_diseno int auto_increment primary key,
     nombre_diseno varchar(30) not null,
     descripcion_diseno varchar(150),
-    fk_color int not null,
-    fk_tamano_diseno int not null,
     fk_precio int not null,
     personalizado boolean not null, -- personalizado indica si el diseño fue proporcionado por el cliente o no
-    foreign key (fk_color) references colores(id_color),
-    foreign key (fk_tamano_diseno) references tamanos_diseno(id_tamano_diseno),
     foreign key (fk_precio) references precios(id_precio)
 );
 
@@ -480,14 +470,8 @@ begin
 end$$
 delimiter ;
 
-insert into playeras (descripcion_playera, fk_talla, fk_color, fk_precio, fk_proveedor, cantidad_stock, stock_minimo) values ('Playera prueba', 1, 1, 1, 1, 15, 20);
-update playeras set cantidad_stock = 5 where descripcion_playera = 'Playera prueba';
-
--- tamanos_diseno
-insert into tamanos_diseno(largo, ancho) values 
-(20, 20), -- cm
-(30, 20),
-(20, 30);
+-- insert into playeras (descripcion_playera, fk_talla, fk_color, fk_precio, fk_proveedor, cantidad_stock, stock_minimo) values ('Playera prueba', 1, 1, 1, 1, 15, 20);
+-- update playeras set cantidad_stock = 5 where descripcion_playera = 'Playera prueba';
 
 -- playeras_disenos
 -- al agregar un nuevo registro a la tabla de diseños, este trigger inserta en la tabla playeras_disenos todas las combinaciones de ese diseño con los registros en la tabla de playeras.
@@ -578,100 +562,28 @@ end$$
 delimiter ;
 
 -- disenos
-insert into disenos (nombre_diseno, descripcion_diseno, fk_color, fk_tamano_diseno, fk_precio, personalizado) values
--- diseño 'Nar', 3 colores, 3 tamaños
-('Nar', 'Iguana;', 1, 1, 2, false),
-('Nar', 'Iguana;', 1, 2, 2, false),
-('Nar', 'Iguana;', 1, 3, 2, false),
-('Nar', 'Iguana;', 2, 1, 2, false),
-('Nar', 'Iguana;', 2, 2, 2, false),
-('Nar', 'Iguana;', 2, 3, 2, false),
-('Nar', 'Iguana;', 3, 1, 2, false),
-('Nar', 'Iguana;', 3, 2, 2, false),
-('Nar', 'Iguana;', 3, 3, 2, false),
--- diseño 'Anar', 3 colores, 3 tamaños
-('Anar', 'Prenda el cerebro, ingeniero', 1, 1, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 1, 2, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 1, 3, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 2, 1, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 2, 2, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 2, 3, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 3, 1, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 3, 2, 2, false),
-('Anar', 'Prenda el cerebro, ingeniero', 3, 3, 2, false),
--- diseño 'Granat', 3 colores, 3 tamaños
-('Granat', 'CSS: Cant style shit', 1, 1, 2, false),
-('Granat', 'CSS: Cant style shit', 1, 2, 2, false),
-('Granat', 'CSS: Cant style shit', 1, 3, 2, false),
-('Granat', 'CSS: Cant style shit', 2, 1, 2, false),
-('Granat', 'CSS: Cant style shit', 2, 2, 2, false),
-('Granat', 'CSS: Cant style shit', 2, 3, 2, false),
-('Granat', 'CSS: Cant style shit', 3, 1, 2, false),
-('Granat', 'CSS: Cant style shit', 3, 2, 2, false),
-('Granat', 'CSS: Cant style shit', 3, 3, 2, false),
--- diseño 'Ródi', 3 colores, 3 tamaños
-('Ródi', 'Contexto {}', 1, 1, 2, false),
-('Ródi', 'Contexto {}', 1, 2, 2, false),
-('Ródi', 'Contexto {}', 1, 3, 2, false),
-('Ródi', 'Contexto {}', 2, 1, 2, false),
-('Ródi', 'Contexto {}', 2, 2, 2, false),
-('Ródi', 'Contexto {}', 2, 3, 2, false),
-('Ródi', 'Contexto {}', 3, 1, 2, false),
-('Ródi', 'Contexto {}', 3, 2, 2, false),
-('Ródi', 'Contexto {}', 3, 3, 2, false),
--- diseño 'Grenade', 3 colores, 3 tamaños
-('Grenade', 'Wr', 1, 1, 2, false),
-('Grenade', 'Wr', 1, 2, 2, false),
-('Grenade', 'Wr', 1, 3, 2, false),
-('Grenade', 'Wr', 2, 1, 2, false),
-('Grenade', 'Wr', 2, 2, 2, false),
-('Grenade', 'Wr', 2, 3, 2, false),
-('Grenade', 'Wr', 3, 1, 2, false),
-('Grenade', 'Wr', 3, 2, 2, false),
-('Grenade', 'Wr', 3, 3, 2, false),
--- diseño 'Rumman', 3 colores, 3 tamaños
-('Rumman', 'Puro Linux', 1, 1, 2, false),
-('Rumman', 'Puro Linux', 1, 2, 2, false),
-('Rumman', 'Puro Linux', 1, 3, 2, false),
-('Rumman', 'Puro Linux', 2, 1, 2, false),
-('Rumman', 'Puro Linux', 2, 2, 2, false),
-('Rumman', 'Puro Linux', 2, 3, 2, false),
-('Rumman', 'Puro Linux', 3, 1, 2, false),
-('Rumman', 'Puro Linux', 3, 2, 2, false),
-('Rumman', 'Puro Linux', 3, 3, 2, false),
--- diseño 'Magraner', 3 colores, 3 tamaños
-('Magraner', '; Survivor', 1, 1, 2, false),
-('Magraner', '; Survivor', 1, 2, 2, false),
-('Magraner', '; Survivor', 1, 3, 2, false),
-('Magraner', '; Survivor', 2, 1, 2, false),
-('Magraner', '; Survivor', 2, 2, 2, false),
-('Magraner', '; Survivor', 2, 3, 2, false),
-('Magraner', '; Survivor', 3, 1, 2, false),
-('Magraner', '; Survivor', 3, 2, 2, false),
-('Magraner', '; Survivor', 3, 3, 2, false),
--- diseño 'Melagrana', 3 colores, 3 tamaños
-('Melagrana', 'Hello, word', 1, 1, 2, false),
-('Melagrana', 'Hello, word', 1, 2, 2, false),
-('Melagrana', 'Hello, word', 1, 3, 2, false),
-('Melagrana', 'Hello, word', 2, 1, 2, false),
-('Melagrana', 'Hello, word', 2, 2, 2, false),
-('Melagrana', 'Hello, word', 2, 3, 2, false),
-('Melagrana', 'Hello, word', 3, 1, 2, false),
-('Melagrana', 'Hello, word', 3, 2, 2, false),
-('Melagrana', 'Hello, word', 3, 3, 2, false),
+insert into disenos (nombre_diseno, descripcion_diseno, fk_precio, personalizado) values
+-- diseño 'Nar'
+('Nar', 'Camiseta Iguana;', 2, false),
+-- diseño 'Anar'
+('Anar', 'Camiseta Prenda el cerebro, ingeniero', 2, false),
+-- diseño 'Granat'
+('Granat', 'Camiseta CSS: Cant style shit', 2, false),
+-- diseño 'Ródi'
+('Ródi', 'Camiseta Contexto {}', 2, false),
+-- diseño 'Grenade'
+('Grenade', 'Camiseta Wr', 2, false),
+-- diseño 'Rumman'
+('Rumman', 'Camiseta Puro Linux', 2, false),
+-- diseño 'Magraner'
+('Magraner', 'Camiseta ; Survivor', 2, false),
+-- diseño 'Melagrana'
+('Melagrana', 'Camiseta Hello, world', 2, false),
 -- diseño 'Zakuro', 3 colores, 3 tamaños
-('Zakuro', 'need a <br>', 1, 1, 2, false),
-('Zakuro', 'need a <br>', 1, 2, 2, false),
-('Zakuro', 'need a <br>', 1, 3, 2, false),
-('Zakuro', 'need a <br>', 2, 1, 2, false),
-('Zakuro', 'need a <br>', 2, 2, 2, false),
-('Zakuro', 'need a <br>', 2, 3, 2, false),
-('Zakuro', 'need a <br>', 3, 1, 2, false),
-('Zakuro', 'need a <br>', 3, 2, 2, false),
-('Zakuro', 'need a <br>', 3, 3, 2, false),
+('Zakuro', 'Camiseta need a <br>', 2, false),
 -- diseños personalizados
-('Kirby Zelda', 'https://i0.wp.com/mynintendonews.com/wp-content/uploads/2017/11/kirby_battle_royale_character_art.png?fit=1886%2C2614&ssl=1', 1, 2, 3, true),
-('Yoshi sentado', 'https://ih1.redbubble.net/image.2219996370.0418/st,small,507x507-pad,600x600,f8f8f8.jpg', 2, 1, 3, true);
+('Kirby Zelda', 'https://i0.wp.com/mynintendonews.com/wp-content/uploads/2017/11/kirby_battle_royale_character_art.png?fit=1886%2C2614&ssl=1', 2, true),
+('Yoshi sentado', 'https://ih1.redbubble.net/image.2219996370.0418/st,small,507x507-pad,600x600,f8f8f8.jpg', 2, true);
 
 -- tamaños_sticker
 insert into tamanos_sticker(largo, ancho) values
@@ -690,33 +602,53 @@ insert into stickers (nombre_sticker, descripcion_sticker, fk_tamano_sticker, fk
 ('Anar', 'Sticker Prenda el cerebro, ingeniero', 2, 4, 10),
 ('Anar', 'Sticker Prenda el cerebro, ingeniero', 3, 4, 0),
 -- Sticker 'Granat', 3 tamaños
-('Granat', 'CSS: Cant style shit', 1, 4, 5),
-('Granat', 'CSS: Cant style shit', 2, 4, 10),
-('Granat', 'CSS: Cant style shit', 3, 4, 40),
+('Granat', 'Sticker CSS: Cant style shit', 1, 4, 5),
+('Granat', 'Sticker CSS: Cant style shit', 2, 4, 10),
+('Granat', 'Sticker CSS: Cant style shit', 3, 4, 40),
 -- Sticker 'Ródi', 3 tamaños
-('Ródi', 'Contexto {}', 1, 4, 64),
-('Ródi', 'Contexto {}', 2, 4, 61),
-('Ródi', 'Contexto {}', 3, 4, 70),
+('Ródi', 'Sticker Contexto {}', 1, 4, 64),
+('Ródi', 'Sticker Contexto {}', 2, 4, 61),
+('Ródi', 'Sticker Contexto {}', 3, 4, 70),
 -- Sticker 'Genade', 3 tamaños
-('Grenade', 'Wr', 1, 4, 27),
-('Grenade', 'Wr', 2, 4, 20),
-('Grenade', 'Wr', 3, 4, 41),
+('Grenade', 'Sticker Wr', 1, 4, 27),
+('Grenade', 'Sticker Wr', 2, 4, 20),
+('Grenade', 'Sticker Wr', 3, 4, 41),
 -- Sticker 'Rumman', 3 tamaños
-('Rumman', 'Puro Linux', 1, 4, 5),
-('Rumman', 'Puro Linux', 2, 4, 15),
-('Rumman', 'Puro Linux', 3, 4, 42),
+('Rumman', 'Sticker Puro Linux', 1, 4, 5),
+('Rumman', 'Sticker Puro Linux', 2, 4, 15),
+('Rumman', 'Sticker Puro Linux', 3, 4, 42),
 -- Sticker 'Magraner', 3 tamaños
-('Magraner', '; Survivor', 1, 4, 17),
-('Magraner', '; Survivor', 2, 4, 19),
-('Magraner', '; Survivor', 3, 4, 26),
+('Magraner', 'Sticker ; Survivor', 1, 4, 17),
+('Magraner', 'Sticker ; Survivor', 2, 4, 19),
+('Magraner', 'Sticker ; Survivor', 3, 4, 26),
 -- Sticker 'Melagrana', 3 tamaños
-('Melagrana', 'Hello, word', 1, 4, 81),
-('Melagrana', 'Hello, word', 2, 4, 85),
-('Melagrana', 'Hello, word', 3, 4, 77),
+('Melagrana', 'Sticker Hello, word', 1, 4, 81),
+('Melagrana', 'Sticker Hello, word', 2, 4, 85),
+('Melagrana', 'Sticker Hello, word', 3, 4, 77),
 --  Sticker 'Zakuro', 3 tamaños
-('Zakuro', 'need a <br>', 1, 4, 22),
-('Zakuro', 'need a <br>', 2, 4, 16),
-('Zakuro', 'need a <br>', 3, 4, 6);
+('Zakuro', 'Sticker need a <br>', 1, 4, 22),
+('Zakuro', 'Sticker need a <br>', 2, 4, 16),
+('Zakuro', 'Sticker need a <br>', 3, 4, 6),
+--  Sticker Developer, 3 tamaños
+('-', 'Sticker Developer', 1, 4, 22),
+('-', 'Sticker Developer', 2, 4, 16),
+('-', 'Sticker Developer', 3, 4, 6),
+--  Sticker Gato Alien, 3 tamaños
+('-', 'Sticker Gato Alien', 1, 4, 22),
+('-', 'Sticker Gato Alien', 2, 4, 16),
+('-', 'Sticker Gato Alien', 3, 4, 6),
+--  Sticker Idk, 3 tamaños
+('-', 'Sticker Idk...ask chatGPT', 1, 4, 22),
+('-', 'Sticker Idk...ask chatGPT', 2, 4, 16),
+('-', 'Sticker Idk...ask chatGPT', 3, 4, 6),
+--  Sticker Idk, 3 tamaños
+('-', 'Sticker Iguana;', 1, 4, 22),
+('-', 'Sticker Iguana;', 2, 4, 16),
+('-', 'Sticker Iguana;', 3, 4, 6),
+--  Sticker Idk, 3 tamaños
+('-', 'Sticker Absolut;', 1, 4, 22),
+('-', 'Sticker Absolut', 2, 4, 16),
+('-', 'Sticker Absolut', 3, 4, 6);
 
 -- favoritos
 insert into favoritos (fk_usuario) values
@@ -725,10 +657,7 @@ insert into favoritos (fk_usuario) values
 -- favoritos_detalles
 insert into favoritos_detalles (fk_favorito, fk_producto) values
 (1, 11), 
-(2, 83),
-(3, 1226),
-(4, 1236),
-(5, 1272);
+(2, 83);
 
 -- calculo subtotal carrito_compra_detalles
 delimiter $$
@@ -776,10 +705,7 @@ insert into carrito_compras (fk_usuario) values
 insert into carrito_compra_detalles (fk_carrito, fk_producto, cantidad) values
 (1, 1, 1),
 (1, 42, 1),
-(2, 96, 1),
-(3, 1234, 3),
-(4, 1237, 4),
-(5, 1270, 6);
+(2, 96, 1);
 
 -- metodos_pago
 insert into metodos_pago(metodo_pago) values 
@@ -919,17 +845,12 @@ delimiter ;
 insert into ordenes(fk_usuario, fk_sucursal, fk_metodo_pago, fk_estado_pago, fk_estado_orden) values
 (1, 1, 1, 1, 1),
 (2, 2, 2, 2, 2),
-(3, 3, 3, 3, 1),
-(4, 2, 4, 4, 1),
-(5, 1, 5, 2, 2);
+(3, 3, 3, 3, 1);
 
 -- orden_detalles
 insert into ordenes_detalles (fk_orden, fk_producto, cantidad) values
 (1, 42, 1),
-(2, 96, 1),
-(3, 1234, 3),
-(4, 1237, 4),
-(5, 1270, 6);
+(2, 96, 1);
 
 insert into cuentas_threadone (id_cuenta_threadone, saldo, descripcion) values
 (1, 0, 'Cuenta para ingresos por ordenes pagadas');
@@ -1338,26 +1259,5 @@ begin
 end //
 delimiter ;
 
-call p_actualizar_cantidad_producto(3, 1234, 2);
+-- call p_actualizar_cantidad_producto(1, 1, 2);
 -- select * from autoria_carrito_detalles;
-
- CREATE TABLE juan (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  shirtId VARCHAR(255) NOT NULL,
-  color INT NOT NULL,
-  size INT NOT NULL,
-  quantity INT NOT NULL,
-  pathToImg varchar(255),
-  price int not null
-);
-
- CREATE TABLE pepe (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  shirtId VARCHAR(255),
-  stickerId VARCHAR(255),
-  color INT ,
-  size INT ,
-  quantity INT,
-  pathToImg varchar(255),
-  price int not null
-);

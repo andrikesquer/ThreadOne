@@ -503,3 +503,17 @@ async function removeFromCart(producto, size, color) {
 
 // Llamar a la función para obtener los productos del carrito cuando la página se carga
 window.onload = fetchCartItems;
+
+// Ir a la pagina de compra
+const $ = (el) => document.querySelector(el);
+
+const compra = $("#comprar");
+
+compra?.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const totalElement = $("#total");
+  const total = totalElement ? totalElement.textContent.replace("$", "") : "0";
+
+  window.location.href = `/compra?total=${encodeURIComponent(total)}`;
+});
