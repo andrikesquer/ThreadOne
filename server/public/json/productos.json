@@ -42,20 +42,8 @@
     {
         "producto": "Camiseta Iguana;",
         "precio": "300",
-        "imagen": "/images/camisetasImagenes/iguana/Iguana blanca.png",
-        "color": "Blanco"
-    },
-    {
-        "producto": "Camiseta Iguana;",
-        "precio": "300",
         "imagen": "/images/camisetasImagenes/iguana/Iguana Negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta need a <br>",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Br/br blanca.png",
-        "color": "Blanco"
     },
     {
         "producto": "Camiseta need a <br>",
@@ -66,20 +54,8 @@
     {
         "producto": "Camiseta Prenda el cerebro, ingeniero",
         "precio": "300",
-        "imagen": "/images/camisetasImagenes/cerebro/Cerebro blanco.png",
-        "color": "Blanco"
-    },
-    {
-        "producto": "Camiseta Prenda el cerebro, ingeniero",
-        "precio": "300",
         "imagen": "/images/camisetasImagenes/cerebro/Cerebro negro.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta CSS: Cant style shit",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/CSS/CSS blanca.png",
-        "color": "Blanco"
     },
     {
         "producto": "Camiseta CSS: Cant style shit",
@@ -90,20 +66,8 @@
     {
         "producto": "Camiseta Hello, world",
         "precio": "300",
-        "imagen": "/images/camisetasImagenes/Hw/Hw blanca.png",
-        "color": "Blanco"
-    },
-    {
-        "producto": "Camiseta Hello, world",
-        "precio": "300",
         "imagen": "/images/camisetasImagenes/Hw/Hw negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta Puro Linux",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/linux/Linux blanco.png",
-        "color": "Blanco"
     },
     {
         "producto": "Camiseta Puro Linux",
@@ -114,20 +78,8 @@
     {
         "producto": "Camiseta ; Survivor",
         "precio": "300",
-        "imagen": "/images/camisetasImagenes/Punto coma/; blanca.png",
-        "color": "Blanco"
-    },
-    {
-        "producto": "Camiseta ; Survivor",
-        "precio": "300",
         "imagen": "/images/camisetasImagenes/Punto coma/; negra.png",
         "color": "Negro"
-    },
-    {
-        "producto": "Camiseta Wr",
-        "precio": "300",
-        "imagen": "/images/camisetasImagenes/Wr/Wr blanca.png",
-        "color": "Blanco"
     },
     {
         "producto": "Camiseta Wr",
