@@ -4,7 +4,7 @@ Esta rama es la más actualizada y dónde se han realizado las correcciones nece
 
 Al ingresar a la página se puede navegar entre las diferentes secciones, sin embargo, para realizar acciones concretas es necesario un registro y/o inicio de sesión, por ejemplo, para añadir un producto al carrito de compras.
 
-Es pertinente aclarar que hubo un problema con las imágenes de las camisetas, pues no se cargan. Esto es atribuido al rendimiento de Render, dado que, en local se muestran con normalidad.
+Es pertinente aclarar que hubo un problema con las imágenes de las camisetas, pues no se cargan. Esto es atribuido al rendimiento de Render, dado que, en local se muestran con normalidad. Para probar el sitio web en local, se debe usar la rama carrito07, ya que, en esta rama no está configurada la conexión mediante pool.
 
 Las funciones básicas de la página trabajan adecuadamente, pudiendo agregar o eliminar productos del carrito de compras y realizar una orden. En términos más técnicos, todo se registra en base de datos, de donde se extrae la información mostrada en el sitio web, esta base de datos está alojada en Hostinger y puede ser manipulada remotamente mediante MySQL Workbench.
 
