@@ -1,7 +1,8 @@
-# Integradora-Formulario-TID31M
-Diseñar e implementar v0.1 de un formulario para proyecto integradora
+# Nota importante: La rama llamada Production continene el proyecto en su versión más reciente, esto es, donde se han realizado correcciones y se ha desplegado en linea el proyecto, empleando Render (para el sitio web) y Hostinger (para la base de datos).
 
-# Avanze de integradora: Conexion a base de datos
+# Equipo del proyecto: Oliver Manríquez, Brenda Ramos, Jorge Chavira, Santiago Medellín y Andrik Rivera.
+
+# Avance de integradora: Conexion a base de datos
 <!-- Aplicado al proyecto integrador, crear una API que contenga al menos dos rutas diferentes, que obtenga sus datos desde una base de datos.
 La interfaz debe consultar esta API para cargar elementos de la pagina y/o enviar datos para su persistencia, cada miembro del equipo debe subir un link al repositorio, y dentro del repositorio en el archivo readme describir el funcionamiento actual de su programa, que endpoints tiene la API, como se estan consultando. -->
 
